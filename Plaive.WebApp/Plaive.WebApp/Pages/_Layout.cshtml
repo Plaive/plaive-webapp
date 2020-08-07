@@ -1,0 +1,79 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Askbootstrap">
+    <meta name="author" content="Askbootstrap">
+    <title>Plaive</title>
+    <!-- Favicon Icon -->
+    <link rel="icon" type="image/png" href="~/img/favicon.png">
+    <!-- Bootstrap core CSS-->
+    <link href="~/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" asp-append-version="true">
+    <!-- Custom fonts for this template-->
+    <link href="~/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css" asp-append-version="true">
+    <!-- Custom styles for this template-->
+    <link href="~/css/osahan.css" rel="stylesheet">
+    <!-- Owl Carousel -->
+    <link rel="stylesheet" href="~/vendor/owl-carousel/owl.carousel.css" asp-append-version="true">
+    <link rel="stylesheet" href="~/vendor/owl-carousel/owl.theme.css" asp-append-version="true">
+</head>
+<body id="page-top">
+    <nav class="navbar navbar-expand navbar-light bg-white static-top osahan-nav sticky-top">
+        &nbsp;&nbsp;
+        <a class="navbar-brand mr-1" href="index.html"><img class="img-fluid" alt="" src="~/img/logo.png"></a>
+        <!-- Navbar Search -->
+        <partial name="_NavbarSearch" />
+        <!-- Navbar -->
+        <partial name="_Navbar" />
+    </nav>
+    <div id="wrapper">
+        <!-- Sidebar -->
+        <partial name="_Sidebar" />
+        <div id="content-wrapper">
+            <div class="container-fluid pb-0">
+                <partial name="Widgets/_CategoriesSlider" />
+                <hr>
+                @RenderBody()
+            </div>
+            <!-- /.container-fluid -->
+            <!-- Sticky Footer -->
+            <partial name="_Footer" />
+        </div>
+        <!-- /.content-wrapper -->
+    </div>
+    <!-- /#wrapper -->
+    <!-- Scroll to Top Button-->
+    <a class="scroll-to-top rounded" href="#page-top">
+        <i class="fas fa-angle-up"></i>
+    </a>
+    <!-- Logout Modal-->
+    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-sm modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                    <a class="btn btn-primary" href="login.html">Logout</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Bootstrap core JavaScript-->
+    <script src="~/vendor/jquery/jquery.min.js" asp-append-version="true"></script>
+    <script src="~/vendor/bootstrap/js/bootstrap.bundle.min.js" asp-append-version="true"></script>
+    <!-- Core plugin JavaScript-->
+    <script src="~/vendor/jquery-easing/jquery.easing.min.js" asp-append-version="true"></script>
+    <!-- Owl Carousel -->
+    <script src="~/vendor/owl-carousel/owl.carousel.js" asp-append-version="true"></script>
+    <!-- Custom scripts for all pages-->
+    <script src="~/js/custom.js" asp-append-version="true"></script>
+</body>
+</html>
