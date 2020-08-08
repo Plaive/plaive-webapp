@@ -23,8 +23,12 @@
         "Policies": [
           "AWSLambdaFullAccess"
         ],
-        "Environment": {
-          "Variables": {}
+        "Environment":{
+            "Variables":{
+                "BuildTrigger":{
+                    "Ref":"BuildTrigger"
+                }
+            }
         },
         "Events": {
           "ProxyResource": {
