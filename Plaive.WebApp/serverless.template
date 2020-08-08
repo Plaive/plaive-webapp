@@ -3,9 +3,9 @@
   "Transform": "AWS::Serverless-2016-10-31",
   "Description": "An AWS Serverless Application that uses the ASP.NET Core framework running in Amazon Lambda.",
   "Parameters": {
-    "BuildTrigger":{
+    "CodeUri":{
          "Type":"String",
-         "Description":"Just for build trigger",
+         "Description":"Code Uri",
          "MinLength":"0"
       }
   },
@@ -16,7 +16,9 @@
       "Properties": {
         "Handler": "Plaive.WebApp::Plaive.WebApp.LambdaEntryPoint::FunctionHandlerAsync",
         "Runtime": "dotnetcore3.1",
-        "CodeUri":"s3://plaive-webapp-code/drop.zip",
+        "CodeUri": {
+            "Ref": "CodeUri"
+        },
         "MemorySize": 512,
         "Timeout": 30,
         "Role": null,
@@ -24,11 +26,7 @@
           "AWSLambdaFullAccess"
         ],
         "Environment":{
-            "Variables":{
-                "BuildTrigger":{
-                    "Ref":"BuildTrigger"
-                }
-            }
+            "Variables":{}
         },
         "Events": {
           "ProxyResource": {
