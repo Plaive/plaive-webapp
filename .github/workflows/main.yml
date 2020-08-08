@@ -35,7 +35,7 @@ jobs:
         aws-secret-access-key: ${{ secrets.AWS_SECRET_KEY }}
         # AWS Region, e.g. us-east-2
         aws-region: eu-west-1
-    - name: Create Api Code S3 Bucket
+    - name: Create WebApp Code S3 Bucket
       run: aws s3api create-bucket --bucket plaive-webapp-code --region eu-west-1 --create-bucket-configuration LocationConstraint=eu-west-1
       continue-on-error: true
     - name: Deploy Compiled Code to S3
@@ -49,5 +49,7 @@ jobs:
         template: Plaive.WebApp/serverless.template
         # The comma-delimited list of stack template capabilities to acknowledge. Defaults to 'CAPABILITY_IAM'
         capabilities: "CAPABILITY_IAM,CAPABILITY_AUTO_EXPAND" 
+        # If the CloudFormation change set is empty, do not fail. Defaults to '0' (will fail on empty change set)
+        no-fail-on-empty-changeset: 1
         # The parameters to override in the stack inputs. The list is comma-delimited, with each entry formatted as <ParameterName>=<ParameterValue>.
         # parameter-overrides: 
