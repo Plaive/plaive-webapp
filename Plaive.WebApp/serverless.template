@@ -10,7 +10,7 @@
       "Properties": {
         "Handler": "Plaive.WebApp::Plaive.WebApp.LambdaEntryPoint::FunctionHandlerAsync",
         "Runtime": "dotnetcore3.1",
-        "CodeUri": "",
+        "CodeUri":"s3://plaive-webapp-code/drop.zip",
         "MemorySize": 512,
         "Timeout": 30,
         "Role": null,
