@@ -2,7 +2,13 @@
   "AWSTemplateFormatVersion": "2010-09-09",
   "Transform": "AWS::Serverless-2016-10-31",
   "Description": "An AWS Serverless Application that uses the ASP.NET Core framework running in Amazon Lambda.",
-  "Parameters": {},
+  "Parameters": {
+    "BuildTrigger":{
+         "Type":"String",
+         "Description":"Just for build trigger",
+         "MinLength":"0"
+      }
+  },
   "Conditions": {},
   "Resources": {
     "AspNetCoreFunction": {

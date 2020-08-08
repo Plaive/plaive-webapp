@@ -52,4 +52,4 @@ jobs:
         # If the CloudFormation change set is empty, do not fail. Defaults to '0' (will fail on empty change set)
         no-fail-on-empty-changeset: 1
         # The parameters to override in the stack inputs. The list is comma-delimited, with each entry formatted as <ParameterName>=<ParameterValue>.
-        # parameter-overrides: 
+        parameter-overrides: BuildTrigger=true
