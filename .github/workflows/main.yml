@@ -25,7 +25,7 @@ jobs:
     - name: Build
       run: dotnet build ./Plaive.WebApp/Plaive.WebApp.csproj --configuration Release --no-restore
     - name: Create Lambda Package
-      run: dotnet lambda package ./Plaive.WebApp/bin/Release/lambda/${{ env.GITHUB_RUN_ID }}.${{ env.GITHUB_RUN_NUMBER }}.zip -pl ./Plaive.WebApp
+      run: dotnet lambda package ./Plaive.WebApp/bin/Release/lambda/${{ github.run_id }}_${{ github.run_number }}.zip -pl ./Plaive.WebApp
     - name: AWS "Configure AWS Credentials" Action For GitHub Actions
       uses: aws-actions/configure-aws-credentials@v1
       with:
@@ -52,4 +52,4 @@ jobs:
         # If the CloudFormation change set is empty, do not fail. Defaults to '0' (will fail on empty change set)
         no-fail-on-empty-changeset: 1
         # The parameters to override in the stack inputs. The list is comma-delimited, with each entry formatted as <ParameterName>=<ParameterValue>.
-        parameter-overrides: CodeUri=s3://plaive-webapp-code/${{ env.GITHUB_RUN_ID }}.${{ env.GITHUB_RUN_NUMBER }}.zip
+        parameter-overrides: CodeUri=s3://plaive-webapp-code/${{ github.run_id }}_${{ github.run_number }}.zip
