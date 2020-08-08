@@ -13,6 +13,24 @@ using Microsoft.Extensions.Logging;
 
 namespace Plaive.WebApp
 {
+    /*
+        Barra di ricerca
+        Notifiche
+        Messaggi
+        Account
+        Subscriptions
+        Subscription
+        Settings
+        Logout
+        Channels
+        Channel
+        Video
+        Login
+        Register
+        Forgot Password
+        Reset Password
+    */
+
     public class Startup
     {
         public Startup(IConfiguration configuration)

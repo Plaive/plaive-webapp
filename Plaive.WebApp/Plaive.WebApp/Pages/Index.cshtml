@@ -2,7 +2,10 @@
 @model IndexModel
 @{
     ViewData["Title"] = "Plaive";
+    ViewData["Active"] = "home";
 }
+<partial name="Widgets/_CategoriesSlider" />
+<hr>
 <partial name="Widgets/_FeaturedVideos" />
 <hr class="mt-0">
 <partial name="Widgets/_PopularChannels" />
