@@ -1,16 +1,16 @@
 <template>
   <ul class="sidebar navbar-nav">
     <li :class="$route.path === '/' ? 'nav-item active' : 'nav-item'">
-        <a class="nav-link" href="/">
+        <nuxt-link to="/" class="nav-link">
             <font-awesome-icon :icon="['fas', 'home']" />
             <span>Home</span>
-        </a>
+        </nuxt-link>
     </li>
     <li :class="$route.path === '/channels' ? 'nav-item active' : 'nav-item'">
-        <a class="nav-link" href="/channels">
+        <nuxt-link to="/channels" class="nav-link">
             <font-awesome-icon :icon="['fas', 'users']" />
             <span>Channels</span>
-        </a>
+        </nuxt-link>
     </li>
     <li class="nav-item channel-sidebar-list" style="border-top:none">
         <h6>SUBSCRIPTIONS</h6>
