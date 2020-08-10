@@ -15,27 +15,27 @@
     <li class="nav-item channel-sidebar-list" style="border-top:none">
         <h6>SUBSCRIPTIONS</h6>
         <ul>
-            <li>
+            <li v-for="(sub, index) in subscriptions" :key="index">
                 <a href="#">
-                    <img class="img-fluid" alt="" src="@/assets/img/s1.png"> Your Life
-                </a>
-            </li>
-            <li>
-                <a href="#">
-                    <img class="img-fluid" alt="" src="@/assets/img/s2.png"> Unboxing
-                </a>
-            </li>
-            <li>
-                <a href="#">
-                    <img class="img-fluid" alt="" src="@/assets/img/s3.png"> Product / Service
-                </a>
-            </li>
-            <li>
-                <a href="#">
-                    <img class="img-fluid" alt="" src="@/assets/img/s4.png">  Gaming
+                    <img class="img-fluid" alt="" :src="sub.logo"> {{ sub.name }}
                 </a>
             </li>
         </ul>
     </li>
 </ul>
 </template>
+
+<script>
+export default {
+    data () {
+        return {
+            subscriptions: [
+                {
+                    logo: "//via.placeholder.com/130x130",
+                    name: "Subscription 1"
+                }
+            ]
+        }
+    }
+}
+</script>
