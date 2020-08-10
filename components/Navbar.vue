@@ -6,8 +6,8 @@
             <span class="badge badge-danger">9+</span>
         </a>
         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="alertsDropdown">
-            <a class="dropdown-item" href="#"><i class="fas fa-fw fa-edit "></i> &nbsp; Action</a>
-            <a class="dropdown-item" href="#"><i class="fas fa-fw fa-headphones-alt "></i> &nbsp; Another action</a>
+            <a class="dropdown-item" href="#"><font-awesome-icon :icon="['fas', 'edit']" /> &nbsp; Action</a>
+            <a class="dropdown-item" href="#"><font-awesome-icon :icon="['fas', 'headphones-alt']" /> &nbsp; Another action</a>
         </div>
     </li>
     <li class="nav-item dropdown no-arrow mx-1">
@@ -16,8 +16,8 @@
             <span class="badge badge-success">7</span>
         </a>
         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="messagesDropdown">
-            <a class="dropdown-item" href="#"><i class="fas fa-fw fa-edit "></i> &nbsp; Action</a>
-            <a class="dropdown-item" href="#"><i class="fas fa-fw fa-headphones-alt "></i> &nbsp; Another action</a>
+            <a class="dropdown-item" href="#"><font-awesome-icon :icon="['fas', 'edit']" /> &nbsp; Action</a>
+            <a class="dropdown-item" href="#"><font-awesome-icon :icon="['fas', 'headphones-alt']" /> &nbsp; Another action</a>
         </div>
     </li>
     <li class="nav-item dropdown no-arrow osahan-right-navbar-user">
@@ -26,11 +26,11 @@
             %USERNAME%
         </a>
         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
-            <a class="dropdown-item" href="account.html"><i class="fas fa-fw fa-user-circle"></i> &nbsp; My Account</a>
-            <a class="dropdown-item" href="subscriptions.html"><i class="fas fa-fw fa-video"></i> &nbsp; Subscriptions</a>
-            <a class="dropdown-item" href="settings.html"><i class="fas fa-fw fa-cog"></i> &nbsp; Settings</a>
+            <a class="dropdown-item" href="account.html"><font-awesome-icon :icon="['fas', 'user-circle']" /> &nbsp; My Account</a>
+            <a class="dropdown-item" href="subscriptions.html"><font-awesome-icon :icon="['fas', 'video']" /> &nbsp; Subscriptions</a>
+            <a class="dropdown-item" href="settings.html"><font-awesome-icon :icon="['fas', 'cog']" /> &nbsp; Settings</a>
             <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal"><i class="fas fa-fw fa-sign-out-alt"></i> &nbsp; Logout</a>
+            <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal"><font-awesome-icon :icon="['fas', 'sign-out-alt']" /> &nbsp; Logout</a>
         </div>
     </li>
   </ul>

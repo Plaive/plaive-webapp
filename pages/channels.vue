@@ -47,7 +47,7 @@
                 </div>
                 <div class="channels-card-body">
                     <div class="channels-title">
-                        <a href="#">Channels Name <span title="" data-placement="top" data-toggle="tooltip" data-original-title="Verified"><i class="fas fa-check-circle"></i></span></a>
+                        <a href="#">Channels Name <span title="" data-placement="top" data-toggle="tooltip" data-original-title="Verified"><font-awesome-icon :icon="['fas', 'check-circle']" /></span></a>
                     </div>
                     <div class="channels-view">
                         382,323 subscribers
@@ -159,7 +159,7 @@
                 </div>
                 <div class="channels-card-body">
                     <div class="channels-title">
-                        <a href="#">Channels Name <span title="" data-placement="top" data-toggle="tooltip" data-original-title="Verified"><i class="fas fa-check-circle"></i></span></a>
+                        <a href="#">Channels Name <span title="" data-placement="top" data-toggle="tooltip" data-original-title="Verified"><font-awesome-icon :icon="['fas', 'check-circle']" /></span></a>
                     </div>
                     <div class="channels-view">
                         382,323 subscribers

@@ -51,7 +51,7 @@
                     <div class="category-item">
                         <a href="#">
                             <img class="img-fluid" src="@/assets/img/s4.png" alt="">
-                            <h6>Gaming <span title="" data-placement="top" data-toggle="tooltip" data-original-title="Verified"><i class="fas fa-check-circle text-success"></i></span></h6>
+                            <h6>Gaming <span title="" data-placement="top" data-toggle="tooltip" data-original-title="Verified"><font-awesome-icon :icon="['fas', 'check-circle']" /></span></h6>
                             <p>74,853 views</p>
                         </a>
                     </div>
@@ -114,7 +114,7 @@
                     <div class="category-item">
                         <a href="#">
                             <img class="img-fluid" src="@/assets/img/s3.png" alt="">
-                            <h6>Comedy <span title="" data-placement="top" data-toggle="tooltip" data-original-title="Verified"><i class="fas fa-check-circle text-success"></i></span></h6>
+                            <h6>Comedy <span title="" data-placement="top" data-toggle="tooltip" data-original-title="Verified"><font-awesome-icon :icon="['fas', 'check-circle']" /></span></h6>
                             <p>74,853 views</p>
                         </a>
                     </div>
