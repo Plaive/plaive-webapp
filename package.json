@@ -17,6 +17,7 @@
     "bootstrap-vue": "^2.16.0",
     "moment": "^2.27.0",
     "nuxt": "^2.14.0",
+    "video.js": "^7.8.4",
     "vue-fontawesome": "0.0.2",
     "vue-owl-carousel": "^2.0.3"
   },
