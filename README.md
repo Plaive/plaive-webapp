@@ -1,5 +1,13 @@
 # plaive-webapp
 
+## Missing Pages
+ - Account
+ - Subscriptions
+ - Subscription
+ - Settings
+ - Category
+ - Video Page w/ chat
+
 ## Build Setup
 
 ```bash
