@@ -1,5 +1,5 @@
 <template>
-    <footer class="sticky-footer">
+    <footer :class="className">
         <div class="container">
             <div class="row no-gutters">
                 <div class="col-lg-6 col-sm-6">
@@ -21,3 +21,9 @@
         </div>
     </footer>
 </template>
+
+<script>
+export default {
+    props: ["className"]
+}
+</script>

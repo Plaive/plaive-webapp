@@ -104,7 +104,7 @@ export default {
         playbackUrl: "https://fcc3ddae59ed.us-west-2.playback.live-video.net/api/video/v1/us-west-2.893648527354.channel.DmumNckWFTqz.m3u8"
       },
       channel: {
-        link: "#",
+        link: "/channel/1",
         logo: "//via.placeholder.com/130x130",
         name: "Channels Name",
         creationDate: moment().format("DD/MM/YYYY"),
@@ -204,13 +204,8 @@ export default {
     const playbackUrl = this.video.playbackUrl
     registerIVSTech(videojs)
     this.player = videojs(this.$refs.videoPlayer, this.videoOptions, function onPlayerReady() {
-      console.log('onPlayerReady', this)
       this.src(playbackUrl);
     })
-    // if (IVSPlayer.isPlayerSupported) {
-    //   const player = IVSPlayer.create()
-    //   var playerDiv = document.getElementById('video-player')
-    // }
   }
 }
 </script>

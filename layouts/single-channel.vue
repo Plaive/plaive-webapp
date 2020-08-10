@@ -11,12 +11,9 @@
     <div id="wrapper">
         <!-- Sidebar -->
         <Sidebar />
-        <div id="content-wrapper">
-            <div class="container-fluid pb-0">
-              <Nuxt />
-            </div>
-            <!-- Sticky Footer -->
-            <Footer className="sticky-footer"/>
+        <div class="single-channel-page" id="content-wrapper">
+            <Nuxt />
+            <Footer className="sticky-footer ml-0"/>
         </div>
     </div>
   </div>

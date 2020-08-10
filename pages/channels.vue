@@ -1,5 +1,7 @@
 <template>
   <div>
+    <CategoriesSlider />
+    <hr/>
     <div class="video-block section-padding">
     <div class="row">
         <div class="col-md-12">
@@ -37,84 +39,84 @@ export default {
         return {
             channels: [
                 {
-                    link: "#",
+                    link: "/channel/1",
                     logo: "//via.placeholder.com/130x130",
                     name: "Channels Name",
                     subscribers: "382.323",
                     subscribed: false
                 },
                 {
-                    link: "#",
+                    link: "/channel/1",
                     logo: "//via.placeholder.com/130x130",
                     name: "Channels Name",
                     subscribers: "382.323",
                     subscribed: false
                 },
                 {
-                    link: "#",
+                    link: "/channel/1",
                     logo: "//via.placeholder.com/130x130",
                     name: "Channels Name",
                     subscribers: "382.323",
                     subscribed: true
                 },
                 {
-                    link: "#",
+                    link: "/channel/1",
                     logo: "//via.placeholder.com/130x130",
                     name: "Channels Name",
                     subscribers: "382.323",
                     subscribed: false
                 },
                 {
-                    link: "#",
+                    link: "/channel/1",
                     logo: "//via.placeholder.com/130x130",
                     name: "Channels Name",
                     subscribers: "382.323",
                     subscribed: false
                 },
                 {
-                    link: "#",
+                    link: "/channel/1",
                     logo: "//via.placeholder.com/130x130",
                     name: "Channels Name",
                     subscribers: "382.323",
                     subscribed: false
                 },
                 {
-                    link: "#",
+                    link: "/channel/1",
                     logo: "//via.placeholder.com/130x130",
                     name: "Channels Name",
                     subscribers: "382.323",
                     subscribed: true
                 },
                 {
-                    link: "#",
+                    link: "/channel/1",
                     logo: "//via.placeholder.com/130x130",
                     name: "Channels Name",
                     subscribers: "382.323",
                     subscribed: false
                 },
                 {
-                    link: "#",
+                    link: "/channel/1",
                     logo: "//via.placeholder.com/130x130",
                     name: "Channels Name",
                     subscribers: "382.323",
                     subscribed: false
                 },
                 {
-                    link: "#",
+                    link: "/channel/1",
                     logo: "//via.placeholder.com/130x130",
                     name: "Channels Name",
                     subscribers: "382.323",
                     subscribed: false
                 },
                 {
-                    link: "#",
+                    link: "/channel/1",
                     logo: "//via.placeholder.com/130x130",
                     name: "Channels Name",
                     subscribers: "382.323",
                     subscribed: true
                 },
                 {
-                    link: "#",
+                    link: "/channel/1",
                     logo: "//via.placeholder.com/130x130",
                     name: "Channels Name",
                     subscribers: "382.323",
