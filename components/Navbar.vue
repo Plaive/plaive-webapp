@@ -1,37 +1,56 @@
 <template>
   <ul class="navbar-nav ml-auto ml-md-0 osahan-right-navbar">
+    <!-- Notifications -->
     <li class="nav-item dropdown no-arrow mx-1">
-        <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <b-nav-item-dropdown right>
+        <template slot="button-content">
             <font-awesome-icon :icon="['fas', 'bell']" />
             <span class="badge badge-danger">9+</span>
-        </a>
-        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="alertsDropdown">
-            <a class="dropdown-item" href="#"><font-awesome-icon :icon="['fas', 'edit']" /> &nbsp; Action</a>
-            <a class="dropdown-item" href="#"><font-awesome-icon :icon="['fas', 'headphones-alt']" /> &nbsp; Another action</a>
-        </div>
+        </template>
+            <b-dropdown-item>Notification 1</b-dropdown-item>
+            <b-dropdown-item>Notification 2</b-dropdown-item>
+            <b-dropdown-item>Notification 3</b-dropdown-item>
+        </b-nav-item-dropdown>
     </li>
+
+    <!-- Messages -->
     <li class="nav-item dropdown no-arrow mx-1">
-        <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <b-nav-item-dropdown right>
+        <template slot="button-content">
             <font-awesome-icon :icon="['fas', 'envelope']" />
-            <span class="badge badge-success">7</span>
-        </a>
-        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="messagesDropdown">
-            <a class="dropdown-item" href="#"><font-awesome-icon :icon="['fas', 'edit']" /> &nbsp; Action</a>
-            <a class="dropdown-item" href="#"><font-awesome-icon :icon="['fas', 'headphones-alt']" /> &nbsp; Another action</a>
-        </div>
+            <span class="badge badge-success">3</span>
+        </template>
+            <b-dropdown-item>Message 1</b-dropdown-item>
+            <b-dropdown-item>Message 2</b-dropdown-item>
+            <b-dropdown-item>Message 3</b-dropdown-item>
+        </b-nav-item-dropdown>
     </li>
+
+    <!-- User -->
     <li class="nav-item dropdown no-arrow osahan-right-navbar-user">
-        <a class="nav-link dropdown-toggle user-dropdown-link" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <b-nav-item-dropdown right class="user-dropdown-link">
+        <template slot="button-content">
             <img alt="Avatar" src="@/assets/img/user.png">
             %USERNAME%
-        </a>
-        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
-            <a class="dropdown-item" href="account.html"><font-awesome-icon :icon="['fas', 'user-circle']" /> &nbsp; My Account</a>
-            <a class="dropdown-item" href="subscriptions.html"><font-awesome-icon :icon="['fas', 'video']" /> &nbsp; Subscriptions</a>
-            <a class="dropdown-item" href="settings.html"><font-awesome-icon :icon="['fas', 'cog']" /> &nbsp; Settings</a>
+        </template>
+            <a class="dropdown-item" href="#"><font-awesome-icon :icon="['fas', 'user-circle']" /> &nbsp; My Account</a>
+            <a class="dropdown-item" href="#"><font-awesome-icon :icon="['fas', 'video']" /> &nbsp; Subscriptions</a>
+            <a class="dropdown-item" href="#"><font-awesome-icon :icon="['fas', 'cog']" /> &nbsp; Settings</a>
             <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal"><font-awesome-icon :icon="['fas', 'sign-out-alt']" /> &nbsp; Logout</a>
-        </div>
+            <a class="dropdown-item" v-b-modal.logoutModal><font-awesome-icon :icon="['fas', 'sign-out-alt']" /> &nbsp; Logout</a>
+        </b-nav-item-dropdown>
     </li>
+
+    <!-- Logout Modal-->
+    <b-modal id="logoutModal" ref="logoutModal" centered>
+        <template v-slot:modal-title>
+            Ready to Leave?
+        </template>
+        <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+        <template v-slot:modal-footer>
+            <button class="btn btn-secondary" @click="$refs['logoutModal'].hide()">Cancel</button>
+            <a class="btn btn-primary" href="login.html">Logout</a>
+        </template>
+    </b-modal>
   </ul>
 </template>
