@@ -1,7 +1,5 @@
 <template>
   <div>
-    <CategoriesSlider />
-    <hr>
     <div class="video-block section-padding">
     <div class="row">
         <div class="col-md-12">
@@ -220,5 +218,10 @@
 </template>
 
 <script>
-export default {}
+export default {
+  data () {
+    return {
+    }
+  }
+}
 </script>
