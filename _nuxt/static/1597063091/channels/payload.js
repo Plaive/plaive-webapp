@@ -1,0 +1,1 @@
+__NUXT_JSONP__("/channels", {data:[{}],fetch:[],mutations:void 0});
