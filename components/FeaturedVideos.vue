@@ -11,7 +11,7 @@
                     <div class="video-card-image">
                         <nuxt-link class="play-icon" :to="video.link"><font-awesome-icon :icon="['fas', 'play-circle']" class="play-icon-btn" /></nuxt-link>
                         <nuxt-link :to="video.link"><img class="img-fluid" :src="video.img" alt=""></nuxt-link>
-                        <div class="time">{{video.time}}</div>
+                        <div class="time" v-if="video.free === true">FREE</div>
                     </div>
                     <div class="video-card-body">
                         <div class="video-title">
@@ -21,7 +21,8 @@
                             {{video.category}}
                         </div>
                         <div class="video-view">
-                            1.8M views &nbsp;<font-awesome-icon :icon="['fas', 'calendar-alt']" /> 11 Months ago
+                            <font-awesome-icon :icon="['fas', 'calendar-alt']" /> {{video.date}} 
+                            <font-awesome-icon :icon="['fas', 'clock']" /> {{video.start}} - {{video.end}}
                         </div>
                     </div>
                 </div>
@@ -44,6 +45,7 @@
 </style>
 
 <script>
+import moment from "moment"
 export default {
     data () {
         return {
@@ -51,58 +53,82 @@ export default {
                 {
                     img: "//via.placeholder.com/270x169",
                     link: "/video/1",
-                    time: "3:50",
                     title: "There are many variations of passages of Lorem",
-                    category: "Education"
+                    category: "Education",
+                    date: moment().format("DD/MM/YYYY"),
+                    start: "14:30",
+                    end: "16:00",
+                    free: false
                 },
                 {
                     img: "//via.placeholder.com/270x169",
                     link: "/video/1",
-                    time: "3:50",
                     title: "There are many variations of passages of Lorem",
-                    category: "Education"
+                    category: "Education",
+                    date: moment().format("DD/MM/YYYY"),
+                    start: "14:30",
+                    end: "16:00",
+                    free: false
                 },
                 {
                     img: "//via.placeholder.com/270x169",
                     link: "/video/1",
-                    time: "3:50",
                     title: "There are many variations of passages of Lorem",
-                    category: "Education"
+                    category: "Education",
+                    date: moment().format("DD/MM/YYYY"),
+                    start: "14:30",
+                    end: "16:00",
+                    free: true
                 },
                 {
                     img: "//via.placeholder.com/270x169",
                     link: "/video/1",
-                    time: "3:50",
                     title: "There are many variations of passages of Lorem",
-                    category: "Education"
+                    category: "Education",
+                    date: moment().format("DD/MM/YYYY"),
+                    start: "14:30",
+                    end: "16:00",
+                    free: false
                 },
                 {
                     img: "//via.placeholder.com/270x169",
                     link: "/video/1",
-                    time: "3:50",
                     title: "There are many variations of passages of Lorem",
-                    category: "Education"
+                    category: "Education",
+                    date: moment().format("DD/MM/YYYY"),
+                    start: "14:30",
+                    end: "16:00",
+                    free: true
                 },
                 {
                     img: "//via.placeholder.com/270x169",
                     link: "/video/1",
-                    time: "3:50",
                     title: "There are many variations of passages of Lorem",
-                    category: "Education"
+                    category: "Education",
+                    date: moment().format("DD/MM/YYYY"),
+                    start: "14:30",
+                    end: "16:00",
+                    free: false
                 },
                 {
                     img: "//via.placeholder.com/270x169",
                     link: "/video/1",
-                    time: "3:50",
                     title: "There are many variations of passages of Lorem",
-                    category: "Education"
+                    category: "Education",
+                    date: moment().format("DD/MM/YYYY"),
+                    start: "14:30",
+                    end: "16:00",
+                    free: false
                 },
                 {
                     img: "//via.placeholder.com/270x169",
                     link: "/video/1",
-                    time: "3:50",
                     title: "There are many variations of passages of Lorem",
-                    category: "Education"
+                    category: "Education",
+                    date: moment().format("DD/MM/YYYY"),
+                    start: "14:30",
+                    end: "16:00",
+                    free: false
                 }
             ]
         }
