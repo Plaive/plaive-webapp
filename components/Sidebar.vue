@@ -13,11 +13,11 @@
         </nuxt-link>
     </li>
     <li class="nav-item channel-sidebar-list" style="border-top:none">
-        <h6>SUBSCRIPTIONS</h6>
+        <h6>MY LESSONS</h6>
         <ul>
-            <li v-for="(sub, index) in subscriptions" :key="index">
+            <li v-for="(lesson, index) in lessons" :key="index">
                 <a href="#">
-                    <img class="img-fluid" alt="" :src="sub.logo"> {{ sub.name }}
+                    <img class="img-fluid" alt="" :src="lesson.logo"> {{ lesson.name }}
                 </a>
             </li>
         </ul>
@@ -29,10 +29,10 @@
 export default {
     data () {
         return {
-            subscriptions: [
+            lessons: [
                 {
                     logo: "//via.placeholder.com/130x130",
-                    name: "Subscription 1"
+                    name: "Lesson 1"
                 }
             ]
         }

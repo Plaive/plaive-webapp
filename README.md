@@ -2,8 +2,8 @@
 
 ## Missing Pages
  - Account
- - Subscriptions
- - Subscription
+ - Create Lesson
+ - My Lessons
  - Settings
  - Category
  - Video Page w/ chat
