@@ -30,6 +30,7 @@
             %USERNAME%
         </template>
             <nuxt-link class="dropdown-item" to="/account"><font-awesome-icon :icon="['fas', 'user-circle']" /> &nbsp; My Account</nuxt-link>
+            <nuxt-link class="dropdown-item" to="/channel/my"><font-awesome-icon :icon="['fas', 'user-graduate']" /> &nbsp; My Channel</nuxt-link>
             <nuxt-link class="dropdown-item" to="/my-lessons"><font-awesome-icon :icon="['fas', 'video']" /> &nbsp; My Lessons</nuxt-link>
             <div class="dropdown-divider"></div>
             <a class="dropdown-item" v-b-modal.logoutModal><font-awesome-icon :icon="['fas', 'sign-out-alt']" /> &nbsp; Logout</a>
