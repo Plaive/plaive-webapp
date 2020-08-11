@@ -16,9 +16,9 @@
         <h6>MY LESSONS</h6>
         <ul>
             <li v-for="(lesson, index) in lessons" :key="index">
-                <a href="#">
+                <nuxt-link :to="lesson.link">
                     <img class="img-fluid" alt="" :src="lesson.logo"> {{ lesson.name }}
-                </a>
+                </nuxt-link>
             </li>
         </ul>
     </li>
@@ -32,7 +32,8 @@ export default {
             lessons: [
                 {
                     logo: "//via.placeholder.com/130x130",
-                    name: "Lesson 1"
+                    name: "Lesson 1",
+                    link: "/video/1"
                 }
             ]
         }

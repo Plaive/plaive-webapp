@@ -3,14 +3,13 @@
 ## Missing Pages
  - Account
  - Create Lesson
- - My Lessons
  - Settings
- - Category
  - Video Page w/ chat
  - Login
  - Register
  - Forgot Password
  - Reset Password
+ - Lazy load on scroll
 
 ## Build Setup
 

@@ -36,7 +36,7 @@
         <h6>About</h6>
         <p>{{channel.about}}</p>
       </div>
-      <VideoList v-if="activeTab === 'lessons'" type="lessons" title="Lessons" />
+      <VideoList v-if="activeTab === 'lessons'" type="channelLessons" title="Lessons" />
     </div>
   </div>
 </template>
