@@ -1,7 +1,6 @@
 # plaive-webapp
 
 ## Missing Pages
- - Account (settings.html)
  - Create Lesson (upload-video.html)
  - Video Page w/ chat
 
