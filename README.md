@@ -7,6 +7,10 @@
  - Settings
  - Category
  - Video Page w/ chat
+ - Login
+ - Register
+ - Forgot Password
+ - Reset Password
 
 ## Build Setup
 

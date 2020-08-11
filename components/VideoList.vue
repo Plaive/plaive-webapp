@@ -3,7 +3,7 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="main-title">
-                    <h6>Featured Videos</h6>
+                    <h6>{{title}}</h6>
                 </div>
             </div>
             <div v-for="(video, index) in videos" :key="index" class="col-xl-3 col-sm-6 mb-3">
@@ -49,7 +49,97 @@ import moment from "moment"
 export default {
     data () {
         return {
-            videos: [
+            videos: []
+        }
+    },
+    props: ["title", "type"],
+    mounted () {
+        if(this.type === "featured") {
+            this.videos = [
+                {
+                    img: "//via.placeholder.com/270x169",
+                    link: "/video/1",
+                    title: "There are many variations of passages of Lorem",
+                    category: "Education",
+                    date: moment().format("DD/MM/YYYY"),
+                    start: "14:30",
+                    end: "16:00",
+                    free: false
+                },
+                {
+                    img: "//via.placeholder.com/270x169",
+                    link: "/video/1",
+                    title: "There are many variations of passages of Lorem",
+                    category: "Education",
+                    date: moment().format("DD/MM/YYYY"),
+                    start: "14:30",
+                    end: "16:00",
+                    free: false
+                },
+                {
+                    img: "//via.placeholder.com/270x169",
+                    link: "/video/1",
+                    title: "There are many variations of passages of Lorem",
+                    category: "Education",
+                    date: moment().format("DD/MM/YYYY"),
+                    start: "14:30",
+                    end: "16:00",
+                    free: true
+                },
+                {
+                    img: "//via.placeholder.com/270x169",
+                    link: "/video/1",
+                    title: "There are many variations of passages of Lorem",
+                    category: "Education",
+                    date: moment().format("DD/MM/YYYY"),
+                    start: "14:30",
+                    end: "16:00",
+                    free: false
+                },
+                {
+                    img: "//via.placeholder.com/270x169",
+                    link: "/video/1",
+                    title: "There are many variations of passages of Lorem",
+                    category: "Education",
+                    date: moment().format("DD/MM/YYYY"),
+                    start: "14:30",
+                    end: "16:00",
+                    free: true
+                },
+                {
+                    img: "//via.placeholder.com/270x169",
+                    link: "/video/1",
+                    title: "There are many variations of passages of Lorem",
+                    category: "Education",
+                    date: moment().format("DD/MM/YYYY"),
+                    start: "14:30",
+                    end: "16:00",
+                    free: false
+                },
+                {
+                    img: "//via.placeholder.com/270x169",
+                    link: "/video/1",
+                    title: "There are many variations of passages of Lorem",
+                    category: "Education",
+                    date: moment().format("DD/MM/YYYY"),
+                    start: "14:30",
+                    end: "16:00",
+                    free: false
+                },
+                {
+                    img: "//via.placeholder.com/270x169",
+                    link: "/video/1",
+                    title: "There are many variations of passages of Lorem",
+                    category: "Education",
+                    date: moment().format("DD/MM/YYYY"),
+                    start: "14:30",
+                    end: "16:00",
+                    free: false
+                }
+            ]
+        }
+        else if(this.type === "lessons") {
+            this.videos = [
                 {
                     img: "//via.placeholder.com/270x169",
                     link: "/video/1",

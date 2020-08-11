@@ -17,8 +17,11 @@
         <a class="channel-brand" href="#">{{channel.name}}</a>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
-              <li class="nav-item active">
-                  <a class="nav-link">About <span class="sr-only">(current)</span></a>
+              <li :class="activeTab === 'about' ? 'nav-item active' : 'nav-item'">
+                  <a class="nav-link" @click="activeTab = 'about'">About</a>
+              </li>
+              <li :class="activeTab === 'lessons' ? 'nav-item active' : 'nav-item'">
+                  <a class="nav-link" @click="activeTab = 'lessons'">Lessons</a>
               </li>
             </ul>
             <form class="form-inline my-2 my-lg-0">
@@ -29,10 +32,11 @@
       </nav>
     </div>
     <div class="container-fluid">
-      <div class="box mb-3">
+      <div v-if="activeTab === 'about'" class="box mb-3">
         <h6>About</h6>
         <p>{{channel.about}}</p>
       </div>
+      <VideoList v-if="activeTab === 'lessons'" type="lessons" title="Lessons" />
     </div>
   </div>
 </template>
@@ -42,6 +46,7 @@ export default {
   layout: 'single-channel',
   data () {
       return {
+        activeTab: "about",
         channel: {
           banner: "//via.placeholder.com/1500x386",
           logo: "//via.placeholder.com/130x130",
