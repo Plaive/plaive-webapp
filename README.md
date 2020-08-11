@@ -1,14 +1,17 @@
 # plaive-webapp
 
 ## Missing Pages
- - Account
- - Create Lesson
- - Settings
+ - Account (settings.html)
+ - Create Lesson (upload-video.html)
  - Video Page w/ chat
+
+ - Add book/unbook to lesson page
+
  - Login
  - Register
  - Forgot Password
  - Reset Password
+
  - Lazy load on scroll
 
 ## Build Setup

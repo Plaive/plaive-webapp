@@ -7,6 +7,10 @@
                 <video ref="videoPlayer" class="video-js vjs-16-9 vjs-big-play-centered" controls autoplay playsinline></video>
               </div>
               <div class="single-video-title box mb-3">
+                <div class="float-right">
+                  <button v-if="channel.subscribed === false" class="btn btn-danger" type="button">Subscribe</button>
+                  <button v-else class="btn btn-secondary" type="button">Subscribed</button>
+                </div>
                 <h2><a href="#">{{video.title}}</a></h2>
                 <p class="mb-0">
                   <font-awesome-icon :icon="['fas', 'calendar-alt']" /> {{video.date}} 
@@ -101,7 +105,8 @@ export default {
         date: moment().format("DD/MM/YYYY"),
         start: "14:30",
         end: "16:00",
-        playbackUrl: "https://fcc3ddae59ed.us-west-2.playback.live-video.net/api/video/v1/us-west-2.893648527354.channel.DmumNckWFTqz.m3u8"
+        playbackUrl: "https://fcc3ddae59ed.us-west-2.playback.live-video.net/api/video/v1/us-west-2.893648527354.channel.DmumNckWFTqz.m3u8",
+        booked: false,
       },
       channel: {
         link: "/channel/1",

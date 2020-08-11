@@ -31,7 +31,6 @@
         </template>
             <a class="dropdown-item" href="#"><font-awesome-icon :icon="['fas', 'user-circle']" /> &nbsp; My Account</a>
             <nuxt-link class="dropdown-item" to="/my-lessons"><font-awesome-icon :icon="['fas', 'video']" /> &nbsp; My Lessons</nuxt-link>
-            <a class="dropdown-item" href="#"><font-awesome-icon :icon="['fas', 'cog']" /> &nbsp; Settings</a>
             <div class="dropdown-divider"></div>
             <a class="dropdown-item" v-b-modal.logoutModal><font-awesome-icon :icon="['fas', 'sign-out-alt']" /> &nbsp; Logout</a>
         </b-nav-item-dropdown>
