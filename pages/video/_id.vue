@@ -8,8 +8,8 @@
               </div>
               <div class="single-video-title box mb-3">
                 <div class="float-right">
-                  <button v-if="channel.subscribed === false" class="btn btn-danger" type="button">Subscribe</button>
-                  <button v-else class="btn btn-secondary" type="button">Subscribed</button>
+                  <button v-if="video.purchased === false" class="btn btn-danger" type="button">Buy</button>
+                  <button v-else class="btn btn-danger" disabled type="button">Already purchased</button>
                 </div>
                 <h2><a href="#">{{video.title}}</a></h2>
                 <p class="mb-0">
@@ -106,7 +106,7 @@ export default {
         start: "14:30",
         end: "16:00",
         playbackUrl: "https://fcc3ddae59ed.us-west-2.playback.live-video.net/api/video/v1/us-west-2.893648527354.channel.DmumNckWFTqz.m3u8",
-        booked: false,
+        purchased: true,
       },
       channel: {
         link: "/channel/1",

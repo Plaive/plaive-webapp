@@ -5,8 +5,6 @@
  - Create Lesson (upload-video.html)
  - Video Page w/ chat
 
- - Add book/unbook to lesson page
-
  - Login
  - Register
  - Forgot Password
