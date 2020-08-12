@@ -81,7 +81,7 @@
           <div class="col-sm-4">
             <div class="box mb-3">
               <h6>Logo <span class="required"><button type="button" class="btn btn-link border-none"><font-awesome-icon :icon="['fas', 'edit']" /></button></span></h6>
-              <img src="//via.placeholder.com/500x500" style="width:500px;height:500px"/>
+              <img src="//via.placeholder.com/500x500" style="width:100%;max-width:500px;height:auto"/>
             </div>
           </div>
           <div class="col-sm-8">
