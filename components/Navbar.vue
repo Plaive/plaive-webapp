@@ -1,54 +1,67 @@
 <template>
-  <ul class="navbar-nav ml-auto ml-md-0 osahan-right-navbar">
-    <!-- Notifications -->
-    <li class="nav-item dropdown no-arrow mx-1">
-        <b-nav-item-dropdown right>
-        <template slot="button-content">
-            <font-awesome-icon :icon="['fas', 'bell']" />
-            <span class="badge badge-danger">{{numberOfNotifications}}</span>
-        </template>
-        <b-dropdown-item v-for="(not, index) in notifications" :key="index">{{not.title}}</b-dropdown-item>
-        </b-nav-item-dropdown>
-    </li>
+    <nav class="navbar navbar-expand navbar-light bg-white static-top osahan-nav sticky-top">
+        &nbsp;&nbsp; 
+        <div class="d-block d-md-none">
+            <button class="btn btn-link btn-sm text-secondary order-1 order-sm-0" @click="toggleSidebar">
+                <font-awesome-icon :icon="['fas', 'bars']" />
+            </button> 
+        </div>
+        &nbsp;&nbsp;
+        <nuxt-link to="/" class="navbar-brand mr-1"><img class="img-fluid" alt="" src="//via.placeholder.com/120x30?text=PLAIVE_LOGO"></nuxt-link>
+        <!-- Navbar Search -->
+        <GlobalSearch />
+        <!-- Navbar -->
+        <ul class="navbar-nav ml-auto ml-md-0 osahan-right-navbar">
+            <!-- Notifications -->
+            <li class="nav-item dropdown no-arrow mx-1">
+                <b-nav-item-dropdown right>
+                <template slot="button-content">
+                    <font-awesome-icon :icon="['fas', 'bell']" />
+                    <span class="badge badge-danger">{{numberOfNotifications}}</span>
+                </template>
+                <b-dropdown-item v-for="(not, index) in notifications" :key="index">{{not.title}}</b-dropdown-item>
+                </b-nav-item-dropdown>
+            </li>
 
-    <!-- Messages -->
-    <li class="nav-item dropdown no-arrow mx-1">
-        <b-nav-item-dropdown right>
-        <template slot="button-content">
-            <font-awesome-icon :icon="['fas', 'envelope']" />
-            <span class="badge badge-success">{{numberOfMessages}}</span>
-        </template>
-            <b-dropdown-item v-for="(msg, index) in messages" :key="index">{{msg.title}}</b-dropdown-item>
-        </b-nav-item-dropdown>
-    </li>
+            <!-- Messages -->
+            <li class="nav-item dropdown no-arrow mx-1">
+                <b-nav-item-dropdown right>
+                <template slot="button-content">
+                    <font-awesome-icon :icon="['fas', 'envelope']" />
+                    <span class="badge badge-success">{{numberOfMessages}}</span>
+                </template>
+                    <b-dropdown-item v-for="(msg, index) in messages" :key="index">{{msg.title}}</b-dropdown-item>
+                </b-nav-item-dropdown>
+            </li>
 
-    <!-- User -->
-    <li class="nav-item dropdown no-arrow osahan-right-navbar-user">
-        <b-nav-item-dropdown right class="user-dropdown-link">
-        <template slot="button-content">
-            <img alt="Avatar" src="//via.placeholder.com/81x81">
-            %USERNAME%
-        </template>
-            <nuxt-link class="dropdown-item" to="/account"><font-awesome-icon :icon="['fas', 'user-circle']" /> &nbsp; My Account</nuxt-link>
-            <nuxt-link class="dropdown-item" to="/channel/my"><font-awesome-icon :icon="['fas', 'user-graduate']" /> &nbsp; My Channel</nuxt-link>
-            <nuxt-link class="dropdown-item" to="/my-lessons"><font-awesome-icon :icon="['fas', 'video']" /> &nbsp; My Lessons</nuxt-link>
-            <div class="dropdown-divider"></div>
-            <a class="dropdown-item" v-b-modal.logoutModal><font-awesome-icon :icon="['fas', 'sign-out-alt']" /> &nbsp; Logout</a>
-        </b-nav-item-dropdown>
-    </li>
+            <!-- User -->
+            <li class="nav-item dropdown no-arrow osahan-right-navbar-user">
+                <b-nav-item-dropdown right class="user-dropdown-link">
+                <template slot="button-content">
+                    <img alt="Avatar" src="//via.placeholder.com/81x81">
+                    %USERNAME%
+                </template>
+                    <nuxt-link class="dropdown-item" to="/account"><font-awesome-icon :icon="['fas', 'user-circle']" /> &nbsp; My Account</nuxt-link>
+                    <nuxt-link class="dropdown-item" to="/channel/my"><font-awesome-icon :icon="['fas', 'user-graduate']" /> &nbsp; My Channel</nuxt-link>
+                    <nuxt-link class="dropdown-item" to="/my-lessons"><font-awesome-icon :icon="['fas', 'video']" /> &nbsp; My Lessons</nuxt-link>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" v-b-modal.logoutModal><font-awesome-icon :icon="['fas', 'sign-out-alt']" /> &nbsp; Logout</a>
+                </b-nav-item-dropdown>
+            </li>
 
-    <!-- Logout Modal-->
-    <b-modal id="logoutModal" ref="logoutModal" centered>
-        <template v-slot:modal-title>
-            Ready to Leave?
-        </template>
-        <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
-        <template v-slot:modal-footer>
-            <button class="btn btn-secondary" @click="$refs['logoutModal'].hide()">Cancel</button>
-            <a class="btn btn-primary" href="login.html">Logout</a>
-        </template>
-    </b-modal>
-  </ul>
+            <!-- Logout Modal-->
+            <b-modal id="logoutModal" ref="logoutModal" centered>
+                <template v-slot:modal-title>
+                    Ready to Leave?
+                </template>
+                <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+                <template v-slot:modal-footer>
+                    <button class="btn btn-secondary" @click="$refs['logoutModal'].hide()">Cancel</button>
+                    <a class="btn btn-primary" href="login.html">Logout</a>
+                </template>
+            </b-modal>
+        </ul>
+    </nav>
 </template>
 
 <script>
@@ -126,6 +139,13 @@ export default {
             }
             return this.messages.length
         }
+    },
+    methods: {
+        toggleSidebar() {
+            const body = document.body
+            body.classList.toggle("sidebar-toggled")
+            this.$emit('toggled')
+        },
     }
 }
 </script>

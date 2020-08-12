@@ -1,16 +1,9 @@
 <template>
   <div>
-    <nav class="navbar navbar-expand navbar-light bg-white static-top osahan-nav sticky-top">
-        &nbsp;&nbsp;
-        <nuxt-link to="/" class="navbar-brand mr-1"><img class="img-fluid" alt="" src="//via.placeholder.com/120x30?text=PLAIVE_LOGO"></nuxt-link>
-        <!-- Navbar Search -->
-        <GlobalSearch />
-        <!-- Navbar -->
-        <Navbar />
-    </nav>
+    <Navbar @toggled="sidebarToggled" />
     <div id="wrapper">
         <!-- Sidebar -->
-        <Sidebar />
+        <Sidebar :isToggled="isSidebarToggled" />
         <div id="content-wrapper">
             <div class="container-fluid pb-0">
               <Nuxt />
@@ -21,3 +14,18 @@
     </div>
   </div>
 </template>
+
+<script>
+export default {
+  data () {
+    return {
+      isSidebarToggled: false
+    }
+  },
+  methods: {
+    sidebarToggled() {
+      this.isSidebarToggled = !this.isSidebarToggled
+    }
+  }
+}
+</script>

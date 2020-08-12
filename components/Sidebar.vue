@@ -1,5 +1,5 @@
 <template>
-  <ul class="sidebar navbar-nav">
+  <ul :class="isToggled === true ? 'sidebar navbar-nav toggled' : 'sidebar navbar-nav'">
     <li :class="$route.path === '/' ? 'nav-item active' : 'nav-item'">
         <nuxt-link to="/" class="nav-link">
             <font-awesome-icon :icon="['fas', 'home']" />
@@ -37,6 +37,7 @@ export default {
                 }
             ]
         }
-    }
+    },
+    props: ["isToggled"]
 }
 </script>

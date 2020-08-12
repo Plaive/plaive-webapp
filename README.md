@@ -1,6 +1,7 @@
 # plaive-webapp
 
 ## Missing Pages
+ - Hide/Show sidebar on mobile
  - Create Lesson (upload-video.html)
  - Video Page w/ chat
  - Login
