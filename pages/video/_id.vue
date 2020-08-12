@@ -7,7 +7,7 @@
                 <video ref="videoPlayer" class="video-js vjs-16-9 vjs-big-play-centered" controls autoplay playsinline></video>
               </div>
               <div class="single-video-title box mb-3">
-                <div class="float-right">
+                <div class="d-none d-md-inline-block float-right">
                   <button v-if="video.purchased === false" class="btn btn-danger" type="button">Buy</button>
                   <button v-else class="btn btn-danger" disabled type="button">Already purchased</button>
                 </div>
@@ -16,15 +16,23 @@
                   <font-awesome-icon :icon="['fas', 'calendar-alt']" /> {{video.date}} 
                   <font-awesome-icon :icon="['fas', 'clock']" /> {{video.start}} - {{video.end}}
                 </p>
+                <div class="d-block d-md-none mt-3">
+                  <button v-if="video.purchased === false" class="btn btn-danger btn-block" type="button">Buy</button>
+                  <button v-else class="btn btn-danger btn-block" disabled type="button">Already purchased</button>
+                </div>
               </div>
               <div class="single-video-author box mb-3">
-                <div class="float-right">
+                <div class="d-none d-md-inline-block float-right">
                   <button v-if="channel.subscribed === false" class="btn btn-danger" type="button">Subscribe</button>
                   <button v-else class="btn btn-secondary" type="button">Subscribed</button>
                 </div>
                 <img class="img-fluid" :src="channel.logo" alt="">
                 <p><nuxt-link :to="channel.link"><strong>{{channel.name}}</strong></nuxt-link></p>
                 <small>Created on {{channel.creationDate}}</small>
+                <div class="d-block d-md-none mt-3">
+                  <button v-if="channel.subscribed === false" class="btn btn-danger btn-block" type="button">Subscribe</button>
+                  <button v-else class="btn btn-secondary btn-block" type="button">Subscribed</button>
+                </div>
               </div>
               <div class="single-video-info-content box mb-3">
                 <h6>Categories :</h6>

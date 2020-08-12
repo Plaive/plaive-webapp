@@ -3,7 +3,6 @@
 ## Missing Pages
  - Create Lesson (upload-video.html)
  - Video Page w/ chat
-
  - Login
  - Register
  - Forgot Password
