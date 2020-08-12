@@ -14,14 +14,17 @@
     </div>
     <div class="single-channel-nav">
       <nav class="navbar navbar-expand-lg navbar-light">
-        <a class="channel-brand" href="#">{{channel.name}}</a>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <span class="channel-brand">{{channel.name}}</span>
+        <button class="navbar-toggler" type="button" v-b-toggle.navbarSupportedContent>
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <b-collapse class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
               <li :class="activeTab === 'about' ? 'nav-item active' : 'nav-item'">
-                  <a class="nav-link" @click="activeTab = 'about'">About</a>
+                  <a href="#" class="nav-link" @click="activeTab = 'about'">About</a>
               </li>
               <li :class="activeTab === 'lessons' ? 'nav-item active' : 'nav-item'">
-                  <a class="nav-link" @click="activeTab = 'lessons'">Lessons</a>
+                  <a href="#" class="nav-link" @click="activeTab = 'lessons'">Lessons</a>
               </li>
             </ul>
             <form v-if="isMy === false" class="form-inline my-2 my-lg-0">
@@ -31,7 +34,7 @@
             <form v-else class="form-inline my-2 my-lg-0">
               <button class="btn btn-outline-danger btn-sm" type="button">Add Lesson</button>
             </form>
-        </div>
+        </b-collapse>
       </nav>
     </div>
     <div class="container-fluid">
@@ -46,7 +49,6 @@
 
 <script>
 export default {
-  layout: 'single-channel',
   data () {
       return {
         activeTab: "about",

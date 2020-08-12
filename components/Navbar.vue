@@ -13,7 +13,7 @@
         <!-- Navbar -->
         <ul class="navbar-nav ml-auto ml-md-0 osahan-right-navbar">
             <!-- Notifications -->
-            <li class="nav-item dropdown no-arrow mx-1">
+            <li class="d-none d-md-inline-block nav-item dropdown no-arrow mx-1">
                 <b-nav-item-dropdown right>
                 <template slot="button-content">
                     <font-awesome-icon :icon="['fas', 'bell']" />
@@ -24,7 +24,7 @@
             </li>
 
             <!-- Messages -->
-            <li class="nav-item dropdown no-arrow mx-1">
+            <li class="d-none d-md-inline-block nav-item dropdown no-arrow mx-1">
                 <b-nav-item-dropdown right>
                 <template slot="button-content">
                     <font-awesome-icon :icon="['fas', 'envelope']" />
@@ -35,7 +35,7 @@
             </li>
 
             <!-- User -->
-            <li class="nav-item dropdown no-arrow osahan-right-navbar-user">
+            <li class="d-none d-md-inline-block nav-item dropdown no-arrow osahan-right-navbar-user">
                 <b-nav-item-dropdown right class="user-dropdown-link">
                 <template slot="button-content">
                     <img alt="Avatar" src="//via.placeholder.com/81x81">
