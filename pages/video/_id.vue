@@ -126,7 +126,7 @@ export default {
           fullscreenToggle: this.isMobile()
         },
         userActions: {
-          doubleClick: true
+          doubleClick: this.isMobile()
         }
 			},
       video: {
