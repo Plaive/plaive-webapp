@@ -99,6 +99,11 @@ export default {
       if(fullscreenElement === undefined) {
         this.$router.replace("/video/1").catch(()=>{});
       }
+
+      var isFullscreen = document.fullScreen || document.mozFullScreen || document.webkitIsFullScreen
+      if(isFullscreen === false) {
+        this.$router.replace("/video/1").catch(()=>{});
+      }
     },
     sendMessage () {
       this.chatMessages.push({
@@ -122,14 +127,14 @@ export default {
   },
   beforeMount() {
     var self = this;
-    document.addEventListener("fullscreenchange", self.onFullScreenChange, false)
-    document.addEventListener("webkitfullscreenchange", self.onFullScreenChange, false)
-    document.addEventListener("mozfullscreenchange", self.onFullScreenChange, false)
-  },
-  beforeDestroy() {
     document.addEventListener("fullscreenchange", self.onFullScreenChange)
     document.addEventListener("webkitfullscreenchange", self.onFullScreenChange)
     document.addEventListener("mozfullscreenchange", self.onFullScreenChange)
+  },
+  beforeDestroy() {
+    document.removeEventListener("fullscreenchange", self.onFullScreenChange)
+    document.removeEventListener("webkitfullscreenchange", self.onFullScreenChange)
+    document.removeEventListener("mozfullscreenchange", self.onFullScreenChange)
   },
   mounted () {
     const playbackUrl = this.video.playbackUrl
