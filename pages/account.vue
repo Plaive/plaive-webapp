@@ -115,6 +115,10 @@ export default {
       title: 'Account' + ' - Plaive',
     }
   },
+  transition: {
+    name: "page",
+    mode: 'out-in'
+  },
   components: {
     VueEditor
   },

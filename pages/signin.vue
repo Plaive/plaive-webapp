@@ -36,8 +36,12 @@ export default {
   layout: "auth",
   head() {
     return {
-    title: 'Sign In' + ' - Plaive',
+      title: 'Sign In' + ' - Plaive',
     }
+  },
+  transition: {
+    name: "page",
+    mode: 'out-in'
   },
 }
 </script>

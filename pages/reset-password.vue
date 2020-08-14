@@ -32,8 +32,12 @@ export default {
   layout: "auth",
   head() {
     return {
-    title: 'Reset Password' + ' - Plaive',
+      title: 'Reset Password' + ' - Plaive',
     }
+  },
+  transition: {
+    name: "page",
+    mode: 'out-in'
   },
   data () {
     return {

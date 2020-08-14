@@ -38,6 +38,10 @@ export default {
         title: 'Channels' + ' - Plaive',
         }
     },
+    transition: {
+        name: "page",
+        mode: 'out-in'
+    },
     data () {
         return {
             channels: [

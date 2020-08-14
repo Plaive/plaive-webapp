@@ -13,5 +13,9 @@ export default {
     title: 'Plaive',
     }
   },
+  transition: {
+    name: "page",
+    mode: 'out-in'
+  },
 }
 </script>

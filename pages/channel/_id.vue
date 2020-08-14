@@ -28,6 +28,11 @@
               </li>
             </ul>
             <form v-if="isMy === false" class="form-inline my-2 my-lg-0">
+              <input v-if="activeTab === 'lessons'" class="form-control form-control-sm mr-sm-1" type="search" placeholder="Search" aria-label="Search">
+              <button v-if="activeTab === 'lessons'" class="btn btn-outline-success btn-sm my-2 my-sm-0" type="submit">
+                <font-awesome-icon :icon="['fas', 'search']" />
+              </button> 
+              &nbsp;&nbsp;&nbsp; 
               <button v-if="channel.subscribed === false" class="btn btn-outline-danger btn-sm" type="button">Subscribe</button>
               <button v-else class="btn btn-outline-secondary btn-sm" type="button">Subscribed</button>
             </form>
@@ -37,12 +42,16 @@
         </b-collapse>
       </nav>
     </div>
-    <div class="container-fluid">
-      <div v-if="activeTab === 'about'" class="box mb-3">
-        <h6>About</h6>
-        <p>{{channel.about}}</p>
-      </div>
-      <VideoList v-if="activeTab === 'lessons'" type="channelLessons" title="Lessons" />
+    <div class="container-fluid" mode="out-in" :duration="250">
+      <transition name="page">
+        <div v-if="activeTab === 'about'" class="box mb-3">
+          <h6>About</h6>
+          <p>{{channel.about}}</p>
+        </div>
+      </transition>
+      <transition name="page" mode="out-in" :duration="250">
+        <VideoList v-if="activeTab === 'lessons'" type="channelLessons" title="Lessons" />
+      </transition>
     </div>
   </div>
 </template>
@@ -53,6 +62,10 @@ export default {
     return {
       title: this.channel.name + ' - Plaive',
     }
+  },
+  transition: {
+    name: "page",
+    mode: 'out-in'
   },
   data () {
       return {

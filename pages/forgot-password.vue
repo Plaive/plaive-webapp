@@ -31,5 +31,9 @@ export default {
     title: 'Forgot Password' + ' - Plaive',
     }
   },
+  transition: {
+    name: "page",
+    mode: 'out-in'
+  },
 }
 </script>

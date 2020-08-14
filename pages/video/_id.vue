@@ -104,6 +104,10 @@ export default {
       title: this.video.title + ' - Plaive',
     }
   },
+  transition: {
+    name: "page",
+    mode: 'out-in'
+  },
   data () {
     return {
       player: null,

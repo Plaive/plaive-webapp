@@ -3,7 +3,8 @@
 ## Missing Pages
  - Create Lesson (upload-video.html)
  - Video Page w/ chat
-
+ - notification page
+ - messages page
  - Lazy load on scroll
 
 ## Build Setup

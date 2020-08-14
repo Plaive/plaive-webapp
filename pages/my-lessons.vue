@@ -11,5 +11,9 @@ export default {
     title: 'My Lessons' + ' - Plaive',
     }
   },
+  transition: {
+    name: "page",
+    mode: 'out-in'
+  },
 }
 </script>

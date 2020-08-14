@@ -1235,6 +1235,13 @@ Version: 1.0
      object-fit: scale-down;
      padding: 3px 4px;
 }
+/* Transitions */
+.page-enter-active, .page-leave-active {
+    transition: opacity .5s
+}
+.page-enter, .page-leave-active {
+    opacity: 0
+}
 /* Mobile Media */
 /* Extra small devices (portrait phones, less than 576px) */
  @media (max-width: 575.98px) {
