@@ -54,10 +54,10 @@
                 <template v-slot:modal-title>
                     Ready to Leave?
                 </template>
-                <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+                <div class="modal-body">Select "Sign Out" below if you are ready to end your current session.</div>
                 <template v-slot:modal-footer>
                     <button class="btn btn-secondary" @click="$refs['logoutModal'].hide()">Cancel</button>
-                    <a class="btn btn-primary" href="login.html">Logout</a>
+                    <button class="btn btn-primary" @click="logout">Sign Out</button>
                 </template>
             </b-modal>
         </ul>
@@ -151,6 +151,9 @@ export default {
             body.classList.toggle("sidebar-toggled")
             this.$emit('toggled')
         },
+        logout () {
+            this.$router.replace("/signin")
+        }
     },
     mounted () {
         if(this.isMobile()) {
