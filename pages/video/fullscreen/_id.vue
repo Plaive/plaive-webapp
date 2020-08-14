@@ -12,7 +12,7 @@
                 <span style="font-size:20px">{{video.title}}</span>
               </div>
               <div class="col-2 text-right">
-                <span class="dot mr-2"></span> <span>LIVE</span> <button v-if="showChat === false" @click="showChat = true" class="btn btn-link border-none" style="color:#fff;font-size:20px"><font-awesome-icon :icon="['fas', 'comment']" /></button>
+                <span class="dot mr-2"></span> <span>LIVE</span> <button v-if="showChat === false" @click="showChatBox" class="btn btn-link border-none" style="color:#fff;font-size:20px"><font-awesome-icon :icon="['fas', 'comment']" /></button>
               </div>
             </div>
           </div>
@@ -70,6 +70,7 @@ export default {
   data () {
     return {
       showChat: true,
+      chatScrollPosition: null,
       typedMessage: "",
       player: null,
       videoOptions: {
@@ -106,6 +107,13 @@ export default {
         timestamp: moment().format("HH:mm:ss")
       })
       this.typedMessage = ""
+      this.$nextTick(() => {
+        var chatBoxEnd = this.$refs.chatBoxEnd
+        chatBoxEnd.scrollIntoView()
+      })
+    },
+    showChatBox () {
+      this.showChat = true
       this.$nextTick(() => {
         var chatBoxEnd = this.$refs.chatBoxEnd
         chatBoxEnd.scrollIntoView()
