@@ -25,7 +25,7 @@
     <div class="text-center mt-5">
       <p class="light-gray">Don’t have an account? <nuxt-link to="/signup">Sign Up</nuxt-link></p>
     </div>
-    <div class="text-center mt-2">
+    <div class="text-center mt-2 mb-5">
       <p class="light-gray">Forgot your password? <nuxt-link to="/forgot-password">Recover it</nuxt-link></p>
     </div>
   </div>
