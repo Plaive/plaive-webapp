@@ -1,8 +1,8 @@
 # plaive-webapp
 
 ## Missing Pages
- - Create Lesson (upload-video.html)
- - Video Page w/ chat
+ - Create/Edit Lesson (upload-video.html)
+ - Manage lessons
  - notification page
  - messages page
  - Lazy load on scroll

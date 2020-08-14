@@ -1,7 +1,7 @@
 <template>
   <div ref="videoContainer">
     <div class="row no-gutters">
-      <div class="col-10">
+      <div :class="showChat === true ? 'col-10' : 'col-12 full-height'">
         <div style="  position: relative;top:50%;transform:translateY(-50%);">
           <div class="video-overlay video-overlay-top">
             <div class="row">
@@ -12,14 +12,18 @@
                 <span style="font-size:20px">{{video.title}}</span>
               </div>
               <div class="col-2 text-right">
-                <span class="dot"></span> <span>LIVE</span>
+                <span class="dot mr-2"></span> <span>LIVE</span> <button v-if="showChat === false" @click="showChat = true" class="btn btn-link border-none" style="color:#fff;font-size:20px"><font-awesome-icon :icon="['fas', 'comment']" /></button>
               </div>
             </div>
           </div>
           <video ref="videoPlayer" class="video-js vjs-16-9 vjs-big-play-centered" controls autoplay playsinline></video>
         </div>
       </div>
-      <div class="col-2">
+      <div v-if="showChat === true" class="col-2">
+        <div class="chat-toggle">
+          <button v-if="showChat === true" @click="showChat = false" class="btn btn-link text-danger border-none" style="font-size:20px"><font-awesome-icon :icon="['fas', 'times']"/></button>
+        </div>
+
         <div class="px-2 py-2 chat-box bg-white">
 
           <div v-for="(msg, index) in chatMessages" :key="index" class="media mb-2">
@@ -65,6 +69,7 @@ export default {
   },
   data () {
     return {
+      showChat: true,
       typedMessage: "",
       player: null,
       videoOptions: {
@@ -133,16 +138,28 @@ export default {
         timestamp: moment().add(-i, "minutes").format("HH:mm:ss")
       })
     }
-    
-    this.$nextTick(() => {
-      var chatBoxEnd = this.$refs.chatBoxEnd
-      chatBoxEnd.scrollIntoView()
-    })
+    if(this.showChat === true) {
+      this.$nextTick(() => {
+        var chatBoxEnd = this.$refs.chatBoxEnd
+        chatBoxEnd.scrollIntoView()
+      })
+    }
   }
 }
 </script>
 
 <style scoped>
+.full-height {
+  height: 100vh;
+}
+
+.chat-toggle {
+  position: absolute;
+  left: -40px;
+  width: 40px;
+  background: #fff;
+}
+
 .chat-typing-area {
   position: relative;
 }
