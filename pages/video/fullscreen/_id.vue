@@ -1,8 +1,54 @@
 <template>
   <div ref="videoContainer">
-    <video ref="videoPlayer" class="video-js vjs-16-9 vjs-big-play-centered" controls autoplay playsinline style="top: 50%;
-    transform: translateY(-50%);"></video>
-    <div style="background:red">PROVA</div>
+    <div class="row no-gutters">
+      <div class="col-10">
+        <div style="  position: relative;top:50%;transform:translateY(-50%);">
+          <div class="video-overlay video-overlay-top">
+            <div class="row">
+              <div class="col-2">
+                <nuxt-link to="/video/1"><font-awesome-icon :icon="['fas', 'arrow-left']" /></nuxt-link>
+              </div>
+              <div class="col-8 text-center">
+                <span style="font-size:20px">{{video.title}}</span>
+              </div>
+              <div class="col-2 text-right">
+                <span class="dot"></span> <span>LIVE</span>
+              </div>
+            </div>
+          </div>
+          <video ref="videoPlayer" class="video-js vjs-16-9 vjs-big-play-centered" controls autoplay playsinline></video>
+        </div>
+      </div>
+      <div class="col-2">
+        <div class="px-2 py-2 chat-box bg-white">
+
+          <div v-for="(msg, index) in chatMessages" :key="index" class="media mb-2">
+            <img src="https://res.cloudinary.com/mhmd/image/upload/v1564960395/avatar_usae7z.svg" alt="user" width="25" class="rounded-circle">
+            <div class="media-body ml-1">
+              <div class="bg-light rounded py-1 px-1 mb-1">
+                <p class="text-small mb-0 text-muted">{{msg.message}}</p>
+                <p class="small text-muted mb-0">{{msg.nickname}} @{{msg.timestamp}}</p>
+              </div>
+            </div>
+          </div>
+
+          <div style="height:55px" ref="chatBoxEnd" />
+
+        </div>
+
+        <!-- Typing area -->
+        <div class="chat-typing-area">
+          <form class="bg-light" v-on:submit.prevent="sendMessage">
+            <div class="input-group">
+              <input type="text" placeholder="Type a message" class="form-control rounded-0 border-0 py-4 bg-light" v-model="typedMessage">
+              <div class="input-group-append">
+                <button type="submit" class="btn btn-link text-success"> <font-awesome-icon :icon="['fas', 'paper-plane']" /></button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -19,6 +65,7 @@ export default {
   },
   data () {
     return {
+      typedMessage: "",
       player: null,
       videoOptions: {
 				autoplay: false,
@@ -36,8 +83,40 @@ export default {
         end: "16:00",
         playbackUrl: "https://fcc3ddae59ed.us-west-2.playback.live-video.net/api/video/v1/us-west-2.893648527354.channel.DmumNckWFTqz.m3u8",
         purchased: true,
-      }
+      },
+      chatMessages: []
     }
+  },
+  methods: {
+    onFullScreenChange () {
+      var fullscreenElement = document.fullscreenElement || document.mozFullScreenElement || document.webkitFullscreenElement
+      if(fullscreenElement === undefined) {
+        this.$router.replace("/video/1").catch(()=>{});
+      }
+    },
+    sendMessage () {
+      this.chatMessages.push({
+        nickname: "username",
+        message: this.typedMessage,
+        timestamp: moment().format("HH:mm:ss")
+      })
+      this.typedMessage = ""
+      this.$nextTick(() => {
+        var chatBoxEnd = this.$refs.chatBoxEnd
+        chatBoxEnd.scrollIntoView()
+      })
+    }
+  },
+  beforeMount() {
+    var self = this;
+    document.addEventListener("fullscreenchange", self.onFullScreenChange, false)
+    document.addEventListener("webkitfullscreenchange", self.onFullScreenChange, false)
+    document.addEventListener("mozfullscreenchange", self.onFullScreenChange, false)
+  },
+  beforeDestroy() {
+    document.addEventListener("fullscreenchange", self.onFullScreenChange)
+    document.addEventListener("webkitfullscreenchange", self.onFullScreenChange)
+    document.addEventListener("mozfullscreenchange", self.onFullScreenChange)
   },
   mounted () {
     const playbackUrl = this.video.playbackUrl
@@ -46,6 +125,76 @@ export default {
       this.src(playbackUrl);
     })
     this.$refs.videoContainer.requestFullscreen();
+
+    for(var i = 50; i > 0; i--) {
+      this.chatMessages.push({
+        nickname: "username",
+        message: "Test which is a new approach all solutions",
+        timestamp: moment().add(-i, "minutes").format("HH:mm:ss")
+      })
+    }
+    
+    this.$nextTick(() => {
+      var chatBoxEnd = this.$refs.chatBoxEnd
+      chatBoxEnd.scrollIntoView()
+    })
   }
 }
 </script>
+
+<style scoped>
+.chat-typing-area {
+  position: relative;
+}
+
+.text-small {
+  font-size: 0.9rem;
+}
+
+.messages-box,
+.chat-box {
+  height: calc(100vh - 48px);
+  overflow-y: scroll;
+}
+
+.rounded-lg {
+  border-radius: 0.5rem;
+}
+
+input::placeholder {
+  font-size: 0.9rem;
+  color: #999;
+}
+
+.dot {
+  height: 10px;
+  width: 10px;
+  background-color: red;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.video-overlay {
+  position: absolute;
+  width: 100%;
+  z-index: 999990;
+  background: transparent;
+  padding: 0px 35px;
+  color: #fff;
+}
+
+.video-overlay a {
+  color: #fff;
+  font-size: 20px;
+}
+
+.video-overlay span {
+  color: #fff;
+  line-height: 20px;
+}
+
+.video-overlay-top {
+  top: -35px;
+  left: 0;
+}
+</style>
