@@ -5,3 +5,13 @@
     <PopularChannels />
   </div>
 </template>
+
+<script>
+export default {
+  head() {
+    return {
+    title: 'Plaive',
+    }
+  },
+}
+</script>

@@ -30,6 +30,11 @@
 <script>
 export default {
   layout: "auth",
+  head() {
+    return {
+    title: 'Reset Password' + ' - Plaive',
+    }
+  },
   data () {
     return {
       code: this.$route.query.token

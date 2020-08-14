@@ -25,6 +25,11 @@
 
 <script>
 export default {
-  layout: "auth"
+  layout: "auth",
+  head() {
+    return {
+    title: 'Forgot Password' + ' - Plaive',
+    }
+  },
 }
 </script>

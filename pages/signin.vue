@@ -33,6 +33,11 @@
 
 <script>
 export default {
-  layout: "auth"
+  layout: "auth",
+  head() {
+    return {
+    title: 'Sign In' + ' - Plaive',
+    }
+  },
 }
 </script>

@@ -99,6 +99,11 @@ import moment from "moment"
 import videojs from "video.js"
 
 export default {
+  head() {
+    return {
+      title: this.video.title + ' - Plaive',
+    }
+  },
   data () {
     return {
       player: null,

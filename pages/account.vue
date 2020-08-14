@@ -110,6 +110,11 @@
 import { VueEditor } from "vue2-editor";
 
 export default {
+  head() {
+    return {
+      title: 'Account' + ' - Plaive',
+    }
+  },
   components: {
     VueEditor
   },

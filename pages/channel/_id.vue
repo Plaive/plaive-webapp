@@ -49,6 +49,11 @@
 
 <script>
 export default {
+  head() {
+    return {
+      title: this.channel.name + ' - Plaive',
+    }
+  },
   data () {
       return {
         activeTab: "about",
