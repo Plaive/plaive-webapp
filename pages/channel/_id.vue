@@ -37,7 +37,10 @@
               <button v-else class="btn btn-outline-secondary btn-sm" type="button">Subscribed</button>
             </form>
             <form v-else class="form-inline my-2 my-lg-0">
-              <button class="btn btn-outline-danger btn-sm" type="button">Add Lesson</button>
+              <button class="d-none d-md-inline-block btn btn-outline-danger btn-sm" type="button">Add Lesson</button>
+              <button class="d-block d-md-none btn btn-block btn-outline-danger btn-sm" type="button">Add Lesson</button>
+              <button class="d-none d-md-inline-block btn btn-outline-success btn-sm ml-2" type="button">Manage Lessons</button>
+              <button class="d-block d-md-none btn btn-block btn-outline-success btn-sm mt-2" type="button">Manage Lessons</button>
             </form>
         </b-collapse>
       </nav>
