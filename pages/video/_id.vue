@@ -10,6 +10,7 @@
                 <div class="d-none d-md-inline-block float-right">
                   <button v-if="video.purchased === false" class="btn btn-danger" type="button">Buy</button>
                   <button v-else class="btn btn-danger" disabled type="button">Already purchased</button>
+                  <nuxt-link to="/video/fullscreen/1" class="btn btn-success">Enter Classroom</nuxt-link>
                 </div>
                 <h2><a href="#">{{video.title}}</a></h2>
                 <p class="mb-0">
@@ -19,6 +20,7 @@
                 <div class="d-block d-md-none mt-3">
                   <button v-if="video.purchased === false" class="btn btn-danger btn-block" type="button">Buy</button>
                   <button v-else class="btn btn-danger btn-block" disabled type="button">Already purchased</button>
+                  <nuxt-link to="/video/fullscreen/1" class="btn btn-success btn-block">Enter Classroom</nuxt-link>
                 </div>
               </div>
               <div class="single-video-author box mb-3">
@@ -114,7 +116,19 @@ export default {
       videoOptions: {
 				autoplay: false,
         controls: true,
-        techOrder: ["AmazonIVS"]
+        techOrder: ["AmazonIVS"],
+        fluid: true,
+        responsive: true,
+        liveui: true,
+        controlBar: {
+          progressControl: false,
+          seekBar: false,
+          captions: false,
+          fullscreenToggle: false
+        },
+        userActions: {
+          doubleClick: false
+        }
 			},
       video: {
         title: "Contrary to popular belief, Lorem Ipsum (2020) is not.",
