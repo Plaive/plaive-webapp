@@ -37,8 +37,8 @@
               <button v-else class="btn btn-outline-secondary btn-sm" type="button">Subscribed</button>
             </form>
             <form v-else class="form-inline my-2 my-lg-0">
-              <button class="d-none d-md-inline-block btn btn-outline-danger btn-sm" type="button">Add Lesson</button>
-              <button class="d-block d-md-none btn btn-block btn-outline-danger btn-sm" type="button">Add Lesson</button>
+              <nuxt-link to="/add-lesson" class="d-none d-md-inline-block btn btn-outline-danger btn-sm" type="button">Add Lesson</nuxt-link>
+              <nuxt-link to="/add-lesson" class="d-block d-md-none btn btn-block btn-outline-danger btn-sm" type="button">Add Lesson</nuxt-link>
             </form>
         </b-collapse>
       </nav>
