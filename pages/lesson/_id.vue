@@ -125,7 +125,9 @@ export default {
   mounted () {
     var allCategories = ['fax','tone','pottery','cable','gown','draw','get','coup','height','achievement','lift','property','conglomerate','acquisition','flawed','influence','wood','valid','elaborate','fuss','sweater','assignment','disco','driver','strength','suffer','obese','stroll','writer','continental'].chunk(5)
     this.categories = allCategories
-    console.log(this.categories)
+    if(this.$route.params.id !== "new") {
+      //load lesson data
+    }
   }
 }
 </script>
