@@ -1,10 +1,7 @@
 # plaive-webapp
 
 ## Missing Pages
- - Create/Edit Lesson (upload-video.html)
- - notification page
  - messages page
- - Lazy load on scroll
 
 ## Build Setup
 

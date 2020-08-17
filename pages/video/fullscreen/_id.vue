@@ -26,6 +26,8 @@
 
         <div class="px-2 py-2 chat-box bg-white">
 
+          <infinite-loading direction="top" @infinite="infiniteHandler"></infinite-loading>
+
           <div v-for="(msg, index) in chatMessages" :key="index" class="media mb-2">
             <img src="https://res.cloudinary.com/mhmd/image/upload/v1564960395/avatar_usae7z.svg" alt="user" width="25" class="rounded-circle">
             <div class="media-body ml-1">
@@ -37,7 +39,7 @@
           </div>
 
           <div style="height:55px" ref="chatBoxEnd" />
-
+          
         </div>
 
         <!-- Typing area -->
@@ -59,6 +61,7 @@
 <script>
 import moment from "moment"
 import videojs from "video.js"
+import InfiniteLoading from 'vue-infinite-loading'
 
 export default {
   layout:"fullscreen-video",
@@ -67,9 +70,13 @@ export default {
       title: this.video.title + ' - Plaive',
     }
   },
+  components: {
+    InfiniteLoading,
+  },
   data () {
     return {
       showChat: true,
+      page: 1,
       chatScrollPosition: null,
       typedMessage: "",
       player: null,
@@ -94,6 +101,20 @@ export default {
     }
   },
   methods: {
+    infiniteHandler($state) {
+      this.page += 1
+      var messagesChunk = []
+      for(var i = 35; i > 0; i--) {
+        this.chatMessages.push({
+          nickname: "username",
+          message: "Test which is a new approach all solutions",
+          timestamp: moment().add(-i, "minutes").format("HH:mm:ss")
+        })
+      }
+      this.chatMessages.unshift(messagesChunk)
+      $state.loaded()
+      //no more results $state.complete()
+    },
     onFullScreenChange () {
       var fullscreenElement = document.fullscreenElement || document.mozFullScreenElement || document.webkitFullscreenElement
       if(fullscreenElement === undefined) {
@@ -144,7 +165,7 @@ export default {
     })
     this.$refs.videoContainer.requestFullscreen();
 
-    for(var i = 50; i > 0; i--) {
+    for(var i = 35; i > 0; i--) {
       this.chatMessages.push({
         nickname: "username",
         message: "Test which is a new approach all solutions",

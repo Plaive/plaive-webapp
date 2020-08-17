@@ -13,25 +13,19 @@
         <!-- Navbar -->
         <ul class="navbar-nav ml-auto ml-md-0 osahan-right-navbar">
             <!-- Notifications -->
-            <li class="d-none d-md-inline-block nav-item dropdown no-arrow mx-1">
-                <b-nav-item-dropdown right>
-                <template slot="button-content">
+            <li class="d-none d-md-inline-block nav-item mx-1">
+                <nuxt-link to="/notifications" class="nav-link">
                     <font-awesome-icon :icon="['fas', 'bell']" />
                     <span class="badge badge-danger">{{numberOfNotifications}}</span>
-                </template>
-                <b-dropdown-item v-for="(not, index) in notifications" :key="index">{{not.title}}</b-dropdown-item>
-                </b-nav-item-dropdown>
+                </nuxt-link>
             </li>
 
             <!-- Messages -->
-            <li class="d-none d-md-inline-block nav-item dropdown no-arrow mx-1">
-                <b-nav-item-dropdown right>
-                <template slot="button-content">
+            <li class="d-none d-md-inline-block nav-item mx-1">
+                <nuxt-link to="/messages" class="nav-link">
                     <font-awesome-icon :icon="['fas', 'envelope']" />
                     <span class="badge badge-success">{{numberOfMessages}}</span>
-                </template>
-                    <b-dropdown-item v-for="(msg, index) in messages" :key="index">{{msg.title}}</b-dropdown-item>
-                </b-nav-item-dropdown>
+                </nuxt-link>
             </li>
 
             <!-- User -->

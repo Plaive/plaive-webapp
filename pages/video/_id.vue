@@ -10,7 +10,7 @@
                 <div class="d-none d-md-inline-block float-right">
                   <button v-if="video.purchased === false" class="btn btn-danger" type="button">Buy</button>
                   <button v-else class="btn btn-danger" disabled type="button">Already purchased</button>
-                  <nuxt-link to="/video/fullscreen/1" class="d-none btn btn-success">Enter Classroom</nuxt-link>
+                  <nuxt-link to="/video/fullscreen/1" class="btn btn-success">Enter Classroom</nuxt-link>
                 </div>
                 <h2><a href="#">{{video.title}}</a></h2>
                 <p class="mb-0">
