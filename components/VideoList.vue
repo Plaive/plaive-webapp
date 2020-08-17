@@ -21,8 +21,26 @@
                             {{video.category}}
                         </div>
                         <div class="video-view">
-                            <font-awesome-icon :icon="['fas', 'calendar-alt']" /> {{video.date}} 
-                            <font-awesome-icon :icon="['fas', 'clock']" /> {{video.start}} - {{video.end}}
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <font-awesome-icon :icon="['fas', 'calendar-alt']" /> {{video.date}} 
+                                    <font-awesome-icon :icon="['fas', 'clock']" class="ml-1"/> {{video.start}} - {{video.end}}
+                                </div>
+                                <div class="col-md-6 text-right">
+                                    <a><font-awesome-icon :icon="['fas', 'edit']" /> Edit</a>
+                                    <a v-b-modal="`deleteLessonModal_${index}`" class="text-danger ml-1"><font-awesome-icon :icon="['fas', 'trash']" /> Delete</a>
+                                    <b-modal :id="`deleteLessonModal_${index}`" centered>
+                                        <template v-slot:modal-title>
+                                            Delete Confirmation
+                                        </template>
+                                        <div class="modal-body">Are you sure you want to delete the lesson?</div>
+                                        <template v-slot:modal-footer>
+                                            <button class="btn btn-secondary" @click="$bvModal.hide(`deleteLessonModal_${index}`)">Cancel</button>
+                                            <button class="btn btn-primary" @click="deleteLesson(index)">Delete</button>
+                                        </template>
+                                    </b-modal>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -53,6 +71,12 @@ export default {
         }
     },
     props: ["title", "type"],
+    methods: {
+        deleteLesson(index) {
+            this.videos.splice(index, 1)
+            this.$bvModal.hide(`deleteLessonModal_${index}`)
+        }
+    },
     mounted () {
         if(this.type === "featured") {
             this.videos = [
@@ -221,7 +245,92 @@ export default {
                     free: false
                 }
             ]
-        } else if(this.type === "myLessons") {
+        } 
+        else if(this.type === "myChannelLessons") {
+            this.videos = [
+                {
+                    img: "//via.placeholder.com/270x169",
+                    link: "/video/1",
+                    title: "There are many variations of passages of Lorem",
+                    category: "Education",
+                    date: moment().format("DD/MM/YYYY"),
+                    start: "14:30",
+                    end: "16:00",
+                    free: false
+                },
+                {
+                    img: "//via.placeholder.com/270x169",
+                    link: "/video/1",
+                    title: "There are many variations of passages of Lorem",
+                    category: "Education",
+                    date: moment().format("DD/MM/YYYY"),
+                    start: "14:30",
+                    end: "16:00",
+                    free: false
+                },
+                {
+                    img: "//via.placeholder.com/270x169",
+                    link: "/video/1",
+                    title: "There are many variations of passages of Lorem",
+                    category: "Education",
+                    date: moment().format("DD/MM/YYYY"),
+                    start: "14:30",
+                    end: "16:00",
+                    free: true
+                },
+                {
+                    img: "//via.placeholder.com/270x169",
+                    link: "/video/1",
+                    title: "There are many variations of passages of Lorem",
+                    category: "Education",
+                    date: moment().format("DD/MM/YYYY"),
+                    start: "14:30",
+                    end: "16:00",
+                    free: false
+                },
+                {
+                    img: "//via.placeholder.com/270x169",
+                    link: "/video/1",
+                    title: "There are many variations of passages of Lorem",
+                    category: "Education",
+                    date: moment().format("DD/MM/YYYY"),
+                    start: "14:30",
+                    end: "16:00",
+                    free: true
+                },
+                {
+                    img: "//via.placeholder.com/270x169",
+                    link: "/video/1",
+                    title: "There are many variations of passages of Lorem",
+                    category: "Education",
+                    date: moment().format("DD/MM/YYYY"),
+                    start: "14:30",
+                    end: "16:00",
+                    free: false
+                },
+                {
+                    img: "//via.placeholder.com/270x169",
+                    link: "/video/1",
+                    title: "There are many variations of passages of Lorem",
+                    category: "Education",
+                    date: moment().format("DD/MM/YYYY"),
+                    start: "14:30",
+                    end: "16:00",
+                    free: false
+                },
+                {
+                    img: "//via.placeholder.com/270x169",
+                    link: "/video/1",
+                    title: "There are many variations of passages of Lorem",
+                    category: "Education",
+                    date: moment().format("DD/MM/YYYY"),
+                    start: "14:30",
+                    end: "16:00",
+                    free: false
+                }
+            ]
+        } 
+        else if(this.type === "myLessons") {
             this.videos = [
                 {
                     img: "//via.placeholder.com/270x169",

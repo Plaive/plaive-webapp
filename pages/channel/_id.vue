@@ -21,10 +21,10 @@
         <b-collapse class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
               <li :class="activeTab === 'about' ? 'nav-item active' : 'nav-item'">
-                  <a href="#" class="nav-link" @click="activeTab = 'about'">About</a>
+                  <button class="btn btn-link border-none nav-link" @click="activeTab = 'about'">About</button>
               </li>
               <li :class="activeTab === 'lessons' ? 'nav-item active' : 'nav-item'">
-                  <a href="#" class="nav-link" @click="activeTab = 'lessons'">Lessons</a>
+                  <button class="btn btn-link border-none nav-link" @click="activeTab = 'lessons'">Lessons</button>
               </li>
             </ul>
             <form v-if="isMy === false" class="form-inline my-2 my-lg-0">
@@ -39,8 +39,6 @@
             <form v-else class="form-inline my-2 my-lg-0">
               <button class="d-none d-md-inline-block btn btn-outline-danger btn-sm" type="button">Add Lesson</button>
               <button class="d-block d-md-none btn btn-block btn-outline-danger btn-sm" type="button">Add Lesson</button>
-              <button class="d-none d-md-inline-block btn btn-outline-success btn-sm ml-2" type="button">Manage Lessons</button>
-              <button class="d-block d-md-none btn btn-block btn-outline-success btn-sm mt-2" type="button">Manage Lessons</button>
             </form>
         </b-collapse>
       </nav>
@@ -53,7 +51,7 @@
         </div>
       </transition>
       <transition name="page" mode="out-in" :duration="250">
-        <VideoList v-if="activeTab === 'lessons'" type="channelLessons" title="Lessons" />
+        <VideoList v-if="activeTab === 'lessons'" :type="isMy === true ?'myChannelLessons' : 'channelLessons'" title="Lessons" />
       </transition>
     </div>
   </div>
