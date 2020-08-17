@@ -26,7 +26,7 @@
                                     <font-awesome-icon :icon="['fas', 'calendar-alt']" /> {{video.date}} 
                                     <font-awesome-icon :icon="['fas', 'clock']" class="ml-1"/> {{video.start}} - {{video.end}}
                                 </div>
-                                <div class="col-md-6 text-right">
+                                <div v-if="type === 'myChannelLessons'" class="col-md-6 text-right">
                                     <a><font-awesome-icon :icon="['fas', 'edit']" /> Edit</a>
                                     <a v-b-modal="`deleteLessonModal_${index}`" class="text-danger ml-1"><font-awesome-icon :icon="['fas', 'trash']" /> Delete</a>
                                     <b-modal :id="`deleteLessonModal_${index}`" centered>
