@@ -4,12 +4,6 @@
       <img class="img-fluid" alt="" :src="channel.banner">
       <div class="channel-profile">
         <img class="channel-profile-img" alt="" :src="channel.logo">
-        <div class="social hidden-xs">
-            Social &nbsp;
-            <a class="fb" href="#">Facebook</a>
-            <a class="tw" href="#">Twitter</a>
-            <a class="ig" href="#">Instagram</a>
-        </div>
       </div>
     </div>
     <div class="single-channel-nav">
