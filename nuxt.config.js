@@ -48,7 +48,8 @@ export default {
   ** https://nuxtjs.org/guide/plugins
   */
   plugins: [
-    '~/plugins/fontawesome.js'
+    '~/plugins/fontawesome.js',
+    '~/plugins/axios.js',
   ],
   /*
   ** Auto import components
@@ -74,7 +75,13 @@ export default {
   ** Axios module configuration
   ** See https://axios.nuxtjs.org/options
   */
-  axios: {},
+  axios: {
+    baseURL: process.env.NODE_ENV !== 'production' ? "https://localhost:44348/api" : "",
+    https: true,
+    credentials: true,
+    retry: { retries: 3 },
+    debug: process.env.NODE_ENV !== 'production' ? true : false
+  },
   /*
   ** Content module configuration
   ** See https://content.nuxtjs.org/configuration

@@ -5,25 +5,31 @@
       <h5 class="mt-3 mb-3">Create your Plaive Account</h5>
       <p>Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur.</p>
     </div>
-    <form>
+    <form v-on:submit.prevent="signUp">
       <div class="form-group">
           <label>Full Name</label>
-          <input type="text" class="form-control">
+          <input type="text" class="form-control" v-model="name">
       </div>
       <div class="form-group">
           <label>Nickname</label>
-          <input type="text" class="form-control">
+          <input type="text" class="form-control" v-model="nickname">
       </div>
       <div class="form-group">
           <label>E-mail address</label>
-          <input type="email" class="form-control">
+          <input type="email" class="form-control" v-model="email">
       </div>
       <div class="form-group">
           <label>Password</label>
-          <input type="password" class="form-control">
+          <input type="password" class="form-control" v-model="password">
+      </div>
+      <div v-if="error !== ''" class="alert alert-danger mt-4" role="alert">
+        {{error}}
       </div>
       <div class="mt-4">
-          <button type="submit" class="btn btn-outline-primary btn-block btn-lg">Sign Up</button>
+          <button :disabled="loading === true" type="submit" class="btn btn-outline-primary btn-block btn-lg">
+            <b-spinner v-if="this.loading === true" type="grow" label="Loading..." variant="success" small></b-spinner>
+            <span v-else>Sign Up</span>
+          </button>
       </div>
     </form>
     <div class="text-center mt-5 mb-5">
@@ -44,5 +50,28 @@ export default {
     name: "page",
     mode: 'out-in'
   },
+  data () {
+    return {
+      loading: false,
+      name: "",
+      nickname: "",
+      email: "",
+      password: "",
+      error: ""
+    }
+  },
+  methods: {
+    async signUp() {
+      this.error = ""
+      this.loading = true
+      try {
+        await this.$axios.$post("/auth/signup", { name: this.name, nickname: this.nickname, email: this.email, password: this.password })
+        this.$router.replace(`/verify-email?email=${encodeURIComponent(this.email)}`)
+      } catch {
+        this.error = "An error has occurred"
+      }
+      this.loading = false
+    }
+  }
 }
 </script>
