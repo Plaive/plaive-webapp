@@ -87,8 +87,8 @@
                 <!-- checkbox 1col -->
                 <div v-for="(chunk, index) in categories" :key="index" class="col-lg-2 col-xs-6 col-4">
                   <div v-for="category in chunk" :key="category" class="custom-control custom-checkbox">
-                      <input type="checkbox" class="custom-control-input">
-                      <label class="custom-control-label" for="customCheck1">{{category}}</label>
+                      <input type="checkbox" class="custom-control-input" :id="`chk_${category}`">
+                      <label class="custom-control-label" :for="`chk_${category}`">{{category}}</label>
                   </div>
                 </div>
             </div>

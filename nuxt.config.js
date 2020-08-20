@@ -1,4 +1,3 @@
-
 export default {
   /*
   ** Nuxt rendering mode
@@ -77,8 +76,6 @@ export default {
   */
   axios: {
     baseURL: process.env.NODE_ENV !== 'production' ? "https://localhost:44348/api" : "",
-    https: true,
-    credentials: true,
     retry: { retries: 3 },
     debug: process.env.NODE_ENV !== 'production' ? true : false
   },

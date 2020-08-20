@@ -761,6 +761,9 @@ Version: 1.0
  .custom-checkbox .custom-control-label::before {
      border-radius: 2px;
 }
+ .custom-checkbox .custom-control-label {
+    padding-top: 0.25rem;
+}
  .category-checkbox .custom-control {
      margin: 0 0 6px !important;
 }
