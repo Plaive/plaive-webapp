@@ -69,7 +69,12 @@ export default {
       try {
         const res = await this.$axios.$post("/auth/signin", { email: this.email, password: this.password, rememberMe: this.rememberMe })
         console.log(res)
-        //TODO: save tokens
+        if(this.rememberMe === true) {
+          localStorage.setItem("accessToken", res.refreshToken)
+        }
+        else {
+          sessionStorage.setItem("accessToken", res.refreshToken)
+        }
         this.$router.replace("/")
       } catch {
         this.error = true
