@@ -42,6 +42,31 @@
                                 </div>
                             </div>
                         </div>
+                        <div v-if="type === 'myChannelLessons'" class="row mt-3">
+                            <div class="col text-center">
+                                <button v-b-modal="`streamingKeys_${index}`" class="btn btn-link border-none" style="color:rgba(0, 0, 0, 0.5)">Show Streaming Keys</button>
+                                <b-modal :id="`streamingKeys_${index}`" centered>
+                                    <template v-slot:modal-title>
+                                        {{videos[index].title}} Streaming Keys
+                                    </template>
+                                    <div class="modal-body">
+                                        <form>
+                                            <div class="form-group">
+                                                <label>Streaming Key</label>
+                                                <input type="text" class="form-control" :value="videos[index].streamingServer" readonly>
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Streaming Key</label>
+                                                <input type="text" class="form-control" :value="videos[index].streamingKey" readonly>
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <template v-slot:modal-footer>
+                                        <button class="btn btn-secondary" @click="$bvModal.hide(`streamingKeys_${index}`)">Close</button>
+                                    </template>
+                                </b-modal>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -256,7 +281,9 @@ export default {
                     date: moment().format("DD/MM/YYYY"),
                     start: "14:30",
                     end: "16:00",
-                    free: false
+                    free: false,
+                    streamingServer: "https://streaming.server.tld",
+                    streamingKey: "my-secret-streaming-key"
                 },
                 {
                     img: "//via.placeholder.com/270x169",
@@ -266,7 +293,9 @@ export default {
                     date: moment().format("DD/MM/YYYY"),
                     start: "14:30",
                     end: "16:00",
-                    free: false
+                    free: false,
+                    streamingServer: "https://streaming.server.tld",
+                    streamingKey: "my-secret-streaming-key"
                 },
                 {
                     img: "//via.placeholder.com/270x169",
@@ -276,7 +305,9 @@ export default {
                     date: moment().format("DD/MM/YYYY"),
                     start: "14:30",
                     end: "16:00",
-                    free: true
+                    free: true,
+                    streamingServer: "https://streaming.server.tld",
+                    streamingKey: "my-secret-streaming-key"
                 },
                 {
                     img: "//via.placeholder.com/270x169",
@@ -286,7 +317,9 @@ export default {
                     date: moment().format("DD/MM/YYYY"),
                     start: "14:30",
                     end: "16:00",
-                    free: false
+                    free: false,
+                    streamingServer: "https://streaming.server.tld",
+                    streamingKey: "my-secret-streaming-key"
                 },
                 {
                     img: "//via.placeholder.com/270x169",
@@ -296,7 +329,9 @@ export default {
                     date: moment().format("DD/MM/YYYY"),
                     start: "14:30",
                     end: "16:00",
-                    free: true
+                    free: true,
+                    streamingServer: "https://streaming.server.tld",
+                    streamingKey: "my-secret-streaming-key"
                 },
                 {
                     img: "//via.placeholder.com/270x169",
@@ -306,7 +341,9 @@ export default {
                     date: moment().format("DD/MM/YYYY"),
                     start: "14:30",
                     end: "16:00",
-                    free: false
+                    free: false,
+                    streamingServer: "https://streaming.server.tld",
+                    streamingKey: "my-secret-streaming-key"
                 },
                 {
                     img: "//via.placeholder.com/270x169",
@@ -316,7 +353,9 @@ export default {
                     date: moment().format("DD/MM/YYYY"),
                     start: "14:30",
                     end: "16:00",
-                    free: false
+                    free: false,
+                    streamingServer: "https://streaming.server.tld",
+                    streamingKey: "my-secret-streaming-key"
                 },
                 {
                     img: "//via.placeholder.com/270x169",
@@ -326,7 +365,9 @@ export default {
                     date: moment().format("DD/MM/YYYY"),
                     start: "14:30",
                     end: "16:00",
-                    free: false
+                    free: false,
+                    streamingServer: "https://streaming.server.tld",
+                    streamingKey: "my-secret-streaming-key"
                 }
             ]
         } 
