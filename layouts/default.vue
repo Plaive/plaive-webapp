@@ -4,11 +4,11 @@
     <Navbar @toggled="sidebarToggled" />
     <div id="wrapper">
         <Sidebar :isToggled="isSidebarToggled" />
-        <div :class="this.$route.name === 'channel-id' ? 'single-channel-page' : ''" id="content-wrapper">
-            <div :class="this.$route.name !== 'channel-id' ? 'container-fluid pb-0' : ''">
+        <div :class="this.$route.name.startsWith('channel-id') ? 'single-channel-page' : ''" id="content-wrapper">
+            <div :class="!this.$route.name.startsWith('channel-id') ? 'container-fluid pb-0' : ''">
               <Nuxt />
             </div>
-            <Footer :className="this.$route.name === 'channel-id' ? 'sticky-footer ml-0' : 'sticky-footer'"/>
+            <Footer :className="this.$route.name.startsWith('channel-id') ? 'sticky-footer ml-0' : 'sticky-footer'"/>
         </div>
     </div> 
   </div>

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <VideoList type="myLessons" title="My Lessons" />
+    <VideoList type="myLessons" :title="$t('myLessons')" />
   </div>
 </template>
 

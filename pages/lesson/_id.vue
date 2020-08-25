@@ -6,13 +6,13 @@
             <div class="row">
                 <div class="col-lg-12">
                   <div class="form-group">
-                      <label>Title</label>
+                      <label>{{$t('title')}}</label>
                       <input type="text" class="form-control">
                   </div>
                 </div>
                 <div class="col-lg-12">
                   <div class="form-group">
-                      <label>About</label>
+                      <label>{{$t('about')}}</label>
                       <textarea rows="5" class="form-control"></textarea>
                   </div>
                 </div>
@@ -20,31 +20,31 @@
             <div class="row">
                 <div class="col-lg-2">
                   <div class="form-group">
-                      <label>Date</label>
+                      <label>{{$t('date')}}</label>
                       <b-form-datepicker locale="en"></b-form-datepicker>
                   </div>
                 </div>
                 <div class="col-lg-2">
                   <div class="form-group">
-                      <label>Start</label>
+                      <label>{{$t('start')}}</label>
                       <b-form-timepicker locale="en"></b-form-timepicker>
                   </div>
                 </div>
                 <div class="col-lg-2">
                   <div class="form-group">
-                      <label>End</label>
+                      <label>{{$t('end')}}</label>
                       <b-form-timepicker locale="en"></b-form-timepicker>
                   </div>
                 </div>
                 <div class="col-lg-2">
                   <div class="form-group">
-                      <label>Price</label>
+                      <label>{{$t('price')}}</label>
                       <input class="form-control" type="number" min="0" step="any">
                   </div>
                 </div>
                 <div class="col-lg-2">
                   <div class="form-group">
-                      <label>Currency</label>
+                      <label>{{$t('currency')}}</label>
                       <select class="custom-select">
                         <option selected>EUR (€)</option>
                         <option>USD ($)</option>
@@ -55,13 +55,13 @@
             <div class="row">
                 <div class="col-lg-2">
                   <div class="form-group">
-                      <label>Max Viewers</label>
+                      <label>{{$t('maxViewers')}}</label>
                       <input class="form-control" type="number" min="0" step="1">
                   </div>
                 </div>
                 <div class="col-lg-2">
                   <div class="form-group">
-                      <label>Min Viewers</label>
+                      <label>{{$t('minViewers')}}</label>
                       <input class="form-control" type="number" min="0" step="1">
                   </div>
                 </div>
@@ -70,7 +70,7 @@
             <div class="row">
                 <div class="col-lg-5">
                   <div class="form-group">
-                      <label>Tags (optional)</label>
+                      <label>{{$t('tags')}}</label>
                       <b-form-tags></b-form-tags>
                   </div>
                 </div>
@@ -79,7 +79,7 @@
             <div class="row ">
                 <div class="col-lg-12">
                   <div class="main-title">
-                      <h6>Category (you can select upto 4 categories)</h6>
+                      <h6>{{$t('categories')}}</h6>
                   </div>
                 </div>
             </div>
@@ -94,12 +94,12 @@
             </div>
           </div>
           <div class="osahan-area text-center mt-3">
-            <button class="btn btn-outline-primary">Save</button>
+            <button class="btn btn-outline-primary">{{$t('save')}}</button>
           </div>
           <hr>
           <div class="terms text-center mb-5">
-            <p class="mb-0">There are many variations of passages of Lorem Ipsum available, but the majority <a href="#">Terms of Service</a> and <a href="#">Community Guidelines</a>.</p>
-            <p class="hidden-xs mb-0">Ipsum is therefore always free from repetition, injected humour, or non</p>
+            <p class="mb-0">{{$t('createLessonDisclaimerP1')}} <a href="#">{{$t('tos')}}</a> and <a href="#">{{$t('communityGuidelines')}}</a>.</p>
+            <p class="hidden-xs mb-0">{{$t('createLessonDisclaimerP2')}}</p>
           </div>
       </div>
     </div>

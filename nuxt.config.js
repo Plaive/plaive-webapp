@@ -68,7 +68,8 @@ export default {
     '@nuxtjs/axios',
     // Doc: https://github.com/nuxt/content
     '@nuxt/content',
-    'bootstrap-vue/nuxt'
+    'bootstrap-vue/nuxt',
+    'nuxt-i18n'
   ],
   /*
   ** Axios module configuration
@@ -78,6 +79,23 @@ export default {
     baseURL: process.env.NODE_ENV !== 'production' ? "https://localhost:44348/api" : "",
     retry: { retries: 3 },
     debug: process.env.NODE_ENV !== 'production' ? true : false
+  },
+  i18n: {
+    locales: ['it', 'en'],
+    defaultLocale: 'it',
+    strategy: 'no_prefix',
+    locales: [
+      {
+        code: 'it',
+        file: 'it-IT.js'
+      },
+      {
+        code: 'en',
+        file: 'en-US.js'
+      }
+    ],
+    lazy: true,
+    langDir: 'lang/'
   },
   /*
   ** Content module configuration

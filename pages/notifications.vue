@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="my-3 p-3 bg-white rounded box-shadow">
-      <h6 class="border-bottom border-gray pb-2 mb-0">Recent</h6>
+      <h6 class="border-bottom border-gray pb-2 mb-0">{{$t('recentNotificationTitle')}}</h6>
       <div v-for="(notification, index) in recentNotifications" :key="index" class="media text-muted pt-3">
         <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
           <strong class="d-block text-gray-dark">{{notification.title}}</strong>
@@ -10,7 +10,7 @@
       </div>
     </div>
     <div class="my-3 p-3 bg-white rounded box-shadow" style="height:500px;overflow-y:scroll">
-      <h6 class="border-bottom border-gray pb-2 mb-0">Recent</h6>
+      <h6 class="border-bottom border-gray pb-2 mb-0">{{$t('earlierNotificationTitle')}}</h6>
       <div v-for="(notification, index) in earlierNotifications" :key="index" class="media text-muted pt-3">
         <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
           <strong class="d-block text-gray-dark">{{notification.title}}</strong>

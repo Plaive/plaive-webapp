@@ -11,7 +11,7 @@
                     <div class="video-card-image">
                         <nuxt-link class="play-icon" :to="video.link"><font-awesome-icon :icon="['fas', 'play-circle']" class="play-icon-btn" /></nuxt-link>
                         <nuxt-link :to="video.link"><img class="img-fluid" :src="video.img" alt=""></nuxt-link>
-                        <div class="time" v-if="video.free === true">FREE</div>
+                        <div class="time" v-if="video.free === true">{{$t('free')}}</div>
                     </div>
                     <div class="video-card-body">
                         <div class="video-title">
@@ -27,16 +27,16 @@
                                     <font-awesome-icon :icon="['fas', 'clock']" class="ml-1"/> {{video.start}} - {{video.end}}
                                 </div>
                                 <div v-if="type === 'myChannelLessons'" class="col-md-6 text-right">
-                                    <nuxt-link :to="`/lesson/${index}`"><font-awesome-icon :icon="['fas', 'edit']" /> Edit</nuxt-link>
-                                    <a v-b-modal="`deleteLessonModal_${index}`" class="text-danger ml-1"><font-awesome-icon :icon="['fas', 'trash']" /> Delete</a>
+                                    <nuxt-link :to="`/lesson/${index}`"><font-awesome-icon :icon="['fas', 'edit']" /> {{$t('edit')}}</nuxt-link>
+                                    <a v-b-modal="`deleteLessonModal_${index}`" class="text-danger ml-1"><font-awesome-icon :icon="['fas', 'trash']" /> {{$t('delete')}}</a>
                                     <b-modal :id="`deleteLessonModal_${index}`" centered>
                                         <template v-slot:modal-title>
-                                            Delete Confirmation
+                                            {{$t('deleteLessonConfirmTitle')}}
                                         </template>
-                                        <div class="modal-body">Are you sure you want to delete the lesson?</div>
+                                        <div class="modal-body">{{$t('deleteLessonConfirmBody')}}</div>
                                         <template v-slot:modal-footer>
-                                            <button class="btn btn-secondary" @click="$bvModal.hide(`deleteLessonModal_${index}`)">Cancel</button>
-                                            <button class="btn btn-primary" @click="deleteLesson(index)">Delete</button>
+                                            <button class="btn btn-secondary" @click="$bvModal.hide(`deleteLessonModal_${index}`)">{{$t('cancel')}}</button>
+                                            <button class="btn btn-primary" @click="deleteLesson(index)">{{$t('delete')}}</button>
                                         </template>
                                     </b-modal>
                                 </div>
@@ -44,25 +44,25 @@
                         </div>
                         <div v-if="type === 'myChannelLessons'" class="row mt-3">
                             <div class="col text-center">
-                                <button v-b-modal="`streamingKeys_${index}`" class="btn btn-link border-none" style="color:rgba(0, 0, 0, 0.5)">Show Streaming Keys</button>
+                                <button v-b-modal="`streamingKeys_${index}`" class="btn btn-link border-none" style="color:rgba(0, 0, 0, 0.5)">{{$t('showStreamingKeys')}}</button>
                                 <b-modal :id="`streamingKeys_${index}`" centered>
                                     <template v-slot:modal-title>
-                                        {{videos[index].title}} Streaming Keys
+                                        {{videos[index].title}} {{$t('streamingKeys')}}
                                     </template>
                                     <div class="modal-body">
                                         <form>
                                             <div class="form-group">
-                                                <label>Streaming Key</label>
+                                                <label>{{$t('streamingServer')}}</label>
                                                 <input type="text" class="form-control" :value="videos[index].streamingServer" readonly>
                                             </div>
                                             <div class="form-group">
-                                                <label>Streaming Key</label>
+                                                <label>{{$t('streamingKey')}}</label>
                                                 <input type="text" class="form-control" :value="videos[index].streamingKey" readonly>
                                             </div>
                                         </form>
                                     </div>
                                     <template v-slot:modal-footer>
-                                        <button class="btn btn-secondary" @click="$bvModal.hide(`streamingKeys_${index}`)">Close</button>
+                                        <button class="btn btn-secondary" @click="$bvModal.hide(`streamingKeys_${index}`)">{{$t('close')}}</button>
                                     </template>
                                 </b-modal>
                             </div>

@@ -4,10 +4,10 @@
             <div class="row no-gutters">
                 <div class="col-lg-6 col-sm-6">
                     <p class="mt-1 mb-0">
-                        &copy; Copyright 2020 <strong class="text-dark">Plaive</strong>. All Rights Reserved<br>
+                        &copy; 2020 <strong class="text-dark">Plaive</strong>. {{$t('allRightsReserved')}}<br>
                         <small class="mt-0 mb-0">
-                            <a class="text-primary" target="_blank" href="#">Privacy Policy</a>
-                            <a class="text-primary" target="_blank" href="#">Terms of Service</a>
+                            <a class="text-primary" target="_blank" href="#">{{$t('privacyPolicy')}}</a>
+                            <a class="text-primary" target="_blank" href="#">{{$t('tos')}}</a>
                         </small>
                     </p>
                 </div>

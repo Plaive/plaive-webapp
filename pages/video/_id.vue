@@ -8,9 +8,9 @@
               </div>
               <div class="single-video-title box mb-3">
                 <div class="d-none d-md-inline-block float-right">
-                  <button v-if="video.purchased === false" class="btn btn-danger" type="button">Buy</button>
-                  <button v-else class="btn btn-danger" disabled type="button">Already purchased</button>
-                  <nuxt-link to="/video/fullscreen/1" class="btn btn-success">Enter Classroom</nuxt-link>
+                  <button v-if="video.purchased === false" class="btn btn-danger" type="button">{{$t('buy')}}</button>
+                  <button v-else class="btn btn-danger" disabled type="button">{{$t('alreadyPurchased')}}</button>
+                  <nuxt-link to="/video/fullscreen/1')" class="btn btn-success">{{$t('enterClassroom')}}</nuxt-link>
                 </div>
                 <h2><a href="#">{{video.title}}</a></h2>
                 <p class="mb-0">
@@ -18,31 +18,31 @@
                   <font-awesome-icon :icon="['fas', 'clock']" /> {{video.start}} - {{video.end}}
                 </p>
                 <div class="d-block d-md-none mt-3">
-                  <button v-if="video.purchased === false" class="btn btn-danger btn-block" type="button">Buy</button>
-                  <button v-else class="btn btn-danger btn-block" disabled type="button">Already purchased</button>
+                  <button v-if="video.purchased === false" class="btn btn-danger btn-block" type="button">{{$t('buy')}}</button>
+                  <button v-else class="btn btn-danger btn-block" disabled type="button">{{$t('alreadyPurchased')}}</button>
                 </div>
               </div>
               <div class="single-video-author box mb-3">
                 <div class="d-none d-md-inline-block float-right">
-                  <button v-if="channel.subscribed === false" class="btn btn-danger" type="button">Subscribe</button>
-                  <button v-else class="btn btn-secondary" type="button">Subscribed</button>
+                  <button v-if="channel.subscribed === false" class="btn btn-danger" type="button">{{$t('subscribe')}}</button>
+                  <button v-else class="btn btn-secondary" type="button">{{$t('subscribed')}}</button>
                 </div>
                 <img class="img-fluid" :src="channel.logo" alt="">
-                <p><nuxt-link :to="channel.link"><strong>{{channel.name}}</strong></nuxt-link></p>
+                <p><nuxt-link to="channel.link"><strong>{{channel.name}}</strong></nuxt-link></p>
                 <small>Created on {{channel.creationDate}}</small>
                 <div class="d-block d-md-none mt-3">
-                  <button v-if="channel.subscribed === false" class="btn btn-danger btn-block" type="button">Subscribe</button>
-                  <button v-else class="btn btn-secondary btn-block" type="button">Subscribed</button>
+                  <button v-if="channel.subscribed === false" class="btn btn-danger btn-block" type="button">{{$t('subscribe')}}</button>
+                  <button v-else class="btn btn-secondary btn-block" type="button">{{$t('subscribed')}}</button>
                 </div>
               </div>
               <div class="single-video-info-content box mb-3">
-                <h6>Categories :</h6>
+                <h6>{{$t('categories')}}:</h6>
                 <p>{{categories}}</p>
-                <h6>About :</h6>
+                <h6>{{$t('about')}}:</h6>
                 <p>{{channel.about}}</p>
-                <h6>Tags :</h6>
+                <h6>{{$t('tags')}}:</h6>
                 <p class="tags mb-0">
-                    <span v-for="(tag, index) in channel.tags" :key="index" style="margin: 0 3px"><nuxt-link :to="tag.link">{{tag.name}}</nuxt-link></span>
+                    <span v-for="(tag, index) in channel.tags" :key="index" style="margin: 0 3px"><nuxt-link to="tag.link">{{tag.name}}</nuxt-link></span>
                 </p>
               </div>
           </div>
@@ -58,7 +58,7 @@
                       </div>
                     </div>
                     <div class="main-title">
-                      <h6>You may be also interested in</h6>
+                      <h6>{{$t('youMayBeAlsoInterestedIn')}}</h6>
                     </div>
                 </div>
                 <div class="col-md-12">

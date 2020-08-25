@@ -3,20 +3,20 @@
         <li :class="`d-none d-md-inline-block ${$route.path === '/' ? 'nav-item active' : 'nav-item'}`">
             <nuxt-link to="/" class="nav-link">
                 <font-awesome-icon :icon="['fas', 'home']" />
-                <span>Home</span>
+                <span>{{$t('home')}}</span>
             </nuxt-link>
         </li>
         <li :class="`d-none d-md-inline-block ${$route.path === '/channels' ? 'nav-item active' : 'nav-item'}`">
             <nuxt-link to="/channels" class="nav-link">
                 <font-awesome-icon :icon="['fas', 'users']" />
-                <span>Channels</span>
+                <span>{{$t('channels')}}</span>
             </nuxt-link>
         </li>
         <li class="d-none d-md-inline-block nav-item channel-sidebar-list" style="border-top:none">
-            <h6>MY LESSONS</h6>
+            <h6>{{$t('myLessons')}}</h6>
             <ul>
                 <li v-for="(lesson, index) in lessons" :key="index">
-                    <nuxt-link :to="lesson.link">
+                    <nuxt-link to="lesson.link">
                         <img class="img-fluid" alt="" :src="lesson.logo"> {{ lesson.name }}
                     </nuxt-link>
                 </li>

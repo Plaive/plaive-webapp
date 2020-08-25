@@ -15,10 +15,10 @@
         <b-collapse class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
               <li :class="activeTab === 'about' ? 'nav-item active' : 'nav-item'">
-                  <button class="btn btn-link border-none nav-link" @click="activeTab = 'about'">About</button>
+                  <button class="btn btn-link border-none nav-link" @click="activeTab = 'about'">{{$t('about')}}</button>
               </li>
               <li :class="activeTab === 'lessons' ? 'nav-item active' : 'nav-item'">
-                  <button class="btn btn-link border-none nav-link" @click="activeTab = 'lessons'">Lessons</button>
+                  <button class="btn btn-link border-none nav-link" @click="activeTab = 'lessons'">{{$t('lessons')}}</button>
               </li>
             </ul>
             <form v-if="isMy === false" class="form-inline my-2 my-lg-0">
@@ -27,12 +27,12 @@
                 <font-awesome-icon :icon="['fas', 'search']" />
               </button> 
               &nbsp;&nbsp;&nbsp; 
-              <button v-if="channel.subscribed === false" class="btn btn-outline-danger btn-sm" type="button">Subscribe</button>
-              <button v-else class="btn btn-outline-secondary btn-sm" type="button">Subscribed</button>
+              <button v-if="channel.subscribed === false" class="btn btn-outline-danger btn-sm" type="button">{{$t('subscribe')}}</button>
+              <button v-else class="btn btn-outline-secondary btn-sm" type="button">{{$t('subscribed')}}</button>
             </form>
             <form v-else class="form-inline my-2 my-lg-0">
-              <nuxt-link to="/lesson/new" class="d-none d-md-inline-block btn btn-outline-danger btn-sm" type="button">Add Lesson</nuxt-link>
-              <nuxt-link to="/lesson/new" class="d-block d-md-none btn btn-block btn-outline-danger btn-sm" type="button">Add Lesson</nuxt-link>
+              <nuxt-link to="/lesson/new" class="d-none d-md-inline-block btn btn-outline-danger btn-sm" type="button">{{$t('addLesson')}}</nuxt-link>
+              <nuxt-link to="/lesson/new" class="d-block d-md-none btn btn-block btn-outline-danger btn-sm" type="button">{{$t('addLesson')}}</nuxt-link>
             </form>
         </b-collapse>
       </nav>
@@ -40,12 +40,12 @@
     <div class="container-fluid" mode="out-in" :duration="250">
       <transition name="page">
         <div v-if="activeTab === 'about'" class="box mb-3">
-          <h6>About</h6>
+          <h6>{{$t('about')}}</h6>
           <p>{{channel.about}}</p>
         </div>
       </transition>
       <transition name="page" mode="out-in" :duration="250">
-        <VideoList v-if="activeTab === 'lessons'" :type="isMy === true ?'myChannelLessons' : 'channelLessons'" title="Lessons" />
+        <VideoList v-if="activeTab === 'lessons'" :type="isMy === true ?'myChannelLessons' : 'channelLessons'" :title="$t('lessons')" />
       </transition>
     </div>
   </div>

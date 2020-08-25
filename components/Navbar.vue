@@ -35,23 +35,23 @@
                     <img alt="Avatar" src="//via.placeholder.com/81x81">
                     %USERNAME%
                 </template>
-                    <nuxt-link class="dropdown-item" to="/account"><font-awesome-icon :icon="['fas', 'user-circle']" /> &nbsp; My Account</nuxt-link>
-                    <nuxt-link class="dropdown-item" to="/channel/my"><font-awesome-icon :icon="['fas', 'user-graduate']" /> &nbsp; My Channel</nuxt-link>
-                    <nuxt-link class="dropdown-item" to="/my-lessons"><font-awesome-icon :icon="['fas', 'video']" /> &nbsp; My Lessons</nuxt-link>
+                    <nuxt-link class="dropdown-item" to="/account"><font-awesome-icon :icon="['fas', 'user-circle']" /> &nbsp; {{$t('myAccountMenuLink')}}</nuxt-link>
+                    <nuxt-link class="dropdown-item" to="/channel/my"><font-awesome-icon :icon="['fas', 'user-graduate']" /> &nbsp;  {{$t('myChannelMenuLink')}}</nuxt-link>
+                    <nuxt-link class="dropdown-item" to="/my-lessons"><font-awesome-icon :icon="['fas', 'video']" /> &nbsp;  {{$t('myLessons')}}</nuxt-link>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" v-b-modal.logoutModal><font-awesome-icon :icon="['fas', 'sign-out-alt']" /> &nbsp; Logout</a>
+                    <a class="dropdown-item" v-b-modal.logoutModal><font-awesome-icon :icon="['fas', 'sign-out-alt']" /> &nbsp; {{$t('logoutMenuLink')}}</a>
                 </b-nav-item-dropdown>
             </li>
 
             <!-- Logout Modal-->
             <b-modal id="logoutModal" ref="logoutModal" centered>
                 <template v-slot:modal-title>
-                    Ready to Leave?
+                    {{$t('signoutModalTitle')}}
                 </template>
-                <div class="modal-body">Select "Sign Out" below if you are ready to end your current session.</div>
+                <div class="modal-body">{{$t('signoutModalBody')}}</div>
                 <template v-slot:modal-footer>
-                    <button class="btn btn-secondary" @click="$refs['logoutModal'].hide()">Cancel</button>
-                    <button class="btn btn-primary" @click="logout">Sign Out</button>
+                    <button class="btn btn-secondary" @click="$refs['logoutModal'].hide()">{{$t('cancel')}}</button>
+                    <button class="btn btn-primary" @click="logout">{{$t('signout')}}</button>
                 </template>
             </b-modal>
         </ul>
