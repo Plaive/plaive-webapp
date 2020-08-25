@@ -17,7 +17,7 @@ export default {
   nickname: "Nickname",
   email: "Email",
   password: "Password",
-  save: "Salva",
+  save: "Save",
   billingMethod: "Billing Method",
   configure: "Configure",
   payoutAccount: "Payout Account",
