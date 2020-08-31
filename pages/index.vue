@@ -17,5 +17,8 @@ export default {
     name: "page",
     mode: 'out-in'
   },
+  async mounted () {
+    await this.$axios.$get("test")
+  }
 }
 </script>

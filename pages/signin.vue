@@ -68,13 +68,7 @@ export default {
       this.error = false
       try {
         const res = await this.$axios.$post("/auth/signin", { email: this.email, password: this.password, rememberMe: this.rememberMe })
-        console.log(res)
-        if(this.rememberMe === true) {
-          localStorage.setItem("accessToken", res.refreshToken)
-        }
-        else {
-          sessionStorage.setItem("accessToken", res.refreshToken)
-        }
+        this.$axios.setToken(res.accessToken, 'Bearer')
         this.$router.replace("/")
       } catch {
         this.error = true
