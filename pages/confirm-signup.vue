@@ -22,8 +22,8 @@
       </div>
       <div v-if="success == false" class="mt-4">
           <button type="submit" :disabled="loading === true" class="btn btn-outline-primary btn-block btn-lg">
-            <b-spinner v-if="this.loading === true" type="grow" label="Loading..." variant="success" small></b-spinner>
-            <span v-else>Confirm</span>
+            <b-spinner v-if="this.loading === true" type="grow" label="Loading..." small></b-spinner>
+            <span v-else>{{$t("confirm")}}</span>
           </button>
       </div>
     </form>
@@ -35,7 +35,7 @@ export default {
   layout: "auth",
   head() {
     return {
-      title: 'Reset Password' + ' - Plaive',
+      title: 'Confirm Signup' + ' - Plaive',
     }
   },
   transition: {

@@ -1,6 +1,6 @@
-export default function ({ $axios, redirect  }, inject) {
+export default function ({ $axios, redirect, $bvToast  }) {
   // Create a custom axios instance
-  const api = $axios.create({
+  $axios.create({
     headers: {
       common: {
         Accept: 'application/json, */*'
@@ -12,6 +12,9 @@ export default function ({ $axios, redirect  }, inject) {
     return response
   },
   function (error) {
+      if(error.response === undefined) {
+        redirect("/error")
+      }
       const originalRequest = error.config
       if (error.response.status === 401 && originalRequest.url === '/auth/refresh') {
         redirect("/signin")
@@ -25,10 +28,9 @@ export default function ({ $axios, redirect  }, inject) {
           }).catch(() => {
             redirect("/signin")
           })
+      } else if (error.response.status >= 500) {
+        redirect("/error")
       }
-      return Promise.reject(error)
+      return Promise.reject(error.response.data)
   })
-
-  // Inject to context as $api
-  inject('api', api)
 }

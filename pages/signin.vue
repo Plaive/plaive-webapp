@@ -25,7 +25,7 @@
           <div class="row">
             <div class="col-12">
                 <button :disabled="loading === true" type="submit" class="btn btn-outline-primary btn-block btn-lg">
-                  <b-spinner v-if="this.loading === true" type="grow" label="Loading..." variant="success" small></b-spinner>
+                  <b-spinner v-if="this.loading === true" type="grow" label="Loading..." small></b-spinner>
                   <span v-else>{{$t('signIn')}}</span>
                 </button>
             </div>

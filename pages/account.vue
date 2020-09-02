@@ -34,7 +34,10 @@
       </div>
       <div class="row mt-3 mb-3">
           <div class="col-sm-12 text-right">
-            <button type="button" class="btn btn-success border-none">{{$t('save')}}</button>
+            <button type="button" :disabled="accountSaveloading === true" class="btn btn-success border-none" @click="updateAccount">
+              <b-spinner v-if="accountSaveloading === true" type="grow" label="Loading..." small></b-spinner>
+              <span v-else>{{$t('save')}}</span>
+            </button>
           </div>
       </div>
     </form>
@@ -110,6 +113,7 @@
 import { VueEditor } from "vue2-editor";
 
 export default {
+  middleware: ['auth'],
   head() {
     return {
       title: 'Account' + ' - Plaive',
@@ -124,6 +128,7 @@ export default {
   },
   data () {
     return {
+      accountSaveloading: false,
       account: {
         name: "",
         nickname: "",
@@ -139,6 +144,33 @@ export default {
         banner: ""
       }
     }
+  },
+  methods: {
+    updateAccount () {
+      this.accountSaveloading = true
+      this.$axios.$patch("account", { name: this.account.name, nickname: this.account.nickname }).then((res) => {
+        this.account.name = res.name
+        this.account.nickname = res.nickname
+        this.account.email = res.email
+        this.$bvToast.toast(this.$t("accuntUpdated"), {
+          variant: "success",
+          solid: true
+        })
+        this.accountSaveloading = false
+      }).catch((err) => {
+        this.$bvToast.toast(this.$t(err), {
+          variant: "danger",
+          solid: true
+        })
+        this.accountSaveloading = false
+      })
+    }
+  },
+  async mounted () {
+    var res = await this.$axios.$get("account")
+    this.account.name = res.name
+    this.account.nickname = res.nickname
+    this.account.email = res.email
   }
 }
 </script>

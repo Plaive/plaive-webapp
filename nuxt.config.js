@@ -78,7 +78,7 @@ export default {
   axios: {
     baseURL: process.env.NODE_ENV !== 'production' ? "https://local-api.plaive.com:44348/api" : "",
     credentials: true,
-    retry: { retries: 3 },
+    retry: { retries: 0 },
     debug: process.env.NODE_ENV !== 'production' ? true : false
   },
   i18n: {

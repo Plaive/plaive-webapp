@@ -27,7 +27,7 @@
       </div>
       <div class="mt-4">
           <button :disabled="loading === true" type="submit" class="btn btn-outline-primary btn-block btn-lg">
-            <b-spinner v-if="this.loading === true" type="grow" label="Loading..." variant="success" small></b-spinner>
+            <b-spinner v-if="this.loading === true" type="grow" label="Loading..." small></b-spinner>
             <span v-else>{{$t('signUp')}}</span>
           </button>
       </div>
@@ -66,9 +66,9 @@ export default {
       this.loading = true
       try {
         await this.$axios.$post("/auth/signup", { name: this.name, nickname: this.nickname, email: this.email, password: this.password })
-        this.$router.replace(`/verify-email?email=${encodeURIComponent(this.email)}`)
-      } catch {
-        this.error = "An error has occurred"
+        this.$router.replace(`/confirm-signup?email=${encodeURIComponent(this.email)}`)
+      } catch(err) {
+        this.error = err
       }
       this.loading = false
     }
