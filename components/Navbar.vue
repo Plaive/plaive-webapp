@@ -13,7 +13,7 @@
         <!-- Navbar -->
         <ul class="navbar-nav ml-auto ml-md-0 osahan-right-navbar">
             <!-- Notifications -->
-            <li class="d-none d-md-inline-block nav-item mx-1">
+            <li v-if="logged == 'true'" class="d-none d-md-inline-block nav-item mx-1">
                 <nuxt-link to="/notifications" class="nav-link">
                     <font-awesome-icon :icon="['fas', 'bell']" />
                     <span class="badge badge-danger">{{numberOfNotifications}}</span>
@@ -21,7 +21,7 @@
             </li>
 
             <!-- Messages -->
-            <li class="d-none d-md-inline-block nav-item mx-1">
+            <li v-if="logged == 'true'" class="d-none d-md-inline-block nav-item mx-1">
                 <nuxt-link to="/messages" class="nav-link">
                     <font-awesome-icon :icon="['fas', 'envelope']" />
                     <span class="badge badge-success">{{numberOfMessages}}</span>
@@ -29,7 +29,7 @@
             </li>
 
             <!-- User -->
-            <li class="d-none d-md-inline-block nav-item dropdown no-arrow osahan-right-navbar-user">
+            <li v-if="logged == 'true'" class="d-none d-md-inline-block nav-item dropdown no-arrow osahan-right-navbar-user">
                 <b-nav-item-dropdown right class="user-dropdown-link">
                 <template slot="button-content">
                     <img alt="Avatar" src="//via.placeholder.com/81x81">
@@ -41,6 +41,11 @@
                     <div class="dropdown-divider"></div>
                     <a class="dropdown-item" v-b-modal.logoutModal><font-awesome-icon :icon="['fas', 'sign-out-alt']" /> &nbsp; {{$t('logoutMenuLink')}}</a>
                 </b-nav-item-dropdown>
+            </li>
+            <li v-else class="d-none d-md-inline-block nav-item mx-1">
+                <nuxt-link to="/signin" class="nav-link">
+                    <font-awesome-icon :icon="['fas', 'sign-in-alt']" /> {{$t("signIn")}}
+                </nuxt-link>
             </li>
 
             <!-- Logout Modal-->
@@ -62,6 +67,7 @@
 export default {
     data () {
         return {
+            logged: false,
             notifications: [
                 {
                     title: "Notification 1",
@@ -146,13 +152,15 @@ export default {
             this.$emit('toggled')
         },
         logout () {
-            this.$router.replace("/signin")
+            sessionStorage.removeItem("logged")
+            this.$router.go()
         }
     },
     mounted () {
         if(this.isMobile()) {
             this.toggleSidebar()
         }
+        this.logged = sessionStorage.getItem("logged")
     }
 }
 </script>

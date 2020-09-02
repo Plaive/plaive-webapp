@@ -11,18 +11,18 @@
             <font-awesome-icon :icon="['fas', 'users']" />
           </nuxt-link>
       </li>
-      <li :class="$route.path === '/my-lessons' ? 'bottom-nav-item active' : 'bottom-nav-item'">
+      <li v-if="logged == 'true'" :class="$route.path === '/my-lessons' ? 'bottom-nav-item active' : 'bottom-nav-item'">
           <nuxt-link to="/my-lessons" class="bottom-nav-link">
             <font-awesome-icon :icon="['fas', 'video']" />
           </nuxt-link>
       </li>
-      <li :class="$route.path === '/notifications' ? 'bottom-nav-item active' : 'bottom-nav-item'">
-          <nuxt-link to="#" class="bottom-nav-link">
+      <li v-if="logged == 'true'" :class="$route.path === '/notifications' ? 'bottom-nav-item active' : 'bottom-nav-item'">
+          <nuxt-link to="/notifications" class="bottom-nav-link">
             <span class="badge badge-danger" style="position: relative;top: 10px;width: 7px;height: 11px;border-radius: 50px;left: 30px;">&nbsp;</span>
             <font-awesome-icon :icon="['fas', 'bell']" />
           </nuxt-link>
       </li>
-      <li :class="$route.path === '/messages' ? 'bottom-nav-item active' : 'bottom-nav-item'">
+      <li v-if="logged == 'true'" :class="$route.path === '/messages' ? 'bottom-nav-item active' : 'bottom-nav-item'">
           <nuxt-link to="#" class="bottom-nav-link">
             <span class="badge badge-success" style="position: relative;top: 10px;width: 7px;height: 11px;border-radius: 50px;left: 30px;">&nbsp;</span>
             <font-awesome-icon :icon="['fas', 'envelope']" />
@@ -31,3 +31,16 @@
     </ul>
   </div>
 </template>
+
+<script>
+export default {
+  data () {
+    return {
+      logged: false
+    }
+  },
+  mounted () {
+      this.logged = sessionStorage.getItem("logged")
+  }
+}
+</script>

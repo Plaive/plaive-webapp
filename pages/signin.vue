@@ -69,6 +69,7 @@ export default {
       try {
         const res = await this.$axios.$post("/auth/signin", { email: this.email, password: this.password, rememberMe: this.rememberMe })
         this.$axios.setToken(res.accessToken, 'Bearer')
+        sessionStorage.setItem("logged", true)
         this.$router.replace("/")
       } catch {
         this.error = true
