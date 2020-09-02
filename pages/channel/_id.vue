@@ -27,8 +27,10 @@
                 <font-awesome-icon :icon="['fas', 'search']" />
               </button> 
               &nbsp;&nbsp;&nbsp; 
-              <button v-if="channel.subscribed === false" class="btn btn-outline-danger btn-sm" type="button">{{$t('subscribe')}}</button>
-              <button v-else class="btn btn-outline-secondary btn-sm" type="button">{{$t('subscribed')}}</button>
+              <div v-if="logged == 'true'">
+                <button v-if="channel.subscribed === false" class="btn btn-outline-danger btn-sm" type="button">{{$t('subscribe')}}</button>
+                <button v-else class="btn btn-outline-secondary btn-sm" type="button">{{$t('subscribed')}}</button>
+              </div>
             </form>
             <form v-else class="form-inline my-2 my-lg-0">
               <nuxt-link to="/lesson/new" class="d-none d-md-inline-block btn btn-outline-danger btn-sm" type="button">{{$t('addLesson')}}</nuxt-link>
@@ -65,6 +67,7 @@ export default {
   },
   data () {
       return {
+        logged: true,
         activeTab: "about",
         isMy: false,
         lessons: [
@@ -102,6 +105,7 @@ export default {
     if(this.$route.params.id === "my") {
       this.isMy = true
     }
+    this.logged = sessionStorage.getItem("logged")
   }
 }
 </script>

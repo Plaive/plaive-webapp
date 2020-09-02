@@ -8,8 +8,10 @@
               </div>
               <div class="single-video-title box mb-3">
                 <div class="d-none d-md-inline-block float-right">
-                  <button v-if="video.purchased === false" class="btn btn-danger" type="button">{{$t('buy')}}</button>
-                  <button v-else class="btn btn-danger" disabled type="button">{{$t('alreadyPurchased')}}</button>
+                  <div v-if="logged == 'true'">
+                    <button v-if="video.purchased === false" class="btn btn-danger" type="button">{{$t('buy')}}</button>
+                    <button v-else class="btn btn-danger" disabled type="button">{{$t('alreadyPurchased')}}</button>
+                  </div>
                   <nuxt-link to="/video/fullscreen/1')" class="btn btn-success">{{$t('enterClassroom')}}</nuxt-link>
                 </div>
                 <h2><a href="#">{{video.title}}</a></h2>
@@ -17,20 +19,20 @@
                   <font-awesome-icon :icon="['fas', 'calendar-alt']" /> {{video.date}} 
                   <font-awesome-icon :icon="['fas', 'clock']" /> {{video.start}} - {{video.end}}
                 </p>
-                <div class="d-block d-md-none mt-3">
+                <div v-if="logged == 'true'" class="d-block d-md-none mt-3">
                   <button v-if="video.purchased === false" class="btn btn-danger btn-block" type="button">{{$t('buy')}}</button>
                   <button v-else class="btn btn-danger btn-block" disabled type="button">{{$t('alreadyPurchased')}}</button>
                 </div>
               </div>
               <div class="single-video-author box mb-3">
-                <div class="d-none d-md-inline-block float-right">
+                <div v-if="logged == 'true'" class="d-none d-md-inline-block float-right">
                   <button v-if="channel.subscribed === false" class="btn btn-danger" type="button">{{$t('subscribe')}}</button>
                   <button v-else class="btn btn-secondary" type="button">{{$t('subscribed')}}</button>
                 </div>
                 <img class="img-fluid" :src="channel.logo" alt="">
                 <p><nuxt-link to="channel.link"><strong>{{channel.name}}</strong></nuxt-link></p>
                 <small>Created on {{channel.creationDate}}</small>
-                <div class="d-block d-md-none mt-3">
+                <div v-if="logged == 'true'" class="d-block d-md-none mt-3">
                   <button v-if="channel.subscribed === false" class="btn btn-danger btn-block" type="button">{{$t('subscribe')}}</button>
                   <button v-else class="btn btn-secondary btn-block" type="button">{{$t('subscribed')}}</button>
                 </div>
@@ -111,6 +113,7 @@ export default {
   },
   data () {
     return {
+      logged: false,
       player: null,
       videoOptions: {
 				autoplay: false,
@@ -248,6 +251,7 @@ export default {
     this.player = videojs(this.$refs.videoPlayer, this.videoOptions, function onPlayerReady() {
       this.src(playbackUrl);
     })
+    this.logged = sessionStorage.getItem("logged")
   }
 }
 </script>
