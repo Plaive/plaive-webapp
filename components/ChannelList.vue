@@ -3,10 +3,10 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="main-title">
-                    <h6>{{$t('popularChannels')}}</h6>
+                    <h6>{{title}}</h6>
                 </div>
             </div>
-            <div v-for="(channel, index) in popularChannels" :key="index" class="col-xl-3 col-sm-6 mb-3">
+            <div v-for="(channel, index) in channels" :key="index" class="col-xl-3 col-sm-6 mb-3">
                 <div class="channels-card">
                     <div class="channels-card-image">
                         <nuxt-link :to="channel.link"><img class="img-fluid" :src="channel.logo" alt=""></nuxt-link>
@@ -33,37 +33,8 @@
 export default {
     data () {
         return {
-            popularChannels: [
-                {
-                    link: "/channel/1",
-                    logo: "//via.placeholder.com/130x130",
-                    name: "Channels Name",
-                    subscribers: "382.323",
-                    subscribed: false
-                },
-                {
-                    link: "/channel/1",
-                    logo: "//via.placeholder.com/130x130",
-                    name: "Channels Name",
-                    subscribers: "382.323",
-                    subscribed: false
-                },
-                {
-                    link: "/channel/1",
-                    logo: "//via.placeholder.com/130x130",
-                    name: "Channels Name",
-                    subscribers: "382.323",
-                    subscribed: true
-                },
-                {
-                    link: "/channel/1",
-                    logo: "//via.placeholder.com/130x130",
-                    name: "Channels Name",
-                    subscribers: "382.323",
-                    subscribed: false
-                }
-            ]
         }
-    }
+    },
+    props: ["title", "channels"]
 }
 </script>
