@@ -12,7 +12,7 @@
                     <button v-if="video.purchased === false" class="btn btn-danger" type="button">{{$t('buy')}}</button>
                     <button v-else class="btn btn-danger" disabled type="button">{{$t('alreadyPurchased')}}</button>
                   </div>
-                  <nuxt-link to="/video/fullscreen/1')" class="btn btn-success">{{$t('enterClassroom')}}</nuxt-link>
+                  <nuxt-link v-if="video.purchased === true || video.free === true" to="/video/fullscreen/1')" class="btn btn-success">{{$t('enterClassroom')}}</nuxt-link>
                 </div>
                 <h2><a href="#">{{video.title}}</a></h2>
                 <p class="mb-0">
@@ -139,7 +139,8 @@ export default {
         start: "14:30",
         end: "16:00",
         playbackUrl: "https://fcc3ddae59ed.us-west-2.playback.live-video.net/api/video/v1/us-west-2.893648527354.channel.DmumNckWFTqz.m3u8",
-        purchased: true,
+        purchased: false,
+        free: true
       },
       channel: {
         link: "/channel/1",
