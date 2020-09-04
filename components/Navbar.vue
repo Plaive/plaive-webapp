@@ -16,24 +16,24 @@
             <li v-if="logged == 'true'" class="d-none d-md-inline-block nav-item mx-1">
                 <nuxt-link to="/notifications" class="nav-link">
                     <font-awesome-icon :icon="['fas', 'bell']" />
-                    <span class="badge badge-danger">{{numberOfNotifications}}</span>
+                    <span v-if="numberOfNotifications > 0" class="badge badge-danger">{{numberOfNotifications}}</span>
                 </nuxt-link>
             </li>
 
             <!-- Messages -->
-            <li v-if="logged == 'true'" class="d-none d-md-inline-block nav-item mx-1">
+            <!-- <li v-if="logged == 'true'" class="d-none d-md-inline-block nav-item mx-1">
                 <nuxt-link to="/messages" class="nav-link">
                     <font-awesome-icon :icon="['fas', 'envelope']" />
                     <span class="badge badge-success">{{numberOfMessages}}</span>
                 </nuxt-link>
-            </li>
+            </li> -->
 
             <!-- User -->
             <li v-if="logged == 'true'" class="d-none d-md-inline-block nav-item dropdown no-arrow osahan-right-navbar-user">
                 <b-nav-item-dropdown right class="user-dropdown-link">
                 <template slot="button-content">
                     <img alt="Avatar" src="//via.placeholder.com/81x81">
-                    %USERNAME%
+                    {{nickname}}
                 </template>
                     <nuxt-link class="dropdown-item" to="/account"><font-awesome-icon :icon="['fas', 'user-circle']" /> &nbsp; {{$t('myAccountMenuLink')}}</nuxt-link>
                     <nuxt-link class="dropdown-item" to="/channel/my"><font-awesome-icon :icon="['fas', 'user-graduate']" /> &nbsp;  {{$t('myChannelMenuLink')}}</nuxt-link>
@@ -68,70 +68,16 @@ export default {
     data () {
         return {
             logged: false,
-            notifications: [
-                {
-                    title: "Notification 1",
-                    link: "#"
-                },
-                {
-                    title: "Notification 2",
-                    link: "#"
-                },
-                {
-                    title: "Notification 3",
-                    link: "#"
-                },
-                {
-                    title: "Notification 4",
-                    link: "#"
-                },
-                {
-                    title: "Notification 5",
-                    link: "#"
-                },
-                {
-                    title: "Notification 6",
-                    link: "#"
-                },
-                {
-                    title: "Notification 7",
-                    link: "#"
-                },
-                {
-                    title: "Notification 8",
-                    link: "#"
-                },
-                {
-                    title: "Notification 9",
-                    link: "#"
-                },
-                {
-                    title: "Notification 10",
-                    link: "#"
-                }
-            ],
-            messages: [
-                {
-                    title: "Message 1",
-                    link: "#"
-                },
-                {
-                    title: "Message 2",
-                    link: "#"
-                },
-                {
-                    title: "Message 3",
-                    link: "#"
-                }
-            ]
+            nickname: '',
+            notificationCount: 0,
         }
     },
     computed: {
         numberOfNotifications () {
-            if(this.notifications.length > 9) {
+            if(this.notificationCount > 9) {
                 return "9+"
             }
-            return this.notifications.length
+            return this.notificationCount
         },
         numberOfMessages () {
             if(this.messages.length > 9) {
@@ -156,11 +102,17 @@ export default {
             this.$router.go()
         }
     },
-    mounted () {
+    async mounted () {
         if(this.isMobile()) {
             this.toggleSidebar()
         }
         this.logged = sessionStorage.getItem("logged")
+        if(this.logged == 'true') {
+            var res = await this.$axios.$get("account")
+            this.nickname = res.nickname
+            var notificationCountRes = await this.$axios.$get("notifications/count")
+            this.notificationCount = notificationCountRes.count
+        }
     }
 }
 </script>

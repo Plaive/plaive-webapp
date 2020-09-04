@@ -76,7 +76,7 @@ export default {
   ** See https://axios.nuxtjs.org/options
   */
   axios: {
-    baseURL: process.env.NODE_ENV !== 'production' ? "https://local-api.plaive.com:44348/api" : "",
+    baseURL: process.env.NODE_ENV !== 'production' ? "https://localhost:44348/api" : "",
     credentials: true,
     retry: { retries: 0 },
     debug: process.env.NODE_ENV !== 'production' ? true : false

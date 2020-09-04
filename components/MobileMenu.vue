@@ -22,12 +22,12 @@
             <font-awesome-icon :icon="['fas', 'bell']" />
           </nuxt-link>
       </li>
-      <li v-if="logged == 'true'" :class="$route.path === '/messages' ? 'bottom-nav-item active' : 'bottom-nav-item'">
+      <!-- <li v-if="logged == 'true'" :class="$route.path === '/messages' ? 'bottom-nav-item active' : 'bottom-nav-item'">
           <nuxt-link to="#" class="bottom-nav-link">
             <span class="badge badge-success" style="position: relative;top: 10px;width: 7px;height: 11px;border-radius: 50px;left: 30px;">&nbsp;</span>
             <font-awesome-icon :icon="['fas', 'envelope']" />
           </nuxt-link>
-      </li>
+      </li> -->
     </ul>
   </div>
 </template>
