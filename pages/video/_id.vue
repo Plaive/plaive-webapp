@@ -8,11 +8,17 @@
               </div>
               <div class="single-video-title box mb-3">
                 <div class="d-none d-md-inline-block float-right">
+                  <div class="row">
+                    <div class="col-md-4">
                   <div v-if="logged == 'true'">
-                    <button v-if="video.purchased === false" class="btn btn-danger" type="button">{{$t('buy')}}</button>
-                    <button v-else class="btn btn-danger" disabled type="button">{{$t('alreadyPurchased')}}</button>
+                    <button v-if="video.purchased === false" class="btn btn-danger btn-sm" type="button">{{$t('buy')}}</button>
+                    <button v-else class="btn btn-danger btn-sm" disabled type="button">{{$t('alreadyPurchased')}}</button>
                   </div>
-                  <nuxt-link v-if="video.purchased === true || video.free === true" to="/video/fullscreen/1')" class="btn btn-success">{{$t('enterClassroom')}}</nuxt-link>
+                    </div>
+                    <div class="col-md-8">
+                  <nuxt-link v-if="video.purchased === true || video.free === true" to="/video/fullscreen/1')" class="btn btn-primary btn-sm">{{$t('enterClassroom')}}</nuxt-link>
+                    </div>
+                  </div>
                 </div>
                 <h2><a href="#">{{video.title}}</a></h2>
                 <p class="mb-0">
@@ -20,20 +26,20 @@
                   <font-awesome-icon :icon="['fas', 'clock']" /> {{video.start}} - {{video.end}}
                 </p>
                 <div v-if="logged == 'true'" class="d-block d-md-none mt-3">
-                  <button v-if="video.purchased === false" class="btn btn-danger btn-block" type="button">{{$t('buy')}}</button>
-                  <button v-else class="btn btn-danger btn-block" disabled type="button">{{$t('alreadyPurchased')}}</button>
+                  <button v-if="video.purchased === false" class="btn btn-danger btn-block btn-sm" type="button">{{$t('buy')}}</button>
+                  <button v-else class="btn btn-danger btn-block btn-sm" disabled type="button">{{$t('alreadyPurchased')}}</button>
                 </div>
               </div>
               <div class="single-video-author box mb-3">
                 <div v-if="logged == 'true'" class="d-none d-md-inline-block float-right">
-                  <button v-if="channel.subscribed === false" class="btn btn-danger" type="button">{{$t('subscribe')}}</button>
+                  <button v-if="channel.subscribed === false" class="btn btn-primary btn-sm" type="button">{{$t('subscribe')}}</button>
                   <button v-else class="btn btn-secondary" type="button">{{$t('subscribed')}}</button>
                 </div>
                 <img class="img-fluid" :src="channel.logo" alt="">
                 <p><nuxt-link to="channel.link"><strong>{{channel.name}}</strong></nuxt-link></p>
                 <small>Created on {{channel.creationDate}}</small>
                 <div v-if="logged == 'true'" class="d-block d-md-none mt-3">
-                  <button v-if="channel.subscribed === false" class="btn btn-danger btn-block" type="button">{{$t('subscribe')}}</button>
+                  <button v-if="channel.subscribed === false" class="btn btn-primary btn-block btn-sm" type="button">{{$t('subscribe')}}</button>
                   <button v-else class="btn btn-secondary btn-block" type="button">{{$t('subscribed')}}</button>
                 </div>
               </div>
@@ -140,7 +146,7 @@ export default {
         end: "16:00",
         playbackUrl: "https://fcc3ddae59ed.us-west-2.playback.live-video.net/api/video/v1/us-west-2.893648527354.channel.DmumNckWFTqz.m3u8",
         purchased: false,
-        free: true
+        free: false
       },
       channel: {
         link: "/channel/1",

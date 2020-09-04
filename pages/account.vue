@@ -34,7 +34,7 @@
       </div>
       <div class="row mt-3 mb-3">
           <div class="col-sm-12 text-right">
-            <button type="button" :disabled="accountSaveloading === true" class="btn btn-success border-none" @click="updateAccount">
+            <button type="button" :disabled="accountSaveloading === true" class="btn btn-primary border-none" @click="updateAccount">
               <b-spinner v-if="accountSaveloading === true" type="grow" label="Loading..." small></b-spinner>
               <span v-else>{{$t('save')}}</span>
             </button>
@@ -50,7 +50,7 @@
         <p>
           {{$t('billingMethodGenericInfo')}}
         </p>
-        <button type="button" class="btn btn-success border-none mb-3">{{$t('configure')}}</button>
+        <button type="button" class="btn btn-primary border-none mb-3">{{$t('configure')}}</button>
       </div>
       <div class="col-sm-6">
         <div class="main-title">
@@ -59,8 +59,8 @@
         <p>
           {{$t('payoutAccountGenericInfo')}}
         </p>
-        <button v-if="payoutAcount.stripeUserId === ''" type="button" class="btn btn-success border-none mb-3">{{$t('configure')}}</button>
-        <button v-else type="button" class="btn btn-success border-none mb-3">{{$t('payoutDashboard')}}</button>
+        <button v-if="payoutAcount.stripeUserId === ''" type="button" class="btn btn-primary border-none mb-3">{{$t('configure')}}</button>
+        <button v-else type="button" class="btn btn-primary border-none mb-3">{{$t('payoutDashboard')}}</button>
       </div>
     </div>
     <hr/>
@@ -102,7 +102,7 @@
       </div>
       <div class="row mt-3 mb-3">
           <div class="col-sm-12 text-right">
-            <button type="button" class="btn btn-success border-none">{{$t('save')}}</button>
+            <button type="button" class="btn btn-primary border-none">{{$t('save')}}</button>
           </div>
       </div>
     </form>
