@@ -23,8 +23,8 @@
           </div>
       </div>
       <div class="row">
-          <div class="col-sm-6">
-              <label class="control-label">{{$t('email')}} <span class="required"><button type="button" class="btn btn-link border-none"><font-awesome-icon :icon="['fas', 'edit']" /></button></span></label>
+          <div class="col-sm-6" style="margin-top: 17px;">
+              <label class="control-label">{{$t('email')}}</label>
               <input class="form-control border-form-control" disabled type="email" readonly v-model="account.email">
           </div>
           <div class="col-sm-6">
@@ -34,7 +34,7 @@
       </div>
       <div class="row mt-3 mb-3">
           <div class="col-sm-12 text-right">
-            <button type="button" :disabled="accountSaveloading === true" class="btn btn-primary border-none" @click="updateAccount">
+            <button type="button" :disabled="accountSaveloading === true" class="btn btn-outline-primary" @click="updateAccount">
               <b-spinner v-if="accountSaveloading === true" type="grow" label="Loading..." small></b-spinner>
               <span v-else>{{$t('save')}}</span>
             </button>
@@ -50,7 +50,7 @@
         <p>
           {{$t('billingMethodGenericInfo')}}
         </p>
-        <button type="button" class="btn btn-primary border-none mb-3">{{$t('configure')}}</button>
+        <button type="button" class="btn btn-outline-primary mb-3">{{$t('configure')}}</button>
       </div>
       <div class="col-sm-6">
         <div class="main-title">
@@ -59,8 +59,8 @@
         <p>
           {{$t('payoutAccountGenericInfo')}}
         </p>
-        <button v-if="payoutAcount.stripeUserId === ''" type="button" class="btn btn-primary border-none mb-3">{{$t('configure')}}</button>
-        <button v-else type="button" class="btn btn-primary border-none mb-3">{{$t('payoutDashboard')}}</button>
+        <button v-if="payoutAcount.stripeUserId === ''" type="button" class="btn btn-outline-primary mb-3">{{$t('configure')}}</button>
+        <button v-else type="button" class="btn btn-outline-primary mb-3">{{$t('payoutDashboard')}}</button>
       </div>
     </div>
     <hr/>
@@ -167,10 +167,10 @@ export default {
     }
   },
   async mounted () {
-    var res = await this.$axios.$get("account")
-    this.account.name = res.name
-    this.account.nickname = res.nickname
-    this.account.email = res.email
+    // var res = await this.$axios.$get("account")
+    // this.account.name = res.name
+    // this.account.nickname = res.nickname
+    // this.account.email = res.email
   }
 }
 </script>

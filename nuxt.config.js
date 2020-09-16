@@ -9,6 +9,10 @@ export default {
   ** See https://nuxtjs.org/api/configuration-target
   */
   target: 'static',
+  publicRuntimeConfig: {
+    authBaseUrl: process.env.AUTH_BASE_URL,
+    channelsBaseUrl: process.env.CHANNELS_BASE_URL
+  },
   router: {
     mode: 'hash',
     base: '/plaive-webapp/'
@@ -76,7 +80,6 @@ export default {
   ** See https://axios.nuxtjs.org/options
   */
   axios: {
-    baseURL: process.env.NODE_ENV !== 'production' ? "https://localhost:44348/api" : "",
     credentials: true,
     retry: { retries: 0 },
     debug: process.env.NODE_ENV !== 'production' ? true : false

@@ -1,5 +1,6 @@
 <template>
   <div>
+    <hr>
     <VideoList :title="$t('featuredVideoTitle')" :videos="featuredVideos"/>
     <hr class="mt-0">
     <ChannelList :title="$t('popularChannels')" :channels="popularChannels" />

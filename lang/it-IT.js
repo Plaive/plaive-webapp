@@ -18,7 +18,7 @@ export default {
   email: "Email",
   password: "Password",
   save: "Salva",
-  billingMethod: "Metodo di fatturazione",
+  billingMethod: "Metodo di pagamento",
   configure: "Configura",
   payoutAccount: "Account pagamento",
   billingMethodGenericInfo: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque sit amet massa sapien. Praesent elementum interdum libero quis rhoncus. Vivamus id erat sed lectus cursus gravida. In quis fringilla metus. Aliquam erat volutpat. Aliquam id quam in tortor commodo placerat ut et orci. Sed auctor augue vitae urna mollis tempus.",
@@ -69,7 +69,7 @@ export default {
   resetPassword: "Cambia la password",
   resetPasswordInfo: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque sit amet massa sapien",
   forgotPasswordInfo: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque sit amet massa sapien",
-  resetPasswordBtn: "Cambia la password",
+  resetPasswordBtn: "Reimposta la password",
   goBackTo: "Torna indietro",
   signIn: "Accedi",
   signUp: "Registrati",
@@ -85,4 +85,5 @@ export default {
   signupTitle: "Crea il tuo account Plaive",
   signupSubTitle: "Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur.",
   featuredVideoTitle: "Video in primo piano",
+  upload: "Carica"
 }
