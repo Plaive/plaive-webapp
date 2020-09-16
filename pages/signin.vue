@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="text-center mb-5 login-main-left-header pt-4">
-      <img src="//via.placeholder.com/500x500?text=PLAIVE_LOGO_SQUARE" class="img-fluid" alt="LOGO" style="max-width:125px">
+      <img src="@/assets/img/logo-square.svg" class="img-fluid" alt="LOGO" style="max-width:125px">
       <h5 class="mt-3 mb-3">{{$t('welcome')}}</h5>
       <p>{{$t('welcomeMessage')}}</p>
     </div>

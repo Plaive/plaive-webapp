@@ -7,7 +7,7 @@
             </button> 
         </div>
         &nbsp;&nbsp;
-        <nuxt-link to="/" class="navbar-brand mr-1"><img class="img-fluid" alt="" src="//via.placeholder.com/120x30?text=PLAIVE_LOGO"></nuxt-link>
+        <nuxt-link to="/" class="navbar-brand mr-1"><img class="img-fluid" alt="" src="@/assets/img/logo.svg" width="120"></nuxt-link>
         <!-- Navbar Search -->
         <GlobalSearch />
         <!-- Navbar -->
