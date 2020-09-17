@@ -15,7 +15,7 @@ export default {
   },
   router: {
     mode: 'hash',
-    base: '/plaive-webapp/'
+    base: '/webapp/'
   },
   /*
   ** Headers of the page
