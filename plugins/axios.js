@@ -15,12 +15,19 @@ export default function ({ $config, $axios, redirect, $bvToast }) {
 			redirect("/error")
 		}
 		const originalRequest = error.config
-		console.log(originalRequest)
 		if (error.response.status === 401 && originalRequest.url === `${$config.AUTH_BASE_URL}/token/refresh`) {
 			return redirect("/signin")
 		}
 		if (error.response.status === 401 && !originalRequest._retry) {
 			originalRequest._retry = true
+			var refreshToken = sessionStorage.getItem("rt")
+			if(typeof refreshToken == "undefined") {
+				refreshToken = localStorage.getItem("rt")
+			}
+			if(typeof refreshToken == "undefined") {
+				return redirect("/signin")
+			}
+			$axios.setToken(refreshToken, "Bearer")
 			return $axios.$post(`${$config.AUTH_BASE_URL}/token/refresh`).then((res) => {
 				$axios.setToken(res.accessToken, "Bearer")
 				return $axios(originalRequest)

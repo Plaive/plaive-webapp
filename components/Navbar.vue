@@ -97,7 +97,9 @@ export default {
             body.classList.toggle("sidebar-toggled")
             this.$emit('toggled')
         },
-        logout () {
+        async logout () {
+            sessionStorage.removeItem("rt")
+            localStorage.removeItem("rt")
             sessionStorage.removeItem("logged")
             this.$router.go()
         }
@@ -108,10 +110,10 @@ export default {
         }
         this.logged = sessionStorage.getItem("logged")
         if(this.logged == 'true') {
-            var res = await this.$axios.$get("account")
+            var res = await this.$axios.$get(`${this.$config.AUTH_BASE_URL}/user`)
             this.nickname = res.nickname
-            var notificationCountRes = await this.$axios.$get("notifications/count")
-            this.notificationCount = notificationCountRes.count
+            //var notificationCountRes = await this.$axios.$get("notifications/count")
+            //this.notificationCount = notificationCountRes.count
         }
     }
 }

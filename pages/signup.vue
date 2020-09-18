@@ -65,8 +65,12 @@ export default {
       this.error = ""
       this.loading = true
       try {
-        await this.$axios.$post("/auth/signup", { name: this.name, nickname: this.nickname, email: this.email, password: this.password })
-        this.$router.replace(`/confirm-signup?email=${encodeURIComponent(this.email)}`)
+        await this.$axios.$post(`${this.$config.AUTH_BASE_URL}/signup`, { name: this.name, nickname: this.nickname, email: this.email, password: this.password })
+        const res = await this.$axios.$post(`${this.$config.AUTH_BASE_URL}/signin`, { email: this.email, password: this.password, rememberMe: false })
+        this.$axios.setToken(res.accessToken, 'Bearer')
+        sessionStorage.setItem("rt", res.refreshToken)
+        sessionStorage.setItem("logged", true)
+        this.$router.replace("/")
       } catch(err) {
         this.error = err
       }

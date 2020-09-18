@@ -85,5 +85,6 @@ export default {
   signupTitle: "Crea il tuo account Plaive",
   signupSubTitle: "Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur.",
   featuredVideoTitle: "Video in primo piano",
-  upload: "Carica"
+  upload: "Carica",
+  accountUpdated: "Account aggiornato"
 }

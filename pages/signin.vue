@@ -67,9 +67,14 @@ export default {
       this.loading = true
       this.error = false
       try {
-        const res = await this.$axios.$post("/auth/signin", { email: this.email, password: this.password, rememberMe: this.rememberMe })
+        const res = await this.$axios.$post(`${this.$config.AUTH_BASE_URL}/signin`, { email: this.email, password: this.password, rememberMe: this.rememberMe })
         this.$axios.setToken(res.accessToken, 'Bearer')
         sessionStorage.setItem("logged", true)
+        if(this.rememberMe === true) {
+          localStorage.setItem("rt", res.refreshToken)
+        } else {
+          sessionStorage.setItem("rt", res.refreshToken)
+        }
         this.$router.replace("/")
       } catch {
         this.error = true

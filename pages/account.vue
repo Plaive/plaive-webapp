@@ -25,7 +25,7 @@
       <div class="row">
           <div class="col-sm-6" style="margin-top: 17px;">
               <label class="control-label">{{$t('email')}}</label>
-              <input class="form-control border-form-control" disabled type="email" readonly v-model="account.email">
+              <input class="form-control border-form-control" type="email" readonly v-model="account.email">
           </div>
           <div class="col-sm-6">
               <label class="control-label">{{$t('password')}} <span class="required"><button type="button" class="btn btn-link border-none"><font-awesome-icon :icon="['fas', 'edit']" /></button></span></label>
@@ -148,11 +148,11 @@ export default {
   methods: {
     updateAccount () {
       this.accountSaveloading = true
-      this.$axios.$patch("account", { name: this.account.name, nickname: this.account.nickname }).then((res) => {
+      this.$axios.$patch(`${this.$config.AUTH_BASE_URL}/user`, { name: this.account.name, nickname: this.account.nickname, email: this.account.email }).then((res) => {
         this.account.name = res.name
         this.account.nickname = res.nickname
         this.account.email = res.email
-        this.$bvToast.toast(this.$t("accuntUpdated"), {
+        this.$bvToast.toast(this.$t("accountUpdated"), {
           variant: "success",
           solid: true
         })
@@ -167,10 +167,10 @@ export default {
     }
   },
   async mounted () {
-    // var res = await this.$axios.$get("account")
-    // this.account.name = res.name
-    // this.account.nickname = res.nickname
-    // this.account.email = res.email
+    var res = await this.$axios.$get(`${this.$config.AUTH_BASE_URL}/user`)
+    this.account.name = res.name
+    this.account.nickname = res.nickname
+    this.account.email = res.email
   }
 }
 </script>
