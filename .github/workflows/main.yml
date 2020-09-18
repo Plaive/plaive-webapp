@@ -22,6 +22,17 @@ jobs:
     # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
     - uses: actions/checkout@v2
 
+    - name: Replace tokens
+      # You may pin to the exact commit or the version.
+      # uses: cschleiden/replace-tokens@121d9153eda2951d490e9f724a67ff095ab4c4f7
+      uses: cschleiden/replace-tokens@v1.0
+      with:
+        tokenPrefix: __
+        tokenSuffix: __
+        files: '["sample.env"]'
+      env:
+        AUTH_BASE_URL: https://lijwjx7kxc.execute-api.eu-west-1.amazonaws.com/dev
+
     - name: Copy file
       # You may pin to the exact commit or the version.
       # uses: canastro/copy-action@7ddff6fc153a2ea2cd0fb88ed9750544c051e399
@@ -31,17 +42,6 @@ jobs:
         source: sample.env
         # Target file
         target: .env
-
-    - name: Replace tokens
-      # You may pin to the exact commit or the version.
-      # uses: cschleiden/replace-tokens@121d9153eda2951d490e9f724a67ff095ab4c4f7
-      uses: cschleiden/replace-tokens@v1.0
-      with:
-        tokenPrefix: __
-        tokenSuffix: __
-        files: '[".env"]'
-      env:
-        AUTH_BASE_URL: https://lijwjx7kxc.execute-api.eu-west-1.amazonaws.com/dev
 
     - name: Setup Node.js environment
       uses: actions/setup-node@v2.1.1
