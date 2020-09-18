@@ -15,7 +15,7 @@ export default {
   },
   router: {
     mode: 'hash',
-    base: '/webapp/'
+    base: '/'
   },
   /*
   ** Headers of the page
