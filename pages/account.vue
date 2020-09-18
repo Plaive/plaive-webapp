@@ -25,7 +25,7 @@
       <div class="row">
           <div class="col-sm-6" style="margin-top: 17px;">
               <label class="control-label">{{$t('email')}}</label>
-              <input class="form-control border-form-control" type="email" readonly v-model="account.email">
+              <input class="form-control border-form-control" type="email" v-model="account.email">
           </div>
           <div class="col-sm-6">
               <label class="control-label">{{$t('password')}} <span class="required"><button type="button" class="btn btn-link border-none"><font-awesome-icon :icon="['fas', 'edit']" /></button></span></label>
@@ -146,24 +146,21 @@ export default {
     }
   },
   methods: {
-    updateAccount () {
+    async updateAccount () {
       this.accountSaveloading = true
-      this.$axios.$patch(`${this.$config.AUTH_BASE_URL}/user`, { name: this.account.name, nickname: this.account.nickname, email: this.account.email }).then((res) => {
-        this.account.name = res.name
-        this.account.nickname = res.nickname
-        this.account.email = res.email
+      try {
+        await this.$axios.$patch(`${this.$config.AUTH_BASE_URL}/user`, { name: this.account.name, nickname: this.account.nickname, email: this.account.email })
         this.$bvToast.toast(this.$t("accountUpdated"), {
           variant: "success",
           solid: true
         })
-        this.accountSaveloading = false
-      }).catch((err) => {
+      } catch {
         this.$bvToast.toast(this.$t(err), {
           variant: "danger",
           solid: true
         })
-        this.accountSaveloading = false
-      })
+      }
+      this.accountSaveloading = false
     }
   },
   async mounted () {
