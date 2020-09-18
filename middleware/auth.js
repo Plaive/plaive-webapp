@@ -1,3 +1,3 @@
-export default async function ({ $axios }) {
-  await $axios.$get("/auth/check")
+export default async function ({ $config, $axios }) {
+  await $axios.$get(`${$config.AUTH_BASE_URL}/check`)
 }

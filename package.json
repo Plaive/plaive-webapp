@@ -12,13 +12,13 @@
     "@fortawesome/fontawesome-svg-core": "^1.2.30",
     "@fortawesome/free-solid-svg-icons": "^5.14.0",
     "@fortawesome/vue-fontawesome": "^0.1.10",
-    "@nuxt/content": "^1.5.0",
-    "@nuxtjs/axios": "^5.12.0",
+    "@nuxt/content": "^1.9.0",
+    "@nuxtjs/axios": "^5.12.2",
     "axios-auth-refresh": "^3.0.0",
-    "bootstrap-vue": "^2.16.0",
-    "moment": "^2.27.0",
-    "nuxt": "^2.14.0",
-    "nuxt-i18n": "^6.13.12",
+    "bootstrap-vue": "^2.17.1",
+    "moment": "^2.28.0",
+    "nuxt": "^2.14.5",
+    "nuxt-i18n": "^6.15.1",
     "video.js": "^7.8.4",
     "vue-cropperjs": "^4.1.0",
     "vue-fontawesome": "0.0.2",
@@ -29,6 +29,6 @@
   "devDependencies": {
     "eslint-config-prettier": "^6.11.0",
     "eslint-plugin-prettier": "^3.1.4",
-    "prettier": "^2.0.5"
+    "prettier": "^2.1.2"
   }
 }

@@ -3,15 +3,15 @@ export default {
   ** Nuxt rendering mode
   ** See https://nuxtjs.org/api/configuration-mode
   */
-  mode: 'spa',
+  //mode: 'spa',
+  ssr: false,
   /*
   ** Nuxt target
   ** See https://nuxtjs.org/api/configuration-target
   */
   target: 'static',
   publicRuntimeConfig: {
-    authBaseUrl: process.env.AUTH_BASE_URL,
-    channelsBaseUrl: process.env.CHANNELS_BASE_URL
+    AUTH_BASE_URL: process.env.AUTH_BASE_URL,
   },
   router: {
     mode: 'hash',
