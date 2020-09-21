@@ -17,93 +17,20 @@ export default {
     },
     data () {
         return {
-            channels: [
-                {
-                    link: "/channel/1",
-                    logo: "//via.placeholder.com/130x130",
-                    name: "Channels Name",
-                    subscribers: "382.323",
-                    subscribed: false
-                },
-                {
-                    link: "/channel/1",
-                    logo: "//via.placeholder.com/130x130",
-                    name: "Channels Name",
-                    subscribers: "382.323",
-                    subscribed: false
-                },
-                {
-                    link: "/channel/1",
-                    logo: "//via.placeholder.com/130x130",
-                    name: "Channels Name",
-                    subscribers: "382.323",
-                    subscribed: true
-                },
-                {
-                    link: "/channel/1",
-                    logo: "//via.placeholder.com/130x130",
-                    name: "Channels Name",
-                    subscribers: "382.323",
-                    subscribed: false
-                },
-                {
-                    link: "/channel/1",
-                    logo: "//via.placeholder.com/130x130",
-                    name: "Channels Name",
-                    subscribers: "382.323",
-                    subscribed: false
-                },
-                {
-                    link: "/channel/1",
-                    logo: "//via.placeholder.com/130x130",
-                    name: "Channels Name",
-                    subscribers: "382.323",
-                    subscribed: false
-                },
-                {
-                    link: "/channel/1",
-                    logo: "//via.placeholder.com/130x130",
-                    name: "Channels Name",
-                    subscribers: "382.323",
-                    subscribed: true
-                },
-                {
-                    link: "/channel/1",
-                    logo: "//via.placeholder.com/130x130",
-                    name: "Channels Name",
-                    subscribers: "382.323",
-                    subscribed: false
-                },
-                {
-                    link: "/channel/1",
-                    logo: "//via.placeholder.com/130x130",
-                    name: "Channels Name",
-                    subscribers: "382.323",
-                    subscribed: false
-                },
-                {
-                    link: "/channel/1",
-                    logo: "//via.placeholder.com/130x130",
-                    name: "Channels Name",
-                    subscribers: "382.323",
-                    subscribed: false
-                },
-                {
-                    link: "/channel/1",
-                    logo: "//via.placeholder.com/130x130",
-                    name: "Channels Name",
-                    subscribers: "382.323",
-                    subscribed: true
-                },
-                {
-                    link: "/channel/1",
-                    logo: "//via.placeholder.com/130x130",
-                    name: "Channels Name",
-                    subscribers: "382.323",
-                    subscribed: false
-                }
-            ]
+            channels: []
         }
+    },
+    async mounted () {
+        var channelsRes = await this.$axios.$get(`${this.$config.CHANNELS_BASE_URL}/channels?size=12`)
+        this.channels = []
+        channelsRes.data.map((el) => {
+            this.channels.push({
+                link: `/channel/${el.id}`,
+                logo: el.logo == "" ? `//via.placeholder.com/130x130?text=${el.name}` : el.logo,
+                name: el.name,
+                subscribers: el.subscribers
+            })
+        })
     }
 }
 </script>

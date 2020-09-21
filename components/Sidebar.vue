@@ -55,8 +55,8 @@
             </template>
             <div class="modal-body">{{$t('signoutModalBody')}}</div>
             <template v-slot:modal-footer>
-                <button class="btn btn-secondary" @click="$refs['logoutModalMobile'].hide()">{{$t('cancel')}}</button>
-                <button class="btn btn-primary" @click="logout">{{$t('signout')}}</button>
+                <button class="btn btn-outline-secondary" @click="$refs['logoutModalMobile'].hide()">{{$t('cancel')}}</button>
+                <button class="btn btn-outline-primary" @click="logout">{{$t('signout')}}</button>
             </template>
         </b-modal>
     </ul>

@@ -10,10 +10,10 @@
                 <div class="channels-card">
                     <div class="channels-card-image">
                         <nuxt-link :to="channel.link"><img class="img-fluid" :src="channel.logo" alt=""></nuxt-link>
-                        <div v-if="logged == 'true'"  class="channels-card-image-btn">
+                        <!-- <div v-if="logged == 'true'"  class="channels-card-image-btn">
                             <button v-if="channel.subscribed === false" type="button" class="btn btn-outline-danger btn-sm">{{$t('subscribe')}}</button>
                             <button v-else type="button" class="btn btn-outline-secondary btn-sm">{{$t('subscribed')}}</button>
-                        </div>
+                        </div> -->
                     </div>
                     <div class="channels-card-body">
                         <div class="channels-title">

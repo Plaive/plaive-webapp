@@ -12,6 +12,7 @@ export default {
   target: 'static',
   publicRuntimeConfig: {
     AUTH_BASE_URL: process.env.AUTH_BASE_URL,
+    CHANNELS_BASE_URL: process.env.CHANNELS_BASE_URL,
   },
   router: {
     mode: 'hash',
