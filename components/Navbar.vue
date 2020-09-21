@@ -98,6 +98,9 @@ export default {
             this.$emit('toggled')
         },
         async logout () {
+            try { 
+                await this.$axios.$post(`${this.$config.AUTH_BASE_URL}/signout`)
+            } catch {}
             sessionStorage.removeItem("rt")
             localStorage.removeItem("rt")
             sessionStorage.removeItem("logged")

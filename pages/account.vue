@@ -212,7 +212,7 @@ export default {
           variant: "success",
           solid: true
         })
-      } catch {
+      } catch(err) {
         this.$bvToast.toast(this.$t(err), {
           variant: "danger",
           solid: true
