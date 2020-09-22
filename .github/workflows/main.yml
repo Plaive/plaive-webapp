@@ -32,6 +32,7 @@ jobs:
         files: '["sample.env"]'
       env:
         AUTH_BASE_URL: https://lijwjx7kxc.execute-api.eu-west-1.amazonaws.com/dev
+        CHANNELS_BASE_URL: https://vbn18z66m0.execute-api.eu-west-1.amazonaws.com/dev
 
     - name: Copy file
       # You may pin to the exact commit or the version.
