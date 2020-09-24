@@ -84,7 +84,7 @@ export default {
     async getChannel () {
       this.channel.logo = "//via.placeholder.com/500x500"
       this.channel.banner = "//via.placeholder.com/1500x386"
-      var channelRes = await this.$axios.$get(`${this.$config.CHANNELS_BASE_URL}/channel/my`)
+      var channelRes = await this.$axios.$get(`${this.$config.CHANNELS_BASE_URL}/channel/${this.$route.params.id}`)
       if(channelRes == "") {
         await this.$axios.$post(`${this.$config.CHANNELS_BASE_URL}/channel`)
       } else {
