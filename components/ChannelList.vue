@@ -10,10 +10,7 @@
                 <div class="channels-card">
                     <div class="channels-card-image">
                         <nuxt-link :to="channel.link"><img class="img-fluid" :src="channel.logo" alt=""></nuxt-link>
-                        <!-- <div v-if="logged == 'true'"  class="channels-card-image-btn">
-                            <button v-if="channel.subscribed === false" type="button" class="btn btn-outline-danger btn-sm">{{$t('subscribe')}}</button>
-                            <button v-else type="button" class="btn btn-outline-secondary btn-sm">{{$t('subscribed')}}</button>
-                        </div> -->
+                        <ChannelSubscribeButton :channel="channel" @subscribed="subscribed" @unsubscribed="unsubscribed"/>
                     </div>
                     <div class="channels-card-body">
                         <div class="channels-title">
@@ -37,6 +34,18 @@ export default {
         }
     },
     props: ["title", "channels"],
+    methods: {
+        subscribed (channel) {
+            const obj = this.channels.find(obj => obj.id == channel.id)
+            obj.subscribed = true
+            obj.subscribers++
+        },
+        unsubscribed (channel) {
+            const obj = this.channels.find(obj => obj.id == channel.id)
+            obj.subscribed = false
+            obj.subscribers--
+        }
+    },
     mounted () {
         this.logged = sessionStorage.getItem("logged")
     }

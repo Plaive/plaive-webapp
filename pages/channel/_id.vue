@@ -27,10 +27,7 @@
                 <font-awesome-icon :icon="['fas', 'search']" />
               </button> 
               &nbsp;&nbsp;&nbsp; 
-              <div v-if="logged == 'true'">
-                <button v-if="channel.subscribed === false" class="btn btn-outline-danger btn-sm" type="button">{{$t('subscribe')}}</button>
-                <button v-else class="btn btn-outline-secondary btn-sm" type="button">{{$t('subscribed')}}</button>
-              </div>
+              <ChannelSubscribeButton :channel="channel" @subscribed="subscribed" @unsubscribed="unsubscribed" />
             </form>
             <form v-else class="form-inline my-2 my-lg-0">
               <nuxt-link to="/lesson/new" class="d-none d-md-inline-block btn btn-outline-danger btn-sm" type="button">{{$t('addLesson')}}</nuxt-link>
@@ -75,7 +72,7 @@ export default {
           banner: "//via.placeholder.com/1500x386",
           logo: "//via.placeholder.com/500x500",
           name: "",
-          subscribed: false,
+          subscribed: null,
           description: ""
         },
       }
@@ -88,10 +85,12 @@ export default {
       if(channelRes == "") {
         await this.$axios.$post(`${this.$config.CHANNELS_BASE_URL}/channel`)
       } else {
+        this.channel.id = channelRes.id
         this.channel.name = channelRes.name
         this.channel.description = channelRes.description
         this.channel.logo = channelRes.logo == "" ? "//via.placeholder.com/500x500" : channelRes.logo
         this.channel.banner = channelRes.banner == "" ? "//via.placeholder.com/1500x386" : channelRes.banner
+        this.channel.subscribed = channelRes.subscribed
       }
     },
     async getChannelLessons () {
@@ -117,6 +116,14 @@ export default {
           free: false
         }
       ]
+    },
+    subscribed (channel) {
+      this.channel.subscribed = true
+      this.channel.subscribers++
+    },
+    unsubscribed (channel) {
+      this.channel.subscribed = false
+      this.channel.subscribers--
     }
   },
   mounted () {

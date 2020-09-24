@@ -25,10 +25,12 @@ export default {
         this.channels = []
         channelsRes.data.map((el) => {
             this.channels.push({
+                id: el.id,
                 link: `/channel/${el.id}`,
                 logo: el.logo == "" ? `//via.placeholder.com/130x130?text=${el.name}` : el.logo,
                 name: el.name,
-                subscribers: el.subscribers
+                subscribers: el.subscribers,
+                subscribed: el.subscribed
             })
         })
     }
