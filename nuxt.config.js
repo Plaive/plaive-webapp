@@ -13,6 +13,7 @@ export default {
   publicRuntimeConfig: {
     AUTH_BASE_URL: process.env.AUTH_BASE_URL,
     CHANNELS_BASE_URL: process.env.CHANNELS_BASE_URL,
+    LESSONS_BASE_URL: process.env.LESSONS_BASE_URL
   },
   router: {
     mode: 'hash',

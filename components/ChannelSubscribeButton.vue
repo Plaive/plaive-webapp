@@ -22,12 +22,20 @@ export default {
     props: ["channel"],
     methods: {
       async subscribe () {
-            await this.$axios.$post(`${this.$config.CHANNELS_BASE_URL}/channel/${this.channel.id}/subscribe`)
-            this.$emit("subscribed", this.channel)
+            this.loading = true
+            try {
+                await this.$axios.$post(`${this.$config.CHANNELS_BASE_URL}/channel/${this.channel.id}/subscribe`)
+                this.$emit("subscribed", this.channel)
+            } catch {}
+            this.loading = false
       },
       async unsubscribe () {
-            await this.$axios.$post(`${this.$config.CHANNELS_BASE_URL}/channel/${this.channel.id}/unsubscribe`)
-            this.$emit("unsubscribed", this.channel)
+            this.loading = true
+            try {
+                await this.$axios.$post(`${this.$config.CHANNELS_BASE_URL}/channel/${this.channel.id}/unsubscribe`)
+                this.$emit("unsubscribed", this.channel)
+            } catch {}
+            this.loading = false
       }    
     },
     mounted () {

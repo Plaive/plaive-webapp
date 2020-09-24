@@ -7,47 +7,46 @@
                 <div class="col-lg-12">
                   <div class="form-group">
                       <label>{{$t('title')}}</label>
-                      <input type="text" class="form-control">
+                      <input type="text" class="form-control" v-model="lesson.title">
                   </div>
                 </div>
                 <div class="col-lg-12">
                   <div class="form-group">
-                      <label>{{$t('about')}}</label>
-                      <textarea rows="5" class="form-control"></textarea>
+                      <label>{{$t('description')}}</label>
+                      <textarea rows="5" class="form-control" v-model="lesson.description"></textarea>
                   </div>
                 </div>
             </div>
             <div class="row">
-                <div class="col-lg-2">
+                <div class="col-lg-3">
                   <div class="form-group">
                       <label>{{$t('date')}}</label>
-                      <b-form-datepicker locale="en"></b-form-datepicker>
+                      <b-form-datepicker locale="it" v-model="lesson.date"></b-form-datepicker>
                   </div>
                 </div>
                 <div class="col-lg-2">
                   <div class="form-group">
                       <label>{{$t('start')}}</label>
-                      <b-form-timepicker locale="en"></b-form-timepicker>
+                      <b-form-timepicker locale="it" v-model="lesson.start"></b-form-timepicker>
                   </div>
                 </div>
                 <div class="col-lg-2">
                   <div class="form-group">
                       <label>{{$t('end')}}</label>
-                      <b-form-timepicker locale="en"></b-form-timepicker>
+                      <b-form-timepicker locale="it" v-model="lesson.end"></b-form-timepicker>
                   </div>
                 </div>
                 <div class="col-lg-2">
                   <div class="form-group">
                       <label>{{$t('price')}}</label>
-                      <input class="form-control" type="number" min="0" step="any">
+                      <input class="form-control" type="number" min="0" step="any" v-model="lesson.price">
                   </div>
                 </div>
                 <div class="col-lg-2">
                   <div class="form-group">
                       <label>{{$t('currency')}}</label>
-                      <select class="custom-select">
-                        <option selected>EUR (€)</option>
-                        <option>USD ($)</option>
+                      <select class="custom-select" v-model="lesson.currency">
+                        <option value="eur">EUR (€)</option>
                       </select>
                   </div>
                 </div>
@@ -56,13 +55,13 @@
                 <div class="col-lg-2">
                   <div class="form-group">
                       <label>{{$t('maxViewers')}}</label>
-                      <input class="form-control" type="number" min="0" step="1">
+                      <input class="form-control" type="number" min="0" step="1" v-model="lesson.maxUsers">
                   </div>
                 </div>
                 <div class="col-lg-2">
                   <div class="form-group">
                       <label>{{$t('minViewers')}}</label>
-                      <input class="form-control" type="number" min="0" step="1">
+                      <input class="form-control" type="number" min="0" step="1" v-model="lesson.minUsers">
                   </div>
                 </div>
             </div>
@@ -71,7 +70,7 @@
                 <div class="col-lg-5">
                   <div class="form-group">
                       <label>{{$t('tags')}}</label>
-                      <b-form-tags></b-form-tags>
+                      <b-form-tags v-model="lesson.tags"></b-form-tags>
                   </div>
                 </div>
             </div>
@@ -83,18 +82,21 @@
                   </div>
                 </div>
             </div>
-            <div class="row category-checkbox">
-                <!-- checkbox 1col -->
-                <div v-for="(chunk, index) in categories" :key="index" class="col-lg-2 col-xs-6 col-4">
-                  <div v-for="category in chunk" :key="category" class="custom-control custom-checkbox">
-                      <input type="checkbox" class="custom-control-input" :id="`chk_${category}`">
-                      <label class="custom-control-label" :for="`chk_${category}`">{{category}}</label>
+              <b-form-group>
+                <div class="row category-checkbox">
+                  <div v-for="(chunk, index) in categories" :key="index" class="col-lg-2 col-xs-6 col-4">
+                    <div v-for="category in chunk" :key="category">
+                        <b-form-radio v-model="lesson.catagory" name="lesson-category" :value="category">{{category}}</b-form-radio>
+                    </div>
                   </div>
                 </div>
-            </div>
+              </b-form-group>
           </div>
           <div class="osahan-area text-center mt-3">
-            <button class="btn btn-outline-primary">{{$t('save')}}</button>
+            <button class="btn btn-outline-primary" type="button" @click="save">
+              <b-spinner v-if="loading === true" type="grow" label="Loading..." small></b-spinner>
+              <span v-else>{{$t('save')}}</span>
+          </button>
           </div>
           <hr>
           <div class="terms text-center mb-5">
@@ -119,7 +121,31 @@ Object.defineProperty(Array.prototype, 'chunk', {
 export default {
   data () {
     return  {
+      loading: false,
+      lesson: {
+        title: "",
+        description: "",
+        date: new Date(),
+        start: "",
+        end: "",
+        price: 0,
+        currency: "eur",
+        maxUsers: "",
+        minUsers: "",
+        catagory: "",
+        tags: []
+      },
       categories: []
+    }
+  },
+  methods: {
+    async save () {
+      this.loading = true 
+      try {
+        const lesson = this.lesson
+        await this.$axios.$post(`${this.$config.LESSONS_BASE_URL}/lesson`, { lesson })
+      } catch {}
+      this.loading = false 
     }
   },
   mounted () {
