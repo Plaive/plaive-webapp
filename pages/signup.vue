@@ -20,13 +20,16 @@
       </div>
       <div class="form-group">
           <label>{{$t('password')}}</label>
-          <input type="password" class="form-control" v-model="password">
+          <b-form-input type="password" class="form-control" v-model="password" :state="passwordState"></b-form-input>
+          <b-form-invalid-feedback>
+            La password deve essere lunga almeno 8 caratteri
+          </b-form-invalid-feedback>
       </div>
       <div v-if="error !== ''" class="alert alert-danger mt-4" role="alert">
         {{error}}
       </div>
       <div class="mt-4">
-          <button :disabled="loading === true" type="submit" class="btn btn-outline-primary btn-block btn-lg">
+          <button :disabled="loading === true || passwordState !== true" type="submit" :class="`btn btn-block btn-lg ${passwordState === true ? 'btn-outline-primary' : ''}`">
             <b-spinner v-if="this.loading === true" type="grow" label="Loading..." small></b-spinner>
             <span v-else>{{$t('signUp')}}</span>
           </button>
@@ -58,6 +61,14 @@ export default {
       email: "",
       password: "",
       error: ""
+    }
+  },
+  computed: {
+    passwordState() {
+      if(this.password == "") {
+        return undefined
+      }
+      return this.password.length > 8 ? true : false
     }
   },
   methods: {
