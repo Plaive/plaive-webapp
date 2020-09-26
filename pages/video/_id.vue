@@ -9,15 +9,15 @@
               <div class="single-video-title box mb-3">
                 <div class="d-none d-md-inline-block float-right">
                   <div class="row">
-                    <div class="col-md-4">
-                  <div v-if="logged == 'true'">
-                    <button v-if="video.purchased === false" class="btn btn-danger btn-sm" type="button">{{$t('buy')}}</button>
-                    <button v-else class="btn btn-danger btn-sm" disabled type="button">{{$t('alreadyPurchased')}}</button>
-                  </div>
+                    <div class="col-md-12">
+                      <div v-if="logged == 'true'">
+                        <button v-if="video.purchased === false" class="btn btn-danger btn-sm" type="button">{{$t('buy')}}</button>
+                        <button v-else class="btn btn-danger btn-sm" disabled type="button">{{$t('alreadyPurchased')}}</button>
+                      </div>
                     </div>
-                    <div class="col-md-8">
-                  <nuxt-link v-if="video.purchased === true || video.free === true" to="/video/fullscreen/1')" class="btn btn-primary btn-sm">{{$t('enterClassroom')}}</nuxt-link>
-                    </div>
+                    <!-- <div class="col-md-8">
+                      <nuxt-link v-if="video.purchased === true || video.free === true" to="/video/fullscreen/1')" class="btn btn-primary btn-sm">{{$t('enterClassroom')}}</nuxt-link>
+                    </div> -->
                   </div>
                 </div>
                 <h2><a href="#">{{video.title}}</a></h2>
