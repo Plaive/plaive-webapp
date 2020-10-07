@@ -97,7 +97,9 @@ export default {
       this.lessons = []
       var lessonsRes = await this.$axios.$get(`${this.$config.LESSONS_BASE_URL}/lessons/channel/${this.$route.params.id}?size=50`)
       lessonsRes.data.map((lesson) => {
+        console.log(lesson)
         this.lessons.push({
+          id: lesson.id,
           img: typeof lesson.banner == "undefined" ? "//via.placeholder.com/270x169" : lesson.banner,
           link: `/video/${lesson.id}`,
           title: lesson.title,
@@ -105,9 +107,10 @@ export default {
           date: lesson.date,
           start: lesson.start,
           end: lesson.end,
-          free: lesson.price == 0 ? true : false
+          free: lesson.price == 0 ? true : false,
+          streamingServer: lesson.ingestEndpoint,
+          streamingKey: typeof lesson.streamKey != "undefined" ? lesson.streamKey.value : undefined
         })
-        console.log(this.lessons)
       })
     },
     subscribed (channel) {

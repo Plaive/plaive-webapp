@@ -27,7 +27,7 @@
                                     <font-awesome-icon :icon="['fas', 'clock']" class="ml-1"/> {{video.start}} - {{video.end}}
                                 </div>
                                 <div v-if="type === 'myChannelLessons'" class="col-md-6 text-right">
-                                    <nuxt-link :to="`/lesson/${index}`"><font-awesome-icon :icon="['fas', 'edit']" /> {{$t('edit')}}</nuxt-link>
+                                    <nuxt-link :to="`/lesson/${videos[index].id}`"><font-awesome-icon :icon="['fas', 'edit']" /> {{$t('edit')}}</nuxt-link>
                                     <a v-b-modal="`deleteLessonModal_${index}`" class="text-danger ml-1"><font-awesome-icon :icon="['fas', 'trash']" /> {{$t('delete')}}</a>
                                     <b-modal :id="`deleteLessonModal_${index}`" centered>
                                         <template v-slot:modal-title>

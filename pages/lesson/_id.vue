@@ -121,7 +121,7 @@ Object.defineProperty(Array.prototype, 'chunk', {
 export default {  
   head() {
     return {
-      title: this.$route.params.id == "new" ? "Nuova Lezione" : lesson.title + ' - Plaive',
+      title: "Lezione" + " - Plaive",
     }
   },
   transition: {
@@ -148,20 +148,38 @@ export default {
     }
   },
   methods: {
+    async getLesson () {
+      var lessonRes = await this.$axios.$get(`${this.$config.LESSONS_BASE_URL}/lesson/${this.$route.params.id}`)
+      this.lesson.title = lessonRes.title
+      this.lesson.description = lessonRes.description
+      this.lesson.category = lessonRes.category
+      this.lesson.date = lessonRes.date
+      this.lesson.start = lessonRes.start
+      this.lesson.end = lessonRes.end
+      this.lesson.price = lessonRes.price
+      this.lesson.currency = lessonRes.currency
+      this.lesson.maxUsers = lessonRes.maxUsers
+      this.lesson.minUsers = lessonRes.minUsers
+      lessonRes.tags.map((tag) => { this.lesson.tags.push(tag.tag) })
+    },
     async save () {
       this.loading = true 
       try {
         const lesson = this.lesson
-        await this.$axios.$post(`${this.$config.LESSONS_BASE_URL}/lesson`, lesson)
+         if(this.$route.params.id === "new") {
+          await this.$axios.$post(`${this.$config.LESSONS_BASE_URL}/lesson`, lesson)
+        } else {
+          await this.$axios.$patch(`${this.$config.LESSONS_BASE_URL}/lesson/${this.$route.params.id}`, lesson)
+        }
       } catch {}
       this.loading = false 
     }
   },
-  mounted () {
+  async mounted () {
     var allCategories = ['fax','tone','pottery','cable','gown','draw','get','coup','height','achievement','lift','property','conglomerate','acquisition','flawed','influence','wood','valid','elaborate','fuss','sweater','assignment','disco','driver','strength','suffer','obese','stroll','writer','continental'].chunk(5)
     this.categories = allCategories
     if(this.$route.params.id !== "new") {
-      //load lesson data
+      await this.getLesson()
     }
   }
 }
