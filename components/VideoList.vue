@@ -92,12 +92,12 @@ import moment from "moment"
 export default {
     data () {
         return {
-            videos2: []
         }
     },
     props: ["title", "type", "videos"],
     methods: {
-        deleteLesson(index) {
+        async deleteLesson(index) {
+            await this.$axios.$delete(`${this.$config.LESSONS_BASE_URL}/lesson/${this.videos[index].id}`)
             this.videos.splice(index, 1)
             this.$bvModal.hide(`deleteLessonModal_${index}`)
         }

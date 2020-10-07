@@ -39,7 +39,7 @@
                 <div class="col-lg-2">
                   <div class="form-group">
                       <label>{{$t('price')}}</label>
-                      <input class="form-control" type="number" min="0" step="any" v-model="lesson.price">
+                      <input class="form-control" type="number" min="0" step="any" v-model="lesson.price" readonly>
                   </div>
                 </div>
                 <div class="col-lg-2">
@@ -55,13 +55,13 @@
                 <div class="col-lg-2">
                   <div class="form-group">
                       <label>{{$t('maxViewers')}}</label>
-                      <input class="form-control" type="number" min="0" step="1" v-model="lesson.maxUsers">
+                      <input class="form-control" type="number" min="0" step="1" v-model="lesson.maxUsers" readonly>
                   </div>
                 </div>
                 <div class="col-lg-2">
                   <div class="form-group">
                       <label>{{$t('minViewers')}}</label>
-                      <input class="form-control" type="number" min="0" step="1" v-model="lesson.minUsers">
+                      <input class="form-control" type="number" min="0" step="1" v-model="lesson.minUsers" readonly>
                   </div>
                 </div>
             </div>
