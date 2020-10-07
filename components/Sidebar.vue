@@ -67,17 +67,22 @@ export default {
     data () {
         return {
             logged: false,
-            lessons: [
-                {
-                    logo: "//via.placeholder.com/130x130",
-                    name: "Lesson 1",
-                    link: "/video/1"
-                }
-            ]
+            lessons: []
         }
     },
     props: ["isToggled"],
     methods: {
+        async getLessons () {
+            this.lessons = []
+            var lessonsRes = await this.$axios.$get(`${this.$config.LESSONS_BASE_URL}/lessons/user?size=50`)
+            lessonsRes.data.map((lesson) => {
+                this.lessons.push({
+                    logo: lesson.logo == "" ? "//via.placeholder.com/130x130" : lesson.logo,
+                    link: `/video/${lesson.id}`,
+                    name: lesson.title
+                })
+            })
+        },
         logout () {
             sessionStorage.removeItem("logged")
             this.$router.go()
@@ -85,6 +90,7 @@ export default {
     },
     mounted () {
         this.logged = sessionStorage.getItem("logged")
+        this.getLessons()
     }
 }
 </script>

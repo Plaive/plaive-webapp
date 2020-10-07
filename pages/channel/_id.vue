@@ -94,28 +94,21 @@ export default {
       }
     },
     async getChannelLessons () {
-      this.lessons = [
-        {
-          img: "//via.placeholder.com/270x169",
-          link: "/video/1",
-          title: "There are many variations of passages of Lorem",
-          category: "Education",
-          date: moment().format("DD/MM/YYYY"),
-          start: "14:30",
-          end: "16:00",
-          free: false
-        },
-        {
-          img: "//via.placeholder.com/270x169",
-          link: "/video/1",
-          title: "There are many variations of passages of Lorem",
-          category: "Education",
-          date: moment().format("DD/MM/YYYY"),
-          start: "14:30",
-          end: "16:00",
-          free: false
-        }
-      ]
+      this.lessons = []
+      var lessonsRes = await this.$axios.$get(`${this.$config.LESSONS_BASE_URL}/lessons/channel/${this.$route.params.id}?size=50`)
+      lessonsRes.data.map((lesson) => {
+        this.lessons.push({
+          img: typeof lesson.banner == "undefined" ? "//via.placeholder.com/270x169" : lesson.banner,
+          link: `/video/${lesson.id}`,
+          title: lesson.title,
+          category: lesson.category,
+          date: lesson.date,
+          start: lesson.start,
+          end: lesson.end,
+          free: lesson.price == 0 ? true : false
+        })
+        console.log(this.lessons)
+      })
     },
     subscribed (channel) {
       this.channel.subscribed = true

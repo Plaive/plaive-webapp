@@ -118,7 +118,16 @@ Object.defineProperty(Array.prototype, 'chunk', {
   }
 })
 
-export default {
+export default {  
+  head() {
+    return {
+      title: this.$route.params.id == "new" ? "Nuova Lezione" : lesson.title + ' - Plaive',
+    }
+  },
+  transition: {
+    name: "page",
+    mode: 'out-in'
+  },
   data () {
     return  {
       loading: false,
@@ -143,7 +152,7 @@ export default {
       this.loading = true 
       try {
         const lesson = this.lesson
-        await this.$axios.$post(`${this.$config.LESSONS_BASE_URL}/lesson`, { lesson })
+        await this.$axios.$post(`${this.$config.LESSONS_BASE_URL}/lesson`, lesson)
       } catch {}
       this.loading = false 
     }
