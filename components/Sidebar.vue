@@ -89,8 +89,10 @@ export default {
         }
     },
     mounted () {
-        this.logged = sessionStorage.getItem("logged")
-        this.getLessons()
+        this.logged = sessionStorage.getItem("logged")    
+        if(this.logged == 'true') {
+            this.getLessons()
+        }
     }
 }
 </script>
