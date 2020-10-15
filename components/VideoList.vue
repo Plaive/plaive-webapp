@@ -9,13 +9,15 @@
             <div v-for="(video, index) in videos" :key="index" class="col-xl-3 col-sm-6 mb-3">
                 <div class="video-card">
                     <div class="video-card-image">
-                        <nuxt-link class="play-icon" :to="video.link"><font-awesome-icon :icon="['fas', 'play-circle']" class="play-icon-btn" /></nuxt-link>
-                        <nuxt-link :to="video.link"><img class="img-fluid" :src="video.img" alt=""></nuxt-link>
+                        <a class="play-icon" :href="`#${video.link}`">
+                            <font-awesome-icon :icon="['fas', 'play-circle']" class="play-icon-btn" />
+                        </a>
+                        <img class="img-fluid" :src="video.img" alt="">
                         <div class="time" v-if="video.free === true">{{$t('free')}}</div>
                     </div>
                     <div class="video-card-body">
                         <div class="video-title">
-                            <nuxt-link :to="video.link">{{video.title}}</nuxt-link>
+                            <a :href="`#${video.link}`">{{video.title}}</a>
                         </div>
                         <div class="video-page text-success">
                             {{video.category}}
@@ -23,7 +25,7 @@
                         <div class="video-view">
                             <div class="row">
                                 <div class="col-md-6">
-                                    <font-awesome-icon :icon="['fas', 'calendar-alt']" /> {{video.date}} 
+                                    <font-awesome-icon :icon="['fas', 'calendar-alt']" /> {{formatDate(video.date)}}
                                     <font-awesome-icon :icon="['fas', 'clock']" class="ml-1"/> {{video.start}} - {{video.end}}
                                 </div>
                                 <div v-if="type === 'myChannelLessons'" class="col-md-6 text-right">
@@ -100,6 +102,10 @@ export default {
             await this.$axios.$delete(`${this.$config.LESSONS_BASE_URL}/lesson/${this.videos[index].id}`)
             this.videos.splice(index, 1)
             this.$bvModal.hide(`deleteLessonModal_${index}`)
+        },
+        formatDate (dateString) {
+            var d = new Date(dateString)
+            return d.toLocaleDateString(undefined, {})
         }
     }
 }

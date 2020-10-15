@@ -44,7 +44,9 @@
         </div>
       </transition>
       <transition name="page" mode="out-in" :duration="250">
-        <VideoList v-if="activeTab === 'lessons'" :type="isMy === true ?'myChannelLessons' : ''" :title="$t('lessons')" :videos="lessons" />
+        <div v-if="activeTab === 'lessons'" class="box mb-3">
+          <VideoList :type="isMy === true ?'myChannelLessons' : ''" :title="$t('lessons')" :videos="lessons" />
+        </div>
       </transition>
     </div>
   </div>
@@ -57,10 +59,6 @@ export default {
     return {
       title: this.channel.name + ' - Plaive',
     }
-  },
-  transition: {
-    name: "page",
-    mode: 'out-in'
   },
   data () {
       return {
