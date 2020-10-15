@@ -171,6 +171,7 @@ export default {
         } else {
           await this.$axios.$patch(`${this.$config.LESSONS_BASE_URL}/lesson/${this.$route.params.id}`, lesson)
         }
+        this.$route.replace("/channel/my")
       } catch {}
       this.loading = false 
     }
