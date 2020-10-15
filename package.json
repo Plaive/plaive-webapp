@@ -24,6 +24,7 @@
     "vue-fontawesome": "0.0.2",
     "vue-infinite-loading": "^2.4.5",
     "vue-owl-carousel": "^2.0.3",
+    "vue-sweetalert2": "^3.0.8",
     "vue2-editor": "^2.10.2"
   },
   "devDependencies": {

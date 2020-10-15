@@ -1,4 +1,4 @@
-export default function ({ $config, $axios, redirect, $bvToast }) {
+export default function ({ $config, $axios, redirect }) {
 	// Create a custom axios instance
 	$axios.create({
 		headers: {

@@ -62,7 +62,8 @@ export default {
     './theme/osahan.css',
     './theme/owl.theme.css',
     '@fortawesome/fontawesome-svg-core/styles.css',
-    'video.js/dist/video-js.css'
+    'video.js/dist/video-js.css',
+    'sweetalert2/dist/sweetalert2.min.css'
   ],
   /*
   ** Plugins to load before mounting the App
@@ -70,7 +71,7 @@ export default {
   */
   plugins: [
     '~/plugins/fontawesome.js',
-    '~/plugins/axios.js',
+    '~/plugins/axios.js'
   ],
   /*
   ** Auto import components
@@ -91,7 +92,8 @@ export default {
     // Doc: https://github.com/nuxt/content
     '@nuxt/content',
     'bootstrap-vue/nuxt',
-    'nuxt-i18n'
+    'nuxt-i18n',
+    'vue-sweetalert2/nuxt'
   ],
   /*
   ** Axios module configuration

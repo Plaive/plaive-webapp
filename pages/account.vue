@@ -192,15 +192,17 @@ export default {
       this.accountSaveloading = true
       try {
         await this.$axios.$patch(`${this.$config.AUTH_BASE_URL}/user`, { name: this.account.name, nickname: this.account.nickname, email: this.account.email })
-        this.$bvToast.toast(this.$t("accountUpdated"), {
-          variant: "success",
-          solid: true
-        })
-      } catch {
-        this.$bvToast.toast(this.$t(err), {
-          variant: "danger",
-          solid: true
-        })
+        this.$swal(
+          this.$t("accountUpdated"),
+          '',
+          'success'
+        )
+      } catch(err) {
+        this.$swal(
+          "Errore",
+          this.$t(err),
+          'error'
+        )
       }
       this.accountSaveloading = false
     },
@@ -208,15 +210,17 @@ export default {
       this.passwordSaveLoading = true
       try {
         await this.$axios.$patch(`${this.$config.AUTH_BASE_URL}/password`, { currentPassword: this.changePassword.currentPassword, newPassword: this.changePassword.newPassword })
-        this.$bvToast.toast(this.$t("accountUpdated"), {
-          variant: "success",
-          solid: true
-        })
+        this.$swal(
+          this.$t("accountUpdated"),
+          '',
+          'success'
+        )
       } catch(err) {
-        this.$bvToast.toast(this.$t(err), {
-          variant: "danger",
-          solid: true
-        })
+        this.$swal(
+          "Errore",
+          this.$t(err),
+          'error'
+        )
       }
       this.passwordSaveLoading = false
     },
@@ -237,15 +241,17 @@ export default {
       this.channelSaveLoading = true
         try {
           await this.$axios.$patch(`${this.$config.CHANNELS_BASE_URL}/channel`, { name: this.channel.name, description: this.channel.description })
-          this.$bvToast.toast(this.$t("accountUpdated"), {
-            variant: "success",
-            solid: true
-          })
+          this.$swal(
+            this.$t("accountUpdated"),
+            '',
+            'success'
+          )
         } catch {
-          this.$bvToast.toast(this.$t(err), {
-            variant: "danger",
-            solid: true
-          })
+          this.$swal(
+            "Errore",
+            this.$t(err),
+            'error'
+          )
         }
         this.channelSaveLoading = false
     },

@@ -21,19 +21,19 @@
                 <div class="col-lg-3">
                   <div class="form-group">
                       <label>{{$t('date')}}</label>
-                      <b-form-datepicker locale="it" v-model="lesson.date"></b-form-datepicker>
+                      <b-form-datepicker locale="it" v-model="lesson.date" :min="new Date()"></b-form-datepicker>
                   </div>
                 </div>
                 <div class="col-lg-2">
                   <div class="form-group">
                       <label>{{$t('start')}}</label>
-                      <b-form-timepicker locale="it" v-model="lesson.start"></b-form-timepicker>
+                      <b-form-timepicker locale="it" hourCycle="h23" v-model="lesson.start" @input="validateEndTime"></b-form-timepicker>
                   </div>
                 </div>
                 <div class="col-lg-2">
                   <div class="form-group">
                       <label>{{$t('end')}}</label>
-                      <b-form-timepicker locale="it" v-model="lesson.end"></b-form-timepicker>
+                      <b-form-timepicker locale="it" hourCycle="h23" v-model="lesson.end" :state="endTimeValid" @input="validateEndTime"></b-form-timepicker>
                   </div>
                 </div>
                 <div class="col-lg-2">
@@ -54,14 +54,14 @@
             <div class="row">
                 <div class="col-lg-2">
                   <div class="form-group">
-                      <label>{{$t('maxViewers')}}</label>
-                      <input class="form-control" type="number" min="0" step="1" v-model="lesson.maxUsers" readonly>
+                      <label>{{$t('minViewers')}}</label>
+                      <input class="form-control" type="number" min="0" step="1" v-model="lesson.minUsers">
                   </div>
                 </div>
                 <div class="col-lg-2">
                   <div class="form-group">
-                      <label>{{$t('minViewers')}}</label>
-                      <input class="form-control" type="number" min="0" step="1" v-model="lesson.minUsers" readonly>
+                      <label>{{$t('maxViewers')}}</label>
+                      <input class="form-control" type="number" :min="lesson.minUsers" step="1" v-model="lesson.maxUsers">
                   </div>
                 </div>
             </div>
@@ -131,6 +131,7 @@ export default {
   data () {
     return  {
       loading: false,
+      endTimeValid: null,
       lesson: {
         title: "",
         description: "",
@@ -148,6 +149,17 @@ export default {
     }
   },
   methods: {
+    validateEndTime() {
+      if(this.lesson.start == "") {
+        this.endTimeValid = false
+      } else {
+        if(this.lesson.start >= this.lesson.end) {
+          this.endTimeValid = false
+        } else {
+          this.endTimeValid = null
+        }
+      }
+    },
     async getLesson () {
       var lessonRes = await this.$axios.$get(`${this.$config.LESSONS_BASE_URL}/lesson/${this.$route.params.id}`)
       this.lesson.title = lessonRes.title
@@ -167,11 +179,22 @@ export default {
       try {
         const lesson = this.lesson
          if(this.$route.params.id === "new") {
-          await this.$axios.$post(`${this.$config.LESSONS_BASE_URL}/lesson`, lesson)
+          var res = await this.$axios.$post(`${this.$config.LESSONS_BASE_URL}/lesson`, lesson)
+          this.$swal(
+            'Lezione salvata',
+            '',
+            'success'
+          )
+          this.$router.push(`/lesson/${res.id}`);
         } else {
           await this.$axios.$patch(`${this.$config.LESSONS_BASE_URL}/lesson/${this.$route.params.id}`, lesson)
+          
+          this.$swal(
+            'Lezione aggiornata',
+            '',
+            'success'
+          )
         }
-        this.$route.replace("/channel/my")
       } catch {}
       this.loading = false 
     }
